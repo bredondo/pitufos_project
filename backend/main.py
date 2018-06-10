@@ -52,6 +52,7 @@ def crossdomain(origin=None, methods=None, headers=None,
         return update_wrapper(wrapped_function, f)
     return decorator
 
+"""Recommendation """
 @app.route('/recommendation', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
 def get_questions():
@@ -72,8 +73,6 @@ def get_first_question():
 
     question = recommendation.find_one({'order': 1})
 
-    print(question)
-
     output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
                    'order': question['order']})
     return jsonify({'result': output})
@@ -83,30 +82,26 @@ def get_first_question():
 @crossdomain(origin='*')
 def get_next_questions():
     recommendation = db.recommendation
-    technologies = request.json['result'][0]['technologies']
+    technologies = json.loads(request.data.decode('utf-8'))['technologies']
     output = []
-    mandatory = [18, 19, 20, 21]
     for technology in technologies:
-        for answer in recommendation.find({"technology": technology}):
-            output.append({'question': answer['question'], 'answers': answer['answers'], 'type': answer['type']})
-    for i in mandatory:
-        for answer in recommendation.find({"order": i}):
-            output.append({'question': answer['question'], 'answers': answer['answers'], 'type': answer['type']})
-
+        for question in recommendation.find({"technology": technology}):
+               output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
+                   'order': question['order']})
+    for question in recommendation.find({"technology": ""}):
+           output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
+                   'order': question['order']})
 
     return jsonify({'result': output})
-
-
-
-
 
 @app.route('/recommendation', methods=['POST'])
 def save_questions():
     recommendation = db.recommendation
-    question = request.json['question']
-    answers = request.json['answers']
-    type = request.json['type']
-    order = request.json['order']
+    req = json.loads(request.data.decode('utf-8'))
+    question = req['question']
+    answers = req['answers']
+    type = req['type']
+    order = req['order']
     output = []
 
     question_id = recommendation.insert({'question': question, 'answers': answers, 'type': type , 'order': order})
@@ -126,7 +121,7 @@ def delete_questions():
 
     return jsonify({'result': output})
 
-
+"""Users """
 @app.route('/users', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
 def get_users():
@@ -139,30 +134,39 @@ def get_users():
 
     return jsonify({'result': output})
 
+@app.route('/user/<email>', methods=['GET', 'OPTIONS'])
+@crossdomain(origin='*')
+def get_user_email(email):
+    users = db.users
+    output = []
+    user = users.find_one({'email': email})
+    output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
+                       'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
+                       'sendEmail': user['sendEmail'], 'answers': user['answers'], 'result': user['result']})
+    return jsonify({'result': output})
 
 @app.route('/users', methods=['POST'])
 def save_users():
     users = db.users
     output = []
-    email = request.json['email']
-    pre_pass = request.json['passwd']
+    req = json.loads(request.data.decode('utf-8'))
+    email = req['email']
+    pre_pass = req['passwd']
     pre_pass2 = hashlib.sha224(pre_pass.encode()).hexdigest()
-    name = request.json['name']
-    lastname = request.json['lastname']
+    name = req['name']
+    lastname = req['lastname']
     passwd = name + pre_pass2 + lastname
-    img = request.json['img']
-    description = request.json['description']
-    sendEmail = request.json['sendEmail']
+    img = req['img']
+    description = req['description']
+    sendEmail = req['sendEmail']
 
     user_id = users.insert({'email': email, 'passwd': passwd, 'name': name,
                        'lastname': lastname, 'img': img, 'description': description,
                        'sendEmail': sendEmail})
-    user = users.find_one({'_id': user_id})
-
     output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                        'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
                        'sendEmail': user['sendEmail']})
-    return jsonify({'result': output})
+    return jsonify({'result': user})
 
 
 @app.route('/users', methods=['DELETE'])
@@ -177,8 +181,7 @@ def delete_users():
 
     return jsonify({'result': output})
 
-
-
+"""Projects"""
 
 @app.route('/projects', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
@@ -196,11 +199,12 @@ def get_projects():
 def save_projects():
     projects = db.projects
     output = []
-    technologies = request.json['technologies']
-    workday = request.json['workday']
-    schedule = request.json['schedule']
-    location = request.json['location']
-    telecommuting = request.json['telecommuting']
+    req = json.loads(request.data.decode('utf-8'))
+    technologies = req['technologies']
+    workday = req['workday']
+    schedule = req['schedule']
+    location = req['location']
+    telecommuting = req['telecommuting']
 
     project_id = projects.insert({'technologies': technologies, 'telecommuting': telecommuting,'workday': workday, 'schedule': schedule,
                             'location': location})
@@ -222,40 +226,35 @@ def delete_projects():
 
     return jsonify({'result': output})
 
-@app.route('/emptyDatabase', methods=['DELETE'])
-def delete_all():
-    projects = db.projects
-    projects.remove()
-    users = db.users
-    users.remove()
-    recommendation = db.recommendation
-    recommendation.remove()
-    output = []
-
-    return jsonify({'result': output})
-
-
 @app.route('/projectRecommendation', methods=['POST'])
 @crossdomain(origin='*')
 def recommend_projects():
+
     projects = db.projects
-    technologies = request.json['result']
-    answersAux = request.json['result']
-    answers = [] #se guardarán las preguntas enviadas por el usuario
-    answers2 = [] #se guardarán las respuestas enviadas por el usuario
+    users = db.users
+
+    req = json.loads(request.data.decode('utf-8'))
+    user = req['result']['user']
+    technologies = req['result']['answers']
+    answersAux = req['result']['answers']
+
+    user = users.find_one({"email": user['email']})
+        
+    questions = [] #se guardarán las preguntas enviadas por el usuario
+    answers = [] #se guardarán las respuestas enviadas por el usuario
     output = []
 
     for tec in technologies:#se guardan todas las preguntas
-        '''answers.append({'question': tec['question']}) #workea so far :)'''
-        answers.append(tec['question'])
+        questions.append(tec['question'])
 
     for ans in answersAux:#se guardan todas las respuestas de las preguntas
-            answers2.append(ans['answers'])
+            answers.append(ans['answers'])
     #print('respuestas obtenidas' + answers2.__str__())
 
     projectsTechnologies = []
     projectPercentageTechnology = 0
     projectPercentage = 0
+
     for project in projects.find():
         projectsTechnologies.extend(project['technologies']) #guardamos todas las tecnologias de cada projecto
         projectLocation =  project['location']
@@ -264,11 +263,11 @@ def recommend_projects():
         projectTelecommuting = project['telecommuting']
         projectPercentageTechnology = 1 / (len(projectsTechnologies) + 4) #se calcula el porcentaje de cada tecnología y cada tipo de jornada, horario, teletrabajo y localización.
         #print(projectsTechnologies)
-        for answer in answers: #se busca cada tecnología en cada pregunta
+        for question in questions: #se busca cada tecnología en cada pregunta
             for pT in projectsTechnologies:
-                if pT in answer:
+                if pT in question:
                     projectPercentage += projectPercentageTechnology
-        for answ in answers2:
+        for answ in answers:
             if projectLocation in answ or projectWorkday in answ or projectSchedule in answ or projectTelecommuting in answ:
                 projectPercentage += projectPercentageTechnology
         if (projectPercentage >= 0.7): #si el proyecto matchea al menos un 70% se añade a la lista de proyectos válidos
@@ -287,10 +286,28 @@ def recommend_projects():
     if (length>3):
         for i in range(3, length):
             del output[i]
+    
+    users.update_one({ '_id': user['_id']},  {'$set': {'answers': req['result']['answers'],'result': output }})
+
+    user['answers'] = req['result']['answers']
+    user['result'] = output
+
+    del user['_id']
+
+    return  jsonify({'result': user})
+    #return jsonify({'result': output})
+
+@app.route('/emptyDatabase', methods=['DELETE'])
+def delete_all():
+    projects = db.projects
+    projects.remove()
+    users = db.users
+    users.remove()
+    recommendation = db.recommendation
+    recommendation.remove()
+    output = []
 
     return jsonify({'result': output})
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port='8000')

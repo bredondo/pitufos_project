@@ -70,7 +70,7 @@ recommendationsData = [
         'order': 1,
         'question': '¿En qué tecnologías estás interesado?',
         'answers': ['Java', 'Python', 'JavaScript', 'SQL', 'NoSQL', 'DevOps'],
-        'technology': '',
+        'technology': 'all',
         'type': 'varias'
     },
     {
@@ -88,140 +88,147 @@ recommendationsData = [
         'type': 'puntuacion'
     },
     {
-        'order': 3,
+        'order': 4,
         'technology': 'Java',
         'question': '¿Cuánto sabes de Hibernate?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
-        'order': 4,
+        'order': 5,
         'technology': 'Java',
         'question': '¿Cuánto sabes de JUnit?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
-        'order': 5,
+        'order': 6,
         'technology': 'Python',
         'question': '¿Cuánto sabes de Flask?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
-        'order': 6,
-        'technology': 'JavaScript',
-        'question': '¿Cuánto sabes de NodeJS?',
-        'answers': [],
-        'type': 'puntuacion'
-    },
-    {
         'order': 7,
-        'technology': 'JavaScript',
-        'question': '¿Cuánto sabes de ReactJS?',
+        'technology': 'Python',
+        'question': '¿Cuánto sabes de Django?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
         'order': 8,
         'technology': 'JavaScript',
-        'question': '¿Cuánto sabes de Polymer?',
+        'question': '¿Cuánto sabes de NodeJS?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
         'order': 9,
         'technology': 'JavaScript',
-        'question': '¿Cuánto sabes de Ember?',
+        'question': '¿Cuánto sabes de ReactJS?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
         'order': 10,
         'technology': 'JavaScript',
-        'question': '¿Cuánto sabes de VueJS?',
+        'question': '¿Cuánto sabes de Polymer?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
         'order': 11,
         'technology': 'JavaScript',
-        'question': '¿Cuánto sabes de Angular?',
+        'question': '¿Cuánto sabes de Ember?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
         'order': 12,
-        'technology': 'SQL',
-        'question': '¿Cuánto sabes de MySQL?',
+        'technology': 'JavaScript',
+        'question': '¿Cuánto sabes de VueJS?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
         'order': 13,
-        'technology': 'SQL',
-        'question': '¿Cuánto sabes de MariaDB?',
+        'technology': 'JavaScript',
+        'question': '¿Cuánto sabes de Angular?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
         'order': 14,
         'technology': 'SQL',
-        'question': '¿Cuánto sabes de Oracle?',
+        'question': '¿Cuánto sabes de MySQL?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
         'order': 15,
+        'technology': 'SQL',
+        'question': '¿Cuánto sabes de MariaDB?',
+        'answers': [],
+        'type': 'puntuacion'
+    },
+    {
+        'order': 16,
+        'technology': 'SQL',
+        'question': '¿Cuánto sabes de Oracle?',
+        'answers': [],
+        'type': 'puntuacion'
+    },
+    {
+        'order': 17,
         'technology': 'NoSQL',
         'question': '¿Cuánto sabes de MongoDB?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
-        'order': 16,
+        'order': 18,
         'technology': 'NoSQL',
         'question': '¿Cuánto sabes de Cassandra?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
-        'order': 16,
+        'order': 19,
         'technology': 'DevOps',
         'question': '¿Cuánto sabes de Docker?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
-        'order': 17,
+        'order': 20,
         'technology': 'DevOps',
         'question': '¿Cuánto sabes de Jenkins?',
         'answers': [],
         'type': 'puntuacion'
     },
     {
-        'order': 18,
+        'order': 21,
         'question': '¿Qué tipo de jornada quieres?',
         'technology': '',
         'answers':  ['Jornada completa','Jornada parcial'],
         'type': 'unica'
     },
     {
-        'order': 19,
+        'order': 22,
         'question': '¿Dónde prefieres trabajar?',
         'technology': '',
         'answers': ['Av. de Burgos', 'Vaguada', 'Las Tablas','Alonso Martínez'],
         'type': 'varias'
     },
     {
-        'order': 20,
+        'order': 23,
         'question': '¿Qué horario prefieres?',
         'technology': '',
         'answers': ['Por la mañana', 'Por la tarde', 'Indiferente'],
         'type': 'unica'
     },
     {
-        'order': 21,
+        'order': 24,
         'question': '¿Cuántos días de teletrabajo prefieres',
         'technology': '',
         'answers': ['0 dias', '1 dias', '2 dias'],

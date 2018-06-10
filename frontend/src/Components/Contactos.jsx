@@ -15,7 +15,6 @@ class Contactos extends Component {
       this.setState({
         contacto: users.result,
       });
-      console.log(this.state);
     } catch (e) {
       console.log(e);
     }
@@ -23,12 +22,12 @@ class Contactos extends Component {
 
   render() {
     return (
-    <section id="team" class="pb-5">
+    <section id="team" className="pb-5">
         <div className ="container">
             <div className = "row">
                 {this.state.contacto.map(item => (
-                <div className="col-xs-12 col-sm-6 col-md-4">
-                    <div className="image-flip" ontouchstart="this.classList.toggle('hover');">
+                <div className="col-xs-12 col-sm-6 col-md-4" key={item.email}>
+                    <div className="image-flip">
                         <div className="mainflip">
                             <div className="frontside">
                                 <div className="card">

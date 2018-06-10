@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AnswerNumber from './AnswerNumber';
 import AnswerSeveral from './AnswerSeveral';
+import axios from 'axios';
 
 class Recomendacion extends Component {
  
@@ -8,92 +9,189 @@ class Recomendacion extends Component {
     recommendation: [],
     stylesPrev: { display: "none" },
     stylesNext: { display: ""},
+    stylesSave: { display: "none" },
     index: 0,
-    value: [],
-
-  };
-
-  
+    answers: [[]]
+  }
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://localhost:8000/recommendationStart');
-      const recommendation = await res.json();
+      const response = await axios.get('http://localhost:8000/recommendationStart');
+      const recommendation = await response.data;
       this.setState({
         recommendation: recommendation.result,
-        
-        //recommendation: [1,2,3]
-      });
-    } catch (e) {
-      console.log(e);
+      })
+    } catch (error) {
+      console.error(error);
     }
   }
 
+  recommendationKeepsGoing(body) {
+    return axios.post(
+      'http://localhost:8000/recommendationKeepsGoing', 
+      JSON.stringify(body), 
+      {headers: {'Content-Type': 'text/plain'}});
+  }
 
   handleChange(event) {
-    console.log('holi');
-    this.state.value.push(event.target.value)
-    //this.setState({value : this.state.value});
-    console.log('holi' + this.state.value);
+    let item = event.target.value;
+    let checked = event.target.checked;
+    let answers = this.state.answers;
+    if(checked){
+      answers[this.state.index].push(item);
+      this.setState({answers:answers});
+      
+    }
+    else{
+      if(this.state.recommendation[this.state.index].type !== 'varias'){
+        answers[this.state.index] = [];
+        if(item !== "" && event.target.checkValidity())
+          answers[this.state.index].push(item);
+        this.setState({answers:answers});
+      }
+      else{
+        let index = answers[this.state.index].indexOf(item);
+        if (index !== -1){
+          answers[this.state.index].splice(index, 1);
+          this.setState({answers:answers});
+        }
+      }
+    }
   }
 
   answerType(item = 0, index = 0) {
     if(item === 0){
       return;
     }
+    let order = this.state.index + 1;
     if(item.answers.length > 0){
       
-      return <AnswerSeveral key={index} item={item} handleChange={this.handleChange.bind(this)}/>;
+      return <AnswerSeveral key={index} order={order} item={item} answers={this.state.answers[this.state.index]} handleChange={this.handleChange.bind(this)}/>;
     }
     else{
-      return <AnswerNumber key={index} item={item} handleChange={this.handleChange.bind(this)}/>;
+      return <AnswerNumber key={index} order={order} item={item} answers={this.state.answers[this.state.index]} handleChange={this.handleChange.bind(this)}/>;
     }
   }
 
   handleNext(event) {
+    if(this.state.answers[this.state.index].length > 0){
+      if(this.state.index === 0){
+        const body = {"technologies": this.state.answers[this.state.index]};
+        this.recommendationKeepsGoing(body)
+          .then((response) =>{
+            const recommendation = response.data;
+            let recomendacionState = this.state.recommendation;
+            recomendacionState.splice(1);
+            recomendacionState = recomendacionState.concat(recommendation.result);
+            this.setState({recommendation: recomendacionState});
+            this.state.answers.splice(1);
+            this.setState({answers: this.state.answers});
+            this.displayNext();
+          })
+          .catch((error) =>{
+            console.log(error);
+          });
+      }
+      else{
+        this.displayNext();
+      }
+      event.preventDefault();
+    }
+  }
+  displayNext(){
     if(this.state.index < this.state.recommendation.length){
-      this.setState({stylesPrev: {index: this.state.index++}});
+      this.state.answers;
+      let answers = this.state.answers;
+      answers.push([]);
+      let index = this.state.index;
+      index++;
+      this.setState({answers: answers});
+      this.setState({index: index});
       this.setState({stylesPrev: {display: ""}});
-      if(this.state.index === this.state.recommendation.length -1){
+      if(index === this.state.recommendation.length -1){
         this.setState({stylesNext: {display: "none"}});
+        this.setState({stylesSave: {display: ""}});
       }
     }
-    event.preventDefault();
   }
-
   handlePrevious(event) {
     if(this.state.index > 0){
-      this.setState({stylesPrev: {index: this.state.index--}});
+      let index = this.state.index;
+      index--;
+      this.setState({index: index});
       this.setState({stylesNext: {display: ""}});
-      if(this.state.index === 0){
+      this.setState({stylesSave: {display: "none"}});
+      if(index === 0){
         this.setState({stylesPrev: {display: "none"}});
       }
     }  
   }
 
+  handleSave(event) {
+    
+    let body = {"result":
+                {
+                  "user": JSON.parse(localStorage.getItem('user')),
+                  "answers": []
+                }
+              };
+
+    for(let i = 1; i < this.state.recommendation.length; i++){
+      body.result.answers.push({
+        "question": this.state.recommendation[i].question,
+        "type": this.state.recommendation[i].type,
+        "order": this.state.recommendation[i].order,
+        "answers": this.state.answers[i]
+      });
+    }
+
+    axios.post(
+      'http://localhost:8000/projectRecommendation', 
+      JSON.stringify(body), 
+      {headers: {'Content-Type': 'text/plain'}})
+        .then((response) =>{
+          console.log("Guardado recomendación")
+          localStorage.setItem('user', JSON.stringify(response.data.result));
+        })
+        .catch((error) =>{
+          console.log(error);
+        });
+  }
+
   render() {
 
     return (
-     
-
-    <section id="team" class="pb-5">
+    <section id="team" className="pb-5">
         <main className="recomendacion">
-        <div class="col-md-4 mt-4">
-    		    <div class="card profile-card-5">
-                    <div class="card-body pt-0">
-                    {
-                      this.answerType(this.state.recommendation[this.state.index], this.state.index)
-                     }
-                  </div>
-            </div>
-    		</div>
+          <div className="card col-6 mx-auto">
+            <div className="card-body">
+              {
+                this.answerType(this.state.recommendation[this.state.index], this.state.index)
+              }
+              <div className="d-flex flex-nowrap">
+                
+                <div className="p-2">
+                  <button className="btn btn-light" style={this.state.stylesPrev} 
+                        onClick={this.handlePrevious.bind(this)}>
+                    <span>&laquo;</span> Atrás
+                  </button>
+                </div>
+                
+                <div className="ml-auto p-2">
+                  <button className="btn btn-dark" style={this.state.stylesNext} 
+                          onClick={this.handleNext.bind(this)} disabled={this.state.answers[this.state.index].length === 0}>
+                    Siguiente <span>&raquo;</span>
+                  </button>
+                  <button className="btn btn-dark" style={this.state.stylesSave} 
+                          onClick={this.handleSave.bind(this)} disabled={this.state.answers[this.state.index].length === 0}>
+                    <i class="far fa-save"></i> Enviar
+                  </button>
+                </div>
 
-              <div className="botones">
-              <ul>
-                  <button className="btn btn-primary" style={this.state.stylesPrev} onClick={this.handlePrevious.bind(this)}>&raquo;Previous</button>
-                  <button className="displayNone" style={this.state.stylesNext} onClick={this.handleNext.bind(this)}>Next &raquo;</button>
-              </ul>
-           </div>
+              </div>
+              
+            </div>
+          </div>
         </main>
      </section>
     );
