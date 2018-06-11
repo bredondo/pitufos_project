@@ -163,7 +163,6 @@ def save_users():
     user_id = users.insert({'email': email, 'passwd': passwd, 'name': name,
                        'lastname': lastname, 'img': img, 'description': description,
                        'sendEmail': sendEmail})
-                       
     user = users.find_one({'_id': user_id})
 
     output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
