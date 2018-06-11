@@ -163,6 +163,9 @@ def save_users():
     user_id = users.insert({'email': email, 'passwd': passwd, 'name': name,
                        'lastname': lastname, 'img': img, 'description': description,
                        'sendEmail': sendEmail})
+                       
+    user = users.find_one({'_id': user_id})
+
     output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                        'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
                        'sendEmail': user['sendEmail']})
@@ -272,26 +275,33 @@ def recommend_projects():
                 projectPercentage += projectPercentageTechnology
         if (projectPercentage >= 0.7): #si el proyecto matchea al menos un 70% se añade a la lista de proyectos válidos
             del project['_id']
-            project['porcentaje'] = projectPercentage
+            project['porcentaje'] = round(projectPercentage, 2)
             output.append(project)
         projectPercentageTechnology = 0
         projectPercentage = 0
         projectsTechnologies.clear()
 
     output = sorted(output, key=lambda k: k['porcentaje'], reverse=True)#ordenar los proyectos
-    for item in output: #quitar el atributo auxiliar porcentaje
-        del item['porcentaje']
+    #for item in output: #quitar el atributo auxiliar porcentaje
+     #   del item['porcentaje']
 
     length = len(output)
     if (length>3):
         for i in range(3, length):
             del output[i]
     
+
+    length2 = len(output)
+    if (length2<1):
+        project = projects.find_one({"name": "No se ha encontrado ningún proyecto coincidente."})
+        del project['_id']
+        output.append(project)
+
     users.update_one({ '_id': user['_id']},  {'$set': {'answers': req['result']['answers'],'result': output }})
 
     user['answers'] = req['result']['answers']
     user['result'] = output
-
+    
     del user['_id']
 
     return  jsonify({'result': user})

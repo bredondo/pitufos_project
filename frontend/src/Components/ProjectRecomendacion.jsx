@@ -21,14 +21,15 @@ class ProjectRecomendacion extends Component {
         <main className="recomendacion">
           <div className="card col-6 mx-auto">
             <div className="card-body">
-              
+               <h1 id="proy">Proyectos recomendados (% coincidencia)</h1>
               {this.state.projects.map(item => (
-                <div key={item.name}>
-                  <h1>{item.name}</h1>
+                <div key={item.name} >
+                  <h1>{item.name} 
+                  {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </h1>
                   <p>{item.description}</p>
                   <p>{item.location}</p>
                   <p>{item.workday}</p>
-                  <p>Tecnologias</p>
+                  <p> {item.description.length < 1 ? '' : 'Tecnologías'} </p>
                   <ul>
                     {item.technologies.map(technology => (
                       <li key={technology}>{technology}</li>

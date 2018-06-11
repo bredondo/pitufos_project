@@ -144,6 +144,7 @@ class Recomendacion extends Component {
         "answers": this.state.answers[i]
       });
     }
+    
 
     axios.post(
       'http://localhost:8000/projectRecommendation', 
@@ -152,6 +153,7 @@ class Recomendacion extends Component {
         .then((response) =>{
           console.log("Guardado recomendación")
           localStorage.setItem('user', JSON.stringify(response.data.result));
+          this.props.handleSend(event);
         })
         .catch((error) =>{
           console.log(error);
