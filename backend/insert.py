@@ -239,7 +239,7 @@ recommendationsData = [
 usersData = [
     {
         'email': 'usuario@usuario.com', 
-        'passwd': '12345', 
+        'passwd': 'Carlosa7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Alonso',
         'name': 'Carlos',
         'lastname': 'Alonso', 
         'img': 'img/contacto1.png', 
@@ -250,7 +250,7 @@ usersData = [
     },
     {
         'email': 'usuario2@usuario.com', 
-        'passwd': '12345', 
+        'passwd': 'Lauraa7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Martin',
         'name': 'Laura',
         'lastname': 'Martin', 
         'img': 'img/contacto2.png', 
