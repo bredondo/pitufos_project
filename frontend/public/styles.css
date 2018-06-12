@@ -19,8 +19,18 @@ section .section-title {
 }
 
 #team .card {
+    border: 1px solid #ccc;
+    background: rgb(241, 239, 239);
+}
+
+#team2 .card {
     border: none;
-    background: rgb(214, 208, 208);
+    border: 2px solid #ccc;
+}
+
+#team3 .card{
+    border: none;
+    background-color: #fff;
 }
 
 .image-flip:hover .backside,
@@ -131,7 +141,7 @@ section{
     float:left;
     width:100%;
     background: #fff;  /* fallback for old browsers */
-    padding:30px 0;
+    padding:10px 0;
 }
 
 .profile-card-5{
@@ -157,3 +167,47 @@ section{
     background-color:#4E5E30;
     border-color:#4E5E30;
 }
+#proy{
+    font-size: 26px;
+    text-align: center;
+}
+
+#card1 {
+	text-align: center;
+	padding: 50px 50px;
+  color:#fff;
+  background-color:rgb(117, 120, 124);
+}
+
+#card1 .content {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); 
+  padding: 15px 15px 25px 15px;
+}
+
+#card1::after {
+  position: absolute;
+  display: block;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  content: '';
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+} 
+
+.card1 {
+    position: relative;
+    border-radius: .5rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5,0 0 0 1px #d4d4d5;
+    transition: box-shadow 0.1s ease, transform 0.1s ease;
+    margin-bottom: 30px;
+  }
+
+  ul{
+    list-style: none;
+  }

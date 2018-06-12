@@ -62,6 +62,15 @@ projectsData = [
         'schedule': 'Indiferente',
         'telecommuting': '1 dias'
     },
+    {
+        'name': 'No se ha encontrado ningún proyecto coincidente.',
+        'description': '',
+        'location': '',
+        'workday': '',
+        'technologies': [],
+        'schedule': '',
+        'telecommuting': ''
+    }
 ]
 
 

@@ -9,19 +9,10 @@ class Formacion extends Component {
                         <div className="text-center text-white">
                             <h1 className="display-2 mb-2">¿Qué es Blue Graduates?</h1>
                             <h5> 
-                            <p>Cras facilisis urna ornare ex volutpat, et
-                            convallis erat elementum. Ut aliquam, ipsum vitae
-                            gravida suscipit, metus dui bibendum est, eget rhoncus nibh
-                            metus nec massa. Maecenas hendrerit laoreet augue
-                            nec molestie.</p>
-                            <p>
-                            uCum sociis natoque penatibus et magnis
-                            dis parturient montes, nascetur ridiculus mus.
-                            Cras facilisis urna ornare ex volutpat, et
-                            convallis erat elementum. Ut aliquam, ipsum vitae
-                            gravida suscipit, metus dui bibendum est, eget rhoncus nibh
-                            metus nec massa. Maecenas hendrerit laoreet augue
-                            nec molestie.</p></h5> 
+                            <p>Con este programa podrás crecer como profesional, aprender todo lo que
+                                quieras y más, y rodearte de gente que haga de tu día a día erfjeksfsef
+                                sfjkserfnjkersnfkaejnf
+                                aekrjfnejkraejk.</p></h5> 
                         </div>
                     </div>
                 </div>
@@ -35,7 +26,7 @@ class Formacion extends Component {
                             <div className="row">
                                 <div className="col-sm">
                                     <p>
-                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.pdf"> Ver</a>
+                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.pdf" target="_blank" > Ver</a>
                                     </p>
                                 </div>
                                 <div className="col-sm">
@@ -50,7 +41,7 @@ class Formacion extends Component {
                             <div className="row">
                                 <div className="col-sm">
                                     <p>
-                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pdf"> Ver</a>
+                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pdf" target="_blank"> Ver</a>
                                     </p>
                                 </div>
                                 <div className="col-sm">
