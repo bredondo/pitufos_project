@@ -163,9 +163,9 @@ class Recomendacion extends Component {
   render() {
 
     return (
-    <section id="team" className="pb-5">
+    <section id="team2" className="pb-5">
         <main className="recomendacion">
-          <div className="card col-6 mx-auto">
+          <div className="card col-7 mx-auto">
             <div className="card-body">
               {
                 this.answerType(this.state.recommendation[this.state.index], this.state.index)
@@ -173,7 +173,7 @@ class Recomendacion extends Component {
               <div className="d-flex flex-nowrap">
                 
                 <div className="p-2">
-                  <button className="btn btn-light" style={this.state.stylesPrev} 
+                  <button className="btn" style={this.state.stylesPrev} 
                         onClick={this.handlePrevious.bind(this)}>
                     <span>&laquo;</span> Atrás
                   </button>
