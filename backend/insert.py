@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-client = MongoClient('10.1.3.128', 27017)
+client = MongoClient('10.1.3.168', 27017)
 db = client.pitufos
 
 recommendation = db.recommendation
