@@ -7,7 +7,7 @@ import urllib.request, json
 
 app = Flask(__name__, static_url_path='')
 
-client = MongoClient('10.1.3.156', 27017)
+client = MongoClient('10.1.3.128', 27017)
 db = client.pitufos
 
 
