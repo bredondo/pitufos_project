@@ -18,7 +18,6 @@ class Formacion extends Component {
                 </div>
             </div>
 
-
             <div style={{margin:'50px'}} className="d-flex justify-content-center">
                 <div className="row">
                     <div className="card" id="divHorario" style={{border:' 2px solid #AEB6BF'}}>
@@ -38,6 +37,7 @@ class Formacion extends Component {
                                 <p>
                                 <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pptx" download style={{width:'200px', margin:'auto'}}> Descargar</a>
                                 </p>
+
                     </div>
                 </div>
             </div>

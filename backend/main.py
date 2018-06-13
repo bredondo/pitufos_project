@@ -7,7 +7,7 @@ import urllib.request, json
 
 app = Flask(__name__, static_url_path='')
 
-client = MongoClient('localhost', 27017)
+client = MongoClient('10.1.3.156', 27017)
 db = client.pitufos
 
 
@@ -319,4 +319,4 @@ def delete_all():
     return jsonify({'result': output})
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port='8000')
+    app.run(debug=True, port='3001')
