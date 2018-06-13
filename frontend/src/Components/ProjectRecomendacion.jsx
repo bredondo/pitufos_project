@@ -19,26 +19,32 @@ class ProjectRecomendacion extends Component {
     return (
     <section id="team3" className="pb-5">
         <main className="recomendacion">
-          <div className="card col-8 mx-auto">
+          <div className="card mx-auto">
             <div className="card-body">
                <h1 id="proy">Proyectos recomendados (% coincidencia)</h1>
-              {this.state.projects.map(item => (
-                    <div key={item.name} >
-                      <h1>{item.name} 
-                      {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </h1>
-                      <p>{item.description}</p>
-                      <p>{item.description.length < 1 ? '' : 'Lugar de trabajo: '+item.location}</p>
-                      <p>{item.description.length < 1 ? '' : 'Tipo de jornada: ' + item.workday}</p>
-                      <p> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} </p>
-                      <ul>
-                        {item.technologies.map(technology => (
-                          <li key={technology}>{technology}</li>
-                        ))}
-                      </ul>
-                      <p>{item.description.length < 1 ? '' : 'Horario de la jornada: ' + item.schedule}</p>
-                      <p>{item.description.length < 1 ? '' : 'Días de teletrabajo: ' + item.telecommuting}</p>
+               <div className = "row">
+                  {this.state.projects.map(item => (
+                    <div className="col-xs-12 col-sm-6 col-md-4">
+                      <div className="card1" id="card1">
+                        <div  key={item.name} >
+                            <h1>{item.name} 
+                            {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </h1>
+                            <p>{item.description}</p>
+                            <p>{item.description.length < 1 ? '' : 'Lugar de trabajo: ' +item.location}</p>
+                            <p>{item.description.length < 1 ? '' : 'Tipo de jornada: ' + item.workday}</p>
+                            <p> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} </p>
+                            <ul>
+                              {item.technologies.map(technology => (
+                                <li key={technology}>{technology}</li>
+                              ))}
+                            </ul>
+                            <p>{item.description.length < 1 ? '' : 'Horario de la jornada: ' + item.schedule}</p>
+                            <p>{item.description.length < 1 ? '' : 'Días de teletrabajo: ' + item.telecommuting}</p>
+                          </div>
+                        </div>
                     </div>
-              ))}
+                  ))}
+            </div>
 
               <div className="d-flex flex-nowrap">
                 <div className="ml-auto p-2">

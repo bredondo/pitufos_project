@@ -175,9 +175,9 @@ section{
 #card1 {
 	text-align: center;
 	padding: 50px 50px;
-  color:#fff;
-  background-color:rgb(117, 120, 124);
-}
+    color:#fff;
+    background-color:rgb(146, 149, 153);
+    }
 
 #card1 .content {
   position: relative;
@@ -196,8 +196,7 @@ section{
   top: 5px;
   left: 5px;
   z-index: 1;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
 } 
 
 .card1 {
@@ -206,6 +205,12 @@ section{
     box-shadow: 0 1px 3px 0 #d4d4d5,0 0 0 1px #d4d4d5;
     transition: box-shadow 0.1s ease, transform 0.1s ease;
     margin-bottom: 30px;
+  }
+  .card1 {
+    height: auto;
+    width: auto;
+    margin: 25px;
+    float: left;
   }
 
   ul{
