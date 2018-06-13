@@ -167,16 +167,20 @@ section{
     background-color:#4E5E30;
     border-color:#4E5E30;
 }
+
 #proy{
-    font-size: 26px;
+    font-size: 30px;
     text-align: center;
+    font-family: 'Playfair Display', serif;
+
 }
 
 #card1 {
-	text-align: center;
+	text-align: left;
 	padding: 50px 50px;
-    color:#fff;
-    background-color:rgb(146, 149, 153);
+    color:rgb(153, 149, 149);
+    font-family: Georgia,Times,Serif;
+    border: 2px solid;
     }
 
 #card1 .content {
@@ -201,7 +205,6 @@ section{
 
 .card1 {
     position: relative;
-    border-radius: .5rem;
     box-shadow: 0 1px 3px 0 #d4d4d5,0 0 0 1px #d4d4d5;
     transition: box-shadow 0.1s ease, transform 0.1s ease;
     margin-bottom: 30px;
@@ -216,3 +219,18 @@ section{
   ul{
     list-style: none;
   }
+
+  #proyTit{
+      color: rgb(70, 67, 67);
+      font-weight: bold;
+      text-align: center;
+  }
+    #desc{
+        font-size: 23px;
+        text-align: left;
+    }
+
+    #info{
+        font-weight: bold;
+        color:rgb(87, 83, 83);
+    }

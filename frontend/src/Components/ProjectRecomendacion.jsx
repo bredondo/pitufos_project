@@ -27,19 +27,19 @@ class ProjectRecomendacion extends Component {
                     <div className="col-xs-12 col-sm-6 col-md-4">
                       <div className="card1" id="card1">
                         <div  key={item.name} >
-                            <h1>{item.name} 
+                            <h1 id="proyTit">{item.name} 
                             {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </h1>
-                            <p>{item.description}</p>
-                            <p>{item.description.length < 1 ? '' : 'Lugar de trabajo: ' +item.location}</p>
-                            <p>{item.description.length < 1 ? '' : 'Tipo de jornada: ' + item.workday}</p>
-                            <p> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} </p>
+                            <p id="desc">{item.description}</p>
+                            <p id="info">{item.description.length < 1 ? '' : 'Lugar de trabajo: '}</p><p> {item.location}</p>
+                            <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} </p> <p>{item.workday}</p>
+                            <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} </p>
                             <ul>
                               {item.technologies.map(technology => (
                                 <li key={technology}>{technology}</li>
                               ))}
                             </ul>
-                            <p>{item.description.length < 1 ? '' : 'Horario de la jornada: ' + item.schedule}</p>
-                            <p>{item.description.length < 1 ? '' : 'Días de teletrabajo: ' + item.telecommuting}</p>
+                            <p id="info">{item.description.length < 1 ? '' : 'Horario de la jornada: '}</p> <p>{item.schedule}</p>
+                            <p id="info">{item.description.length < 1 ? '' : 'Días de teletrabajo: '}</p> <p>{item.telecommuting}</p>
                           </div>
                         </div>
                     </div>

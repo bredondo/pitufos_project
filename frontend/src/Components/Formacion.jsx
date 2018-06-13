@@ -7,7 +7,8 @@ class Formacion extends Component {
                 <div className="container">
                     <div className="col-md-12">
                         <div className="text-center text-white">
-                            <h1 className="display-2 mb-2">¿Qué es Blue Graduates?</h1>
+                            <h1 className="display-2 mb-2" 
+ >¿Qué es Blue Graduates?</h1>
                             <h5> 
                             <p>Con este programa podrás crecer como profesional, aprender todo lo que
                                 quieras y más, y rodearte de gente que haga de tu día a día erfjeksfsef
