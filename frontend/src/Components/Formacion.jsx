@@ -26,12 +26,12 @@ class Formacion extends Component {
                             <div className="row">
                                 <div className="col-sm">
                                     <p>
-                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.pdf" target="_blank" > Ver</a>
+                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://10.1.3.162:3001/horario.pdf" target="_blank" > Ver</a>
                                     </p>
                                 </div>
                                 <div className="col-sm">
                                     <p>
-                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.xlsx" download> Descargar</a>
+                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://10.1.3.162:3001/horario.xlsx" download> Descargar</a>
                                     </p>
                                 </div>
                             </div>
@@ -41,12 +41,12 @@ class Formacion extends Component {
                             <div className="row">
                                 <div className="col-sm">
                                     <p>
-                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pdf" target="_blank"> Ver</a>
+                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://10.1.3.162:3001/temario.pdf" target="_blank"> Ver</a>
                                     </p>
                                 </div>
                                 <div className="col-sm">
                                     <p>
-                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pptx" download> Descargar</a>
+                                    <a className="btn btn-outline-dark btn-lg btn-block" href="http://10.1.3.162:3001/temario.pptx" download> Descargar</a>
                                     </p>
                                 </div>
                             </div>
