@@ -16,7 +16,7 @@ class Recomendacion extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get('http://localhost:8000/recommendationStart');
+      const response = await axios.get('http://10.1.3.162:3001/recommendationStart');
       const recommendation = await response.data;
       this.setState({
         recommendation: recommendation.result,
@@ -28,7 +28,7 @@ class Recomendacion extends Component {
 
   recommendationKeepsGoing(body) {
     return axios.post(
-      'http://localhost:8000/recommendationKeepsGoing', 
+      'http://10.1.3.162:3001/recommendationKeepsGoing', 
       JSON.stringify(body), 
       {headers: {'Content-Type': 'text/plain'}});
   }
@@ -147,7 +147,7 @@ class Recomendacion extends Component {
     
 
     axios.post(
-      'http://localhost:8000/projectRecommendation', 
+      'http://10.1.3.162:3001/projectRecommendation', 
       JSON.stringify(body), 
       {headers: {'Content-Type': 'text/plain'}})
         .then((response) =>{
