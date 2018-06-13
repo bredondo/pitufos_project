@@ -8,6 +8,27 @@
 
 /* Contactos */
 
+#divHorario {
+    width: 350px;
+    margin-right: 150px;
+    text-align: center;
+    background-color: white;
+    color:Black;
+    writable: true;
+    height: 300px;
+
+}
+
+#divTemario {
+    width: 350px;
+    text-align: center;
+    background-color: white;
+    color:Bhite;
+    writable: true;
+    height: 300px;
+}
+
+
 section {
     padding: 10px 0;
 }
