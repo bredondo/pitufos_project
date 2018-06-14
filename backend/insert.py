@@ -240,7 +240,7 @@ recommendationsData = [
         'order': 24,
         'question': '¿Cuántos días de teletrabajo prefieres',
         'technology': '',
-        'answers': ['0 dias', '1 dias', '2 dias'],
+        'answers': ['0 días', '1 días', '2 días'],
         'type': 'unica'
     },
 ]
