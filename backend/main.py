@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory, make_response, current_app
+from flask import Flask, request, jsonify, send_from_directory, make_response, current_app, g
 from pymongo import MongoClient
 import hashlib
 from functools import update_wrapper
@@ -6,8 +6,13 @@ from datetime import timedelta
 import urllib.request, json
 import jwt
 import datetime
+from itsdangerous import TimedJSONWebSignatureSerializer as JWT
+from flask_httpauth import HTTPTokenAuth
 
 app = Flask(__name__, static_url_path='')
+app.config['SECRET_KEY'] = 'hola'
+jwt = JWT(app.config['SECRET_KEY'], expires_in=3600)
+auth = HTTPTokenAuth('Bearer')
 
 client = MongoClient('localhost', 27017)
 db = client.pitufos
@@ -55,6 +60,54 @@ def crossdomain(origin=None, methods=None, headers=None,
         f.provide_automatic_options = False
         return update_wrapper(wrapped_function, f)
     return decorator
+
+
+
+
+@app.route('/login', methods=['POST', 'OPTIONS'])
+@crossdomain(origin='*')
+def get_token():
+    users = db.users
+    req_json = json.loads(request.data.decode('utf-8'))
+    email = req_json['email']
+    user = users.find_one({'email': email})
+    g.user = user
+    pre_pass = req_json['pass']
+    pre_pass2 = hashlib.sha224(pre_pass.encode()).hexdigest()
+    name = user['name']
+    lastname = user['lastname']
+    passwd = name + pre_pass2 + lastname
+
+    if passwd == user['passwd']:
+        print('login correcto')
+
+        token = jwt.dumps({'username': user['name']})
+        #return jsonify({'token': str(token)})
+        return token
+
+    else:
+        return 'Email or user incorrect, good luck next time you try to enter into my system little bitch :)'
+
+#@app.route('/verifyLogin', methods=['GET', 'OPTIONS'])
+@crossdomain(origin='*')
+@auth.verify_token
+def verify_token(token):
+    #token = request.headers.get('Authorization')
+    #print('token vale: ')
+    #print(token)
+    g.user = None
+    try:
+        data = jwt.loads(token)
+    except:  # noqa: E722
+        #return jsonify({'result': 'false'})
+        return False
+    if 'username' in data:
+        g.user = data['username']
+        return True
+        #return jsonify({'result': 'true'})
+    return False
+    #return jsonify({'result': 'false'})
+
 
 """Recommendation """
 @app.route('/recommendation', methods=['GET', 'OPTIONS'])
@@ -126,23 +179,6 @@ def delete_questions():
     return jsonify({'result': output})
 
 
-def encodeAuthToken(user_id, groups=[]):
-    try:
-        admin = True if 'admin' in groups else False
-
-        payload = {
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1, seconds=60),
-            'iat': datetime.datetime.utcnow(),
-            'sub': user_id,
-            'admin': admin
-        }
-
-        token = jwt.encode(payload, 'hola', algorithm='HS256')
-        return token
-
-    except Exception as e:
-        print (e)
-        return e
 
 @app.route('/getHash', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
@@ -158,89 +194,6 @@ def get_hash():
 
     return passwd
 
-
-
-@app.route('/login', methods=['POST'])
-@crossdomain(origin='*')
-def loginAndGenerateToken():
-    users = db.users
-
-    req_json = json.loads(request.data.decode('utf-8'))
-    email = req_json['email']
-
-    user = users.find_one({'email': email})
-
-    pre_pass = req_json['pass']
-    pre_pass2 = hashlib.sha224(pre_pass.encode()).hexdigest()
-    name = user['name']
-
-
-
-    lastname = user['lastname']
-
-    passwd = name + pre_pass2 + lastname
-
-
-    try:
-        if passwd == user['passwd']:
-
-            token = encodeAuthToken(user['passwd'])
-            print(token)
-
-      #  if username == valid_user_2['username'] and password == valid_user_2['password']:
-       #     token = encodeAuthToken(2, ['admin'])
-
-            return jsonify(result={
-                "status": "success",
-                "auth_token": token.__str__() #peta aquí
-            })
-
-        else:
-            return jsonify(result={
-                "status": "failure",
-                "error": "Email o contraseña incorrecto."  # peta aquí
-            })
-
-
-    except Exception as e:
-        print(e)
-        return jsonify(result={
-            "status": "failure",
-            "error": "Error al hacer login."  # peta aquí
-        })
-
-
-def decodeAuthToken(token):
-    try:
-        payload = jwt.decode(token, 'hola', algorithms=['HS256'])
-        return payload
-    except jwt.ExpiredSignatureError:
-        return 'Signature expired. Login please'
-    except jwt.InvalidTokenError:
-        return 'Nice try, invalid token. Login please'
-
-
-@app.route('/verifyLogin')
-@crossdomain(origin='*')
-def testGetWithValidation():
-    token = request.headers.get('Authorization')
-    '''if auth_header:
-        token = auth_header.split(" ")[1] # Parses out the "Bearer" portion
-    else:
-        token = '' '''
-
-    if token:
-        decoded = decodeAuthToken(token)
-        print (decoded)
-        if not isinstance(decoded, str):
-            if decoded['admin']:
-                return jsonify('You Are a Real Admin!!')
-            else:
-                return jsonify('You Are not an Admin, but at least your token is valid!')
-        else:
-            return jsonify('Ooops, validation messed up: ' + decoded), 401
-
-    return jsonify('hello')
 
 
 
@@ -310,6 +263,7 @@ def delete_users():
 """Projects"""
 
 @app.route('/projects', methods=['GET', 'OPTIONS'])
+@auth.login_required
 @crossdomain(origin='*')
 def get_projects():
     projects = db.projects
@@ -322,6 +276,7 @@ def get_projects():
 
 
 @app.route('/projects', methods=['POST'])
+@auth.login_required
 def save_projects():
     projects = db.projects
     output = []
