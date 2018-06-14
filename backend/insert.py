@@ -15,16 +15,16 @@ projectsData = [
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la mañana',
-        'telecommuting': '0 dias'
+        'telecommuting': '0 días'
     },
     {
-        'name': 'Dia',
+        'name': 'Día',
         'description': 'Web online de productos.',
         'location': 'Vaguada',
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la tarde',
-        'telecommuting': '0 dias'
+        'telecommuting': '0 días'
     },
     {
         'name': 'PCI',
@@ -33,7 +33,7 @@ projectsData = [
         'workday': 'Jornada Parcial',
         'technologies': ['Flask', 'NodeJS', 'ReactJS'],
         'schedule': 'Por la tarde',
-        'telecommuting': '2 dias'
+        'telecommuting': '2 días'
     },
     {
         'name': 'GDPR',
@@ -42,16 +42,16 @@ projectsData = [
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate'],
         'schedule': 'Por la mañana',
-        'telecommuting': '0 dias'
+        'telecommuting': '0 días'
     },
 {
         'name': 'Repsol',
-        'description': 'App movil de Repsol',
+        'description': 'App móvil de Repsol',
         'location': 'Vaguada',
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la mañana',
-        'telecommuting': '1 dias'
+        'telecommuting': '1 días'
     },
     {
         'name': 'newSiem',
@@ -60,7 +60,7 @@ projectsData = [
         'workday': 'Jornada Parcial',
         'technologies': ['Cassandra', 'MongoDB', 'Docker', 'Polymer'],
         'schedule': 'Indiferente',
-        'telecommuting': '1 dias'
+        'telecommuting': '1 días'
     },
     {
         'name': 'No se ha encontrado ningún proyecto coincidente.',
