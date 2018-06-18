@@ -9,7 +9,7 @@ class Contactos extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://34.244.218.28:80/users');
+      const res = await fetch('http://10.1.3.128:8000/users');
       const users = await res.json();
 
       this.setState({
