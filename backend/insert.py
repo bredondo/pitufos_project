@@ -1,6 +1,10 @@
 from pymongo import MongoClient
+from flask import Flask, request, jsonify, send_from_directory, make_response, current_app
 
-client = MongoClient('10.1.3.168', 27017)
+app = Flask(__name__, static_url_path='')
+app.config.from_pyfile('config.cfg')
+
+client = MongoClient(app.config['NAME_BD'], app.config['PORT_BD'])
 db = client.pitufos
 
 recommendation = db.recommendation
@@ -15,16 +19,16 @@ projectsData = [
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la mañana',
-        'telecommuting': '0 dias'
+        'telecommuting': '0 días'
     },
     {
-        'name': 'Dia',
+        'name': 'Día',
         'description': 'Web online de productos.',
         'location': 'Vaguada',
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la tarde',
-        'telecommuting': '0 dias'
+        'telecommuting': '0 días'
     },
     {
         'name': 'PCI',
@@ -33,7 +37,7 @@ projectsData = [
         'workday': 'Jornada Parcial',
         'technologies': ['Flask', 'NodeJS', 'ReactJS'],
         'schedule': 'Por la tarde',
-        'telecommuting': '2 dias'
+        'telecommuting': '2 días'
     },
     {
         'name': 'GDPR',
@@ -42,16 +46,16 @@ projectsData = [
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate'],
         'schedule': 'Por la mañana',
-        'telecommuting': '0 dias'
+        'telecommuting': '0 días'
     },
 {
         'name': 'Repsol',
-        'description': 'App movil de Repsol',
+        'description': 'App móvil de Repsol',
         'location': 'Vaguada',
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la mañana',
-        'telecommuting': '1 dias'
+        'telecommuting': '1 días'
     },
     {
         'name': 'newSiem',
@@ -60,7 +64,7 @@ projectsData = [
         'workday': 'Jornada Parcial',
         'technologies': ['Cassandra', 'MongoDB', 'Docker', 'Polymer'],
         'schedule': 'Indiferente',
-        'telecommuting': '1 dias'
+        'telecommuting': '1 días'
     },
     {
         'name': 'No se ha encontrado ningún proyecto coincidente.',
@@ -240,14 +244,14 @@ recommendationsData = [
         'order': 24,
         'question': '¿Cuántos días de teletrabajo prefieres',
         'technology': '',
-        'answers': ['0 dias', '1 dias', '2 dias'],
+        'answers': ['0 días', '1 días', '2 días'],
         'type': 'unica'
     },
 ]
 
 usersData = [
     {
-        'email': 'usuario@usuario.com', 
+        'email': 'carlos.alonso@beeva.com', 
         'passwd': 'Carlosa7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Alonso',
         'name': 'Carlos',
         'lastname': 'Alonso', 
@@ -258,7 +262,7 @@ usersData = [
         'result': []
     },
     {
-        'email': 'usuario2@usuario.com', 
+        'email': 'laura.martin@beeva.com', 
         'passwd': 'Lauraa7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Martin',
         'name': 'Laura',
         'lastname': 'Martin', 
@@ -269,7 +273,7 @@ usersData = [
         'result': []
     },
     {
-        'email': 'usuario3@usuario.com', 
+        'email': 'beatriz.redondo@beeva.com', 
         'passwd': '12345', 
         'name': 'Beatriz',
         'lastname': 'Redondo', 
@@ -280,7 +284,7 @@ usersData = [
         'result': []
     },
     {
-        'email': 'usuario4@usuario.com', 
+        'email': 'sergio.mario@beeva.com', 
         'passwd': '12345', 
         'name': 'Sergio',
         'lastname': 'Marino', 
@@ -291,7 +295,7 @@ usersData = [
         'result': []
     },
     {
-        'email': 'usuario5@usuario.com', 
+        'email': 'eduardo.lopez@beeva.com', 
         'passwd': '12345', 
         'name': 'Eduardo',
         'lastname': 'López', 
