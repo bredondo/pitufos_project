@@ -9,7 +9,7 @@ import axios from 'axios';
 class App extends Component {
 
     async componentDidMount(){
-        axios.get('http://34.244.218.28:80/user/usuario2@usuario.com')
+        axios.get('http://10.1.3.128:8000/user/usuario2@usuario.com')
             .then(function (response) {
                 localStorage.setItem('user', JSON.stringify(response.data.result[0]));
             })
