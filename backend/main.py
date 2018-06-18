@@ -112,6 +112,7 @@ def verify_token(token):
 """Recommendation """
 @app.route('/recommendation', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
+@auth.login_required
 def get_questions():
     recommendation = db.recommendation
     output = []
@@ -124,6 +125,7 @@ def get_questions():
 
 @app.route('/recommendationStart', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
+@auth.login_required
 def get_first_question():
     recommendation = db.recommendation
     output = []
@@ -137,6 +139,7 @@ def get_first_question():
 
 @app.route('/recommendationKeepsGoing', methods=['POST'])
 @crossdomain(origin='*')
+@auth.login_required
 def get_next_questions():
     recommendation = db.recommendation
     technologies = json.loads(request.data.decode('utf-8'))['technologies']
@@ -152,6 +155,7 @@ def get_next_questions():
     return jsonify({'result': output})
 
 @app.route('/recommendation', methods=['POST'])
+@auth.login_required
 def save_questions():
     recommendation = db.recommendation
     req = json.loads(request.data.decode('utf-8'))
@@ -169,6 +173,7 @@ def save_questions():
 
 
 @app.route('/recommendation', methods=['DELETE'])
+@auth.login_required
 def delete_questions():
     recommendation = db.recommendation
     recommendation.remove()
@@ -182,6 +187,7 @@ def delete_questions():
 
 @app.route('/getHash', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
+@auth.login_required
 def get_hash():
 
     pre_pass = request.args.get('pass')
@@ -200,6 +206,7 @@ def get_hash():
 """Users """
 @app.route('/users', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
+@auth.login_required
 def get_users():
     users = db.users
     output = []
@@ -212,16 +219,20 @@ def get_users():
 
 @app.route('/user/<email>', methods=['GET', 'OPTIONS'])
 @crossdomain(origin='*')
+@auth.login_required
 def get_user_email(email):
     users = db.users
     output = []
     user = users.find_one({'email': email})
-    output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
+    if (user is not None):
+        output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                        'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
                        'sendEmail': user['sendEmail'], 'answers': user['answers'], 'result': user['result']})
+
     return jsonify({'result': output})
 
 @app.route('/users', methods=['POST'])
+@auth.login_required
 def save_users():
     users = db.users
     output = []
@@ -249,6 +260,7 @@ def save_users():
 
 
 @app.route('/users', methods=['DELETE'])
+@auth.login_required
 def delete_users():
     users = db.users
     users.remove()
@@ -297,6 +309,7 @@ def save_projects():
     return jsonify({'result': output})
 
 @app.route('/projects', methods=['DELETE'])
+@auth.login_required
 def delete_projects():
     projects = db.projects
     projects.remove()
@@ -309,6 +322,7 @@ def delete_projects():
 
 @app.route('/projectRecommendation', methods=['POST'])
 @crossdomain(origin='*')
+@auth.login_required
 def recommend_projects():
 
     projects = db.projects
@@ -379,6 +393,7 @@ def recommend_projects():
     #return jsonify({'result': output})
 
 @app.route('/emptyDatabase', methods=['DELETE'])
+@auth.login_required
 def delete_all():
     projects = db.projects
     projects.remove()
@@ -389,6 +404,58 @@ def delete_all():
     output = []
 
     return jsonify({'result': output})
+
+
+@app.route('/projectSearcher/', methods=['GET'])
+@auth.login_required
+def project_searcher():
+    query = request.args.get('search')
+    page = request.args.get('page')
+    pre_query = '.*' + '(?i)' + query + '.*'
+
+    projects = db.projects
+    output = []
+
+
+
+    for project in projects.find({'location': {'$regex' : pre_query}}):
+        output.append({'name': project['name'],'technologies': project['technologies'], 'telecommuting': project['telecommuting'], 'workday': project['workday'], 'schedule': project['schedule'],
+                       'location': project['location']})
+
+    for project in projects.find({'name': {'$regex' : pre_query}}):
+        output.append({'name': project['name'],'technologies': project['technologies'], 'telecommuting': project['telecommuting'], 'workday': project['workday'], 'schedule': project['schedule'],
+                       'location': project['location']})
+
+    for project in projects.find({'schedule': {'$regex' : pre_query}}):
+        output.append({'name': project['name'],'technologies': project['technologies'], 'telecommuting': project['telecommuting'], 'workday': project['workday'], 'schedule': project['schedule'],
+                       'location': project['location']})
+
+    for project in projects.find({'telecommuting': {'$regex' : pre_query}}):
+        output.append({'name': project['name'],'technologies': project['technologies'], 'telecommuting': project['telecommuting'], 'workday': project['workday'], 'schedule': project['schedule'],
+                       'location': project['location']})
+
+    for project in projects.find({'workday': {'$regex' : pre_query}}):
+        output.append({'name': project['name'],'technologies': project['technologies'], 'telecommuting': project['telecommuting'], 'workday': project['workday'], 'schedule': project['schedule'],
+                       'location': project['location']})
+
+    for project in projects.find({'technologies': {'$regex' : pre_query}}):
+        output.append({'name': project['name'],'technologies': project['technologies'], 'telecommuting': project['telecommuting'], 'workday': project['workday'], 'schedule': project['schedule'],
+                       'location': project['location']})
+
+    length = len(output)
+
+    output2 = []
+    for i in range(int(page)*2, (int(page)*2+2)): #se devuelven 2 elementos por página
+        output2.append(output[i])
+
+    if ((int(page)*2+2)<length):
+        return jsonify({'result': output2, 'hasMoreResult': True, 'itemsPerPage': 2, 'totalItems': length})
+
+    return jsonify({'result': output2, 'hasMoreResult': False, 'itemsPerPage': 2, 'totalItems': length})
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port='8000')
