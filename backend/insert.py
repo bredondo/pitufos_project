@@ -1,6 +1,10 @@
 from pymongo import MongoClient
+from flask import Flask, request, jsonify, send_from_directory, make_response, current_app
 
-client = MongoClient('localhost', 27017)
+app = Flask(__name__, static_url_path='')
+app.config.from_pyfile('config.cfg')
+
+client = MongoClient(app.config['NAME_BD'], app.config['PORT_BD'])
 db = client.pitufos
 
 recommendation = db.recommendation
@@ -247,7 +251,7 @@ recommendationsData = [
 
 usersData = [
     {
-        'email': 'usuario@usuario.com', 
+        'email': 'carlos.alonso@beeva.com', 
         'passwd': 'Carlosa7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Alonso',
         'name': 'Carlos',
         'lastname': 'Alonso', 
@@ -258,7 +262,7 @@ usersData = [
         'result': []
     },
     {
-        'email': 'usuario2@usuario.com', 
+        'email': 'laura.martin@beeva.com', 
         'passwd': 'Lauraa7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Martin',
         'name': 'Laura',
         'lastname': 'Martin', 
@@ -269,7 +273,7 @@ usersData = [
         'result': []
     },
     {
-        'email': 'usuario3@usuario.com', 
+        'email': 'beatriz.redondo@beeva.com', 
         'passwd': '12345', 
         'name': 'Beatriz',
         'lastname': 'Redondo', 
@@ -280,7 +284,7 @@ usersData = [
         'result': []
     },
     {
-        'email': 'usuario4@usuario.com', 
+        'email': 'sergio.mario@beeva.com', 
         'passwd': '12345', 
         'name': 'Sergio',
         'lastname': 'Marino', 
@@ -291,7 +295,7 @@ usersData = [
         'result': []
     },
     {
-        'email': 'usuario5@usuario.com', 
+        'email': 'eduardo.lopez@beeva.com', 
         'passwd': '12345', 
         'name': 'Eduardo',
         'lastname': 'López', 
