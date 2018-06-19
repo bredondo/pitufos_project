@@ -4,12 +4,29 @@
 .navbar-dark{
     background-color: #000 !important;
     font-family: 'Raleway', Arial, sans-serif;
-
+    
 }
+.nav{
+    width: 100%;
+    justify-content: flex-end;
+    height: 100%;
+    
+}
+
+.collapse{
+    padding-top:0.1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.1rem;
+    padding-left: 1rem;
+}
+
+
 .active,
 .active > a:hover, 
 .active > a:focus{
     background-color: rgb(96, 166, 206);
+    height: 100%;
+    width: 100%;
 
 }
 
