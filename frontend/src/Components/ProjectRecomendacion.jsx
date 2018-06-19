@@ -17,27 +17,34 @@ class ProjectRecomendacion extends Component {
   render() {
 
     return (
-    <section id="team" className="pb-5">
+    <section id="team3" className="pb-5">
         <main className="recomendacion">
-          <div className="card col-6 mx-auto">
+          <div className="card mx-auto">
             <div className="card-body">
-              
-              {this.state.projects.map(item => (
-                <div key={item.name}>
-                  <h1>{item.name}</h1>
-                  <p>{item.description}</p>
-                  <p>{item.location}</p>
-                  <p>{item.workday}</p>
-                  <p>Tecnologias</p>
-                  <ul>
-                    {item.technologies.map(technology => (
-                      <li key={technology}>{technology}</li>
-                    ))}
-                  </ul>
-                  <p>{item.schedule}</p>
-                  <p>{item.telecommuting}</p>
-                </div>
-              ))}
+               <h1 id="proy">Proyectos recomendados (% coincidencia)</h1>
+               <div className = "row">
+                  {this.state.projects.map(item => (
+                    <div className="col-xs-12 col-sm-6 col-md-4">
+                      <div className={item.description.length < 1 ? "card2" : "card1"} id={item.description.length < 1 ? "card2" : "card1"}> 
+                        <div  key={item.name} >
+                            <h1 id="proyTit">{item.name} 
+                            {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </h1>
+                            <p id="desc">{item.description}</p>
+                            <p id="info">{item.description.length < 1 ? '' : 'Lugar de trabajo: '}</p><p> {item.location}</p>
+                            <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} </p> <p>{item.workday}</p>
+                            <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} </p>
+                            <ul>
+                              {item.technologies.map(technology => (
+                                <li key={technology}>{technology}</li>
+                              ))}
+                            </ul>
+                            <p id="info">{item.description.length < 1 ? '' : 'Horario de la jornada: '}</p> <p>{item.schedule}</p>
+                            <p id="info">{item.description.length < 1 ? '' : 'Días de teletrabajo: '}</p> <p>{item.telecommuting}</p>
+                          </div>
+                        </div>
+                    </div>
+                  ))}
+            </div>
 
               <div className="d-flex flex-nowrap">
                 <div className="ml-auto p-2">

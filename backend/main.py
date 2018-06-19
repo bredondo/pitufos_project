@@ -11,11 +11,15 @@ from flask_httpauth import HTTPTokenAuth
 import recommendation
 
 app = Flask(__name__, static_url_path='')
-app.config['SECRET_KEY'] = 'hola'
+app.config.from_pyfile('config.cfg')
+
 jwt = JWT(app.config['SECRET_KEY'], expires_in=3600)
 auth = HTTPTokenAuth('Bearer')
 
-client = MongoClient('localhost', 27017)
+
+
+
+client = MongoClient(app.config['NAME_BD'], app.config['PORT_BD'])
 db = client.pitufos
 
 
@@ -245,7 +249,6 @@ def save_users():
     user_id = users.insert({'email': email, 'passwd': passwd, 'name': name,
                        'lastname': lastname, 'img': img, 'description': description,
                        'sendEmail': sendEmail})
-
     user = users.find_one({'_id': user_id})
 
     output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
@@ -362,26 +365,33 @@ def recommend_projects():
                 projectPercentage += projectPercentageTechnology
         if (projectPercentage >= 0.7): #si el proyecto matchea al menos un 70% se añade a la lista de proyectos válidos
             del project['_id']
-            project['porcentaje'] = projectPercentage
+            project['porcentaje'] = round(projectPercentage, 2)
             output.append(project)
         projectPercentageTechnology = 0
         projectPercentage = 0
         projectsTechnologies.clear()
 
     output = sorted(output, key=lambda k: k['porcentaje'], reverse=True)#ordenar los proyectos
-    for item in output: #quitar el atributo auxiliar porcentaje
-        del item['porcentaje']
+    #for item in output: #quitar el atributo auxiliar porcentaje
+     #   del item['porcentaje']
 
     length = len(output)
     if (length>3):
         for i in range(3, length):
             del output[i]
     
+
+    length2 = len(output)
+    if (length2<1):
+        project = projects.find_one({"name": "No se ha encontrado ningún proyecto coincidente."})
+        del project['_id']
+        output.append(project)
+
     users.update_one({ '_id': user['_id']},  {'$set': {'answers': req['result']['answers'],'result': output }})
 
     user['answers'] = req['result']['answers']
     user['result'] = output
-
+    
     del user['_id']
 
     return  jsonify({'result': user})
@@ -453,4 +463,4 @@ def project_searcher():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port='8000')
+    app.run(debug=True, host=app.config['HOST'], port=app.config['PORT_FLASK'])

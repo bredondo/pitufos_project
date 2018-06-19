@@ -21,13 +21,17 @@ class MainRecomendacion extends Component {
     this.setState({resultIsEmpty: true});
   }
 
+  handleSend(){
+    this.setState({resultIsEmpty: false});
+  }
+
   recommendationPage() {
     if(!this.state.resultIsEmpty){
       
       return <ProjectRecomendacion handleAgain={this.handleAgain.bind(this)}/>;
     }
     else{
-      return <Recomendacion/>;
+      return <Recomendacion handleSend={this.handleSend.bind(this)}/>;
     }
   }
 

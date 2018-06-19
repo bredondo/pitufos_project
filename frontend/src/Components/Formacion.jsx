@@ -13,6 +13,7 @@ class Formacion extends Component {
                                 quieras y más, y rodearte de gente que haga de tu día a día erfjeksfsef
                                 sfjkserfnjkersnfkaejnf
                                 aekrjfnejkraejk.</p></h5>
+
                         </div>
                     </div>
                 </div>
@@ -30,10 +31,6 @@ class Formacion extends Component {
                                             <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.xlsx" download style={{width:'200px', margin:'auto'}}><i class="fas fa-file-excel"></i> Descargar</a>
                                             </p>
                     </div>
-
-
-
-
 
                     <div className="card" id="divTemario" style={{border:' 2px solid #AEB6BF'}}>
                         <h2 style={{margin:'40px'}}>TEMARIO</h2>
