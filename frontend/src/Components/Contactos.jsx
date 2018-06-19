@@ -44,8 +44,7 @@ class Contactos extends Component {
                  ))}
              </div>
       </div>
-             
-         );
+      );
  
    
 

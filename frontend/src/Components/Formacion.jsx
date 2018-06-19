@@ -10,9 +10,7 @@ class Formacion extends Component {
                             <h1 className="display-2 mb-2">¿Qué es <span style={{color:'rgb(96, 166, 206)'}}>Blue</span> Graduates?</h1>
                             <h5> 
                             <p>Con este programa podrás crecer como profesional, aprender todo lo que
-                                quieras y más, y rodearte de gente que haga de tu día a día erfjeksfsef
-                                sfjkserfnjkersnfkaejnf
-                                aekrjfnejkraejk.</p></h5> 
+                                quieras y más, y rodearte de gente que haga de tu día a día.</p></h5> 
                         </div>
                     </div>
                 </div>
