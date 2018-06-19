@@ -8,6 +8,7 @@ import jwt
 import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as JWT
 from flask_httpauth import HTTPTokenAuth
+import recommendation
 
 app = Flask(__name__, static_url_path='')
 app.config['SECRET_KEY'] = 'hola'
@@ -127,14 +128,8 @@ def get_questions():
 @crossdomain(origin='*')
 @auth.login_required
 def get_first_question():
-    recommendation = db.recommendation
-    output = []
 
-    question = recommendation.find_one({'order': 1})
-
-    output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
-                   'order': question['order']})
-    return jsonify({'result': output})
+    return jsonify({'result': [recommendation.first_question()]})
 
 
 @app.route('/recommendationKeepsGoing', methods=['POST'])
