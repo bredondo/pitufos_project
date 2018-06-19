@@ -22,39 +22,35 @@ class Contactos extends Component {
   }
 
   render() {
+
     return (
-    <section id="team" className="pb-5">
-        <div className ="container">
-            <div className = "row">
-                {this.state.contacto.map(item => (
-                <div className="col-xs-12 col-sm-6 col-md-4" key={item.email}>
-                    <div className="image-flip">
-                        <div className="mainflip">
-                            <div className="frontside">
-                                <div className="card">
-                                    <div className="card-body text-center">
-                                        <p><img className=" img-fluid" src={item.img} /></p>
-                                        <h4 className="card-title">{item.name} {item.lastname}</h4>
-                                        <p className="card-text">{item.email}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="backside">
-                                <div className="card">
-                                    <div className="card-body text-center mt-4">
-                                        <h4 className="card-title">{item.name}</h4>
-                                        <p className="card-text"> {item.description}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                ))}
-            </div>
-        </div>
-    </section>
-    );
+        <div class="content">
+             <div class="card">
+             {this.state.contacto.map(item => (
+                 <div className="firstinfo col-xs-12 col-sm-12 col-md-12" key={item.email}>
+                        <img className="img-fluid" src={item.img} />
+                         <div  className="jj card-body text-center">
+                             <h2 id="h2n">
+                                 {item.name} <span>{item.lastname}</span>
+                             </h2>
+                             <p>
+                                 {item.description}
+                             </p>
+                             <p>
+                                 {item.email}
+                             </p>
+                         </div>
+
+                 </div>
+                 ))}
+             </div>
+      </div>
+             
+         );
+ 
+   
+
+  
   }
 }
  
