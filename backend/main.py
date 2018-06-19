@@ -140,7 +140,9 @@ def get_users():
 def get_user_email(email):
     users = db.users
     output = []
+    print(email)
     user = users.find_one({'email': email})
+    print(user)
     output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                        'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
                        'sendEmail': user['sendEmail'], 'answers': user['answers'], 'result': user['result']})
