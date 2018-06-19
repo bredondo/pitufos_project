@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import MainRecomendacion from './MainRecomendacion';
 import Contactos from './Contactos';
 import Formacion from './Formacion';
+import RecomendacionOpciones from './RecomendacionOpciones';
+
 import logo from './logo3.png'
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import { myConfig } from '../config.js';
@@ -30,23 +32,25 @@ class App extends Component {
                             </a>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-                                <ul className="nav justify-content-end navbar-nav">
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" exact to="/">Formación</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/recomendacion">Recomendacion de proyecto</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/contactos">Tus Compañeros</NavLink>
-                                    </li> 
-                                
-                                </ul>
+                                <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
+                                    <ul className="nav navbar-nav"> 
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" exact to="/">Formación</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/recomendacion">Recomendacion de proyecto</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/contactos">Tus Compañeros</NavLink>
+                                        </li> 
+                                    
+                                    </ul>
+                                </div>
                         </nav>
                     </header>
                     <div>
                         <Route exact path="/" component={Formacion}/>
-                        <Route path="/recomendacion" component={MainRecomendacion}/>
+                        <Route path="/recomendacion" component={RecomendacionOpciones}/>
                         <Route path="/contactos" component={Contactos}/>
                     </div>
                 </div>
