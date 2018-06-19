@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AnswerNumber from './AnswerNumber';
 import AnswerSeveral from './AnswerSeveral';
+import { myConfig } from '../config.js';
 import axios from 'axios';
 
 class Recomendacion extends Component {
@@ -16,7 +17,7 @@ class Recomendacion extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get('http://10.1.3.128:8000/recommendationStart');
+      const response = await axios.get(`${myConfig.url}/recommendationStart`);
       const recommendation = await response.data;
       this.setState({
         recommendation: recommendation.result,
@@ -28,7 +29,7 @@ class Recomendacion extends Component {
 
   recommendationKeepsGoing(body) {
     return axios.post(
-      'http://10.1.3.128:8000/recommendationKeepsGoing', 
+      `${myConfig.url}/recommendationKeepsGoing`,
       JSON.stringify(body), 
       {headers: {'Content-Type': 'text/plain'}});
   }
@@ -147,7 +148,7 @@ class Recomendacion extends Component {
     
 
     axios.post(
-      'http://10.1.3.128:8000/projectRecommendation', 
+      `${myConfig.url}/projectRecommendation`,
       JSON.stringify(body), 
       {headers: {'Content-Type': 'text/plain'}})
         .then((response) =>{
