@@ -21,12 +21,12 @@ class RecomendacionOpciones extends Component {
                             <div class="tabbable-panel">
                                 <div class="tabbable-line">
                                     <div>
-                                        <ul className="nav nav-tabs">
+                                        <ul className="nav nav-tabs" id="nav2">
                                             <li>
-                                                <NavLink className="nav-link active" exact to="/recomendacion/explicacion">Explicación</NavLink>
+                                                <NavLink className="nav-link" exact to="/recomendacion/explicacion">Instrucciones</NavLink>
                                             </li>
                                             <li>
-                                                <NavLink className="nav-link active"  to="/recomendacion/formulario">Formulario</NavLink>
+                                                <NavLink className="nav-link"  to="/recomendacion/formulario">Formulario</NavLink>
                                             </li>
                                             <li>
                                                 <NavLink className="nav-link disabled"  to="/#">Historial de respuestas</NavLink>
@@ -35,7 +35,7 @@ class RecomendacionOpciones extends Component {
                                     </div>
                                     <div class="tab-content">
                                         <Route exact path="/recomendacion/explicacion" component={Explicacion}/>
-                                        <Route exact path="/recomendacion/formulario" component={MainRecomendacion}/>
+                                        <Route  path="/recomendacion/formulario" component={MainRecomendacion}/>
 
                                     </div>
                                 </div>

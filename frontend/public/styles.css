@@ -251,9 +251,10 @@ section{
   /*Menu recomendacion*/
 
 /* Tabs panel */
-.tabbable-panel {
+    .tabbable-panel {
     padding: 10px;
     margin-top: 20px;
+    font-family: 'Raleway', Arial, sans-serif;
   }
   .tabbable-line > .nav-tabs > li {
     margin-right: 2px;
@@ -263,23 +264,12 @@ section{
     border-bottom: 4px solid #fbcdcf;
   }
  
-  .tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
-    color: #a6a6a6;
-  }
-  .tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
-    margin-top: 0px;
-  }
+ 
   .tabbable-line > .nav-tabs > li.active {
-    border-bottom: 4px solid #f3565d;
+    border-bottom: 4px solid rgb(96, 166, 206);
     position: relative;
   }
-  .tabbable-line > .nav-tabs > li.active > a {
-    border: 0;
-    color: #333333;
-  }
-  .tabbable-line > .nav-tabs > li.active > a > i {
-    color: #404040;
-  }
+  
   .tabbable-line > .tab-content {
     margin-top: -3px;
     background-color: #fff;
@@ -291,26 +281,38 @@ section{
     padding-bottom: 0;
   }
   
-  /* Below tabs mode */
-  
-  .tabbable-line.tabs-below > .nav-tabs > li {
-    border-top: 4px solid transparent;
+  .nav-link{
+      color:rgb(73, 71, 71);
   }
-  .tabbable-line.tabs-below > .nav-tabs > li > a {
-    margin-top: 0;
+
+  #nav2{
+    justify-content: flex-start;
+
   }
-  .tabbable-line.tabs-below > .nav-tabs > li:hover {
-    border-bottom: 0;
-    border-top: 4px solid #fbcdcf;
+  #cero{
+      font-weight: bold;
   }
-  .tabbable-line.tabs-below > .nav-tabs > li.active {
-    margin-bottom: -2px;
-    border-bottom: 0;
-    border-top: 4px solid #f3565d;
+  #resp{
+      margin-top: 60px;
+      text-align: left;
   }
-  .tabbable-line.tabs-below > .tab-content {
-    margin-top: -10px;
-    border-top: 0;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
+
+  .pExpli{
+      font-size: 16px;
+      text-align: center;
+      padding-left: 60px;
+      padding-right: 60px;
+  }
+  .explitit{
+      font-size: 31px;
+      margin-left: 20px;
+      text-align: center;
+      padding-bottom: 30px;
+      padding-top: 10px;
+  }
+
+  .img2{
+      width: 19px;
+      height: 19px;
+      margin-right: 13px;
   }
