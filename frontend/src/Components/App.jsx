@@ -50,7 +50,7 @@ class App extends Component {
                     </header>
                     <div>
                         <Route exact path="/" component={Formacion}/>
-                        <Route path="/recomendacion" component={RecomendacionOpciones}/>
+                        <Route path="/recomendacion" component={Recomendacion}/>
                         <Route path="/contactos" component={Contactos}/>
                     </div>
                 </div>
