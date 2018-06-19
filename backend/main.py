@@ -6,8 +6,9 @@ from datetime import timedelta
 import urllib.request, json
 
 app = Flask(__name__, static_url_path='')
+app.config.from_pyfile('config.cfg')
 
-client = MongoClient('localhost', 27017)
+client = MongoClient(app.config['NAME_BD'], app.config['PORT_BD'])
 db = client.pitufos
 
 
@@ -319,4 +320,4 @@ def delete_all():
     return jsonify({'result': output})
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port='8000')
+    app.run(debug=True, host=app.config['HOST'], port=app.config['PORT_FLASK'])
