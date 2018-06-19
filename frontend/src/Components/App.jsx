@@ -6,12 +6,13 @@ import RecomendacionOpciones from './RecomendacionOpciones';
 
 import logo from './logo3.png'
 import { Route, NavLink, HashRouter } from "react-router-dom";
+import { myConfig } from '../config.js';
 import axios from 'axios';
 
 class App extends Component {
 
     async componentDidMount(){
-        axios.get('http://localhost:8000/user/usuario2@usuario.com')
+        axios.get(`${myConfig.url}/user/carlos.alonso@beeva.com`)
             .then(function (response) {
                 localStorage.setItem('user', JSON.stringify(response.data.result[0]));
             })
