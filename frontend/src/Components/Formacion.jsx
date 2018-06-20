@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { myConfig } from '../config.js';
+
 class Formacion extends Component {
+ 
   render() {
     return (
         <div>
@@ -13,7 +16,6 @@ class Formacion extends Component {
                                 quieras y más, y rodearte de gente que haga de tu día a día erfjeksfsef
                                 sfjkserfnjkersnfkaejnf
                                 aekrjfnejkraejk.</p></h5>
-
                         </div>
                     </div>
                 </div>
@@ -35,6 +37,7 @@ class Formacion extends Component {
                     <div className="card" id="divTemario" style={{border:' 2px solid #AEB6BF'}}>
                         <h2 style={{margin:'40px'}}>TEMARIO</h2>
                                 <p>
+
                                 <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pdf" target="_blank" style={{width:'200px', margin:'auto', border:'none'}}><i class="fas fa-file-pdf"></i> </a>
                                 </p>
                                 <p>

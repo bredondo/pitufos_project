@@ -168,7 +168,9 @@ def get_users():
 @crossdomain(origin='*')
 @auth.login_required
 def get_user_email(email):
+
     return jsonify({'result': users.get_user_by_email(email)})
+
 
 @app.route('/users', methods=['POST'])
 @auth.login_required

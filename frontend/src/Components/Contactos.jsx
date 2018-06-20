@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { myConfig } from '../config.js';
 
 class Contactos extends Component {
 
@@ -9,7 +10,7 @@ class Contactos extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://localhost:8000/users');
+      const res = await fetch(`${myConfig.url}/users`);
       const users = await res.json();
 
       this.setState({
@@ -44,8 +45,7 @@ class Contactos extends Component {
                  ))}
              </div>
       </div>
-             
-         );
+      );
  
    
 
