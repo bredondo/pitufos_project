@@ -24,21 +24,21 @@ class Formacion extends Component {
                 <div className="row">
                     <div className="card" id="divHorario" style={{border:' 2px solid #AEB6BF'}}>
                          <h2 style={{margin:'40px'}}>HORARIO</h2>
-                                            <p>
-                                            <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.pdf" target="_blank" style={{width:'200px', margin:'auto'}}><i class="fas fa-file-pdf"></i>  Ver</a>
-                                            </p>
-                                            <p>
-                                            <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.xlsx" download style={{width:'200px', margin:'auto'}}><i class="fas fa-file-excel"></i> Descargar</a>
-                                            </p>
+                                <p>
+                                <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.pdf" target="_blank" style={{width:'200px', margin:'auto', border:'none'}}><i class="fas fa-file-pdf"></i> </a>
+                                </p>
+                                <p>
+                                <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.xlsx" download style={{width:'200px', margin:'auto', border:'none'}}><i class="fas fa-file-excel"></i> </a>
+                                </p>
                     </div>
 
                     <div className="card" id="divTemario" style={{border:' 2px solid #AEB6BF'}}>
                         <h2 style={{margin:'40px'}}>TEMARIO</h2>
                                 <p>
-                                <a  className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pdf" target="_blank" style={{width:'200px', margin:'auto'}}><i class="fas fa-file-pdf"></i> Ver</a>
+                                <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pdf" target="_blank" style={{width:'200px', margin:'auto', border:'none'}}><i class="fas fa-file-pdf"></i> </a>
                                 </p>
                                 <p>
-                                <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pptx" download style={{width:'200px', margin:'auto'}}><i class="fas fa-file-powerpoint"></i> Descargar</a>
+                                <a className="btn btn-outline-light btn-lg btn-block" href="http://localhost:8000/temario.pptx" download style={{width:'200px', margin:'auto'}}><i class="fas fa-file-powerpoint"></i> </a>
                                 </p>
                     </div>
                 </div>

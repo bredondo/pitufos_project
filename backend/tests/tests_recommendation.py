@@ -12,6 +12,7 @@ class RecommendationTest(unittest.TestCase):
         'technology': 'all',
         'type': 'varias'
     })
+
     def test_first_question(self,mock_collection):
 
         result = recommendation.first_question()

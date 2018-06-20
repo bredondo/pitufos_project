@@ -1,3 +1,6 @@
 venv
 
 \.vscode/
+
+backend/tests/__pycache__/tests_recommendation.cpython-35.pyc
+
