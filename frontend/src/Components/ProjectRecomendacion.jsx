@@ -27,8 +27,13 @@ class ProjectRecomendacion extends Component {
                     <div className="col-xs-12 col-sm-6 col-md-4">
                       <div className={item.description.length < 1 ? "card2" : "card1"} id={item.description.length < 1 ? "card2" : "card1"}> 
                         <div  key={item.name} >
-                            <h1 id="proyTit">{item.name} 
-                            {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </h1>
+                            <div class="titlee">
+                               <h1 id="proyTit">{item.name} 
+                               <p className=
+                                {(item.porcentaje*100 > 69 && item.porcentaje*100<80) ? "colorYellow": (item.porcentaje*100 > 79 && item.porcentaje*100<90) ? "colorOrange" : "colorGreen"}>
+                                {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </p></h1>
+                            </div>
+                           
                             <p id="desc">{item.description}</p>
                             <p id="info">{item.description.length < 1 ? '' : 'Lugar de trabajo: '}</p><p> {item.location}</p>
                             <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} </p> <p>{item.workday}</p>
