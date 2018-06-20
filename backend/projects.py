@@ -16,6 +16,8 @@ def get_projects():
             output.append({'technologies': project['technologies'], 'telecommuting': project['telecommuting'],
                            'workday': project['workday'], 'schedule': project['schedule'],
                            'location': project['location']})
+    if (len(output)==0):
+        output = "Error, proyectos no encontrados."
     return output
 
 def post_project():
@@ -38,6 +40,8 @@ def post_project():
         output.append(
             {'technologies': project['technologies'], 'workday': project['workday'], 'schedule': project['schedule'],
              'location': project['location']})
+    if (len(output)==0):
+        output = "Error, proyecto no encontrado."
     return output
 
 def delete_projects():

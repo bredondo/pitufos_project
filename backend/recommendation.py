@@ -11,10 +11,14 @@ db = client.pitufos
 def first_question():
     recommendation = db.recommendation
 
+
     question = recommendation.find_one({'order': 1})
 
-    return {'question': question['question'], 'answers': question['answers'], 'type': question['type'],
+    if (question is not None):
+        return {'question': question['question'], 'answers': question['answers'], 'type': question['type'],
                    'order': question['order']}
+
+    return "Error, pregunta no encontrada."
 
 def get_questions():
     recommendation = db.recommendation
@@ -24,7 +28,8 @@ def get_questions():
         if (item is not None):
             output.append({'question': item['question'], 'answers': item['answers'], 'technology': item['technology'],
                            'type': item['type'], 'order': item['order']})
-
+    if (len(output)==0):
+        output = "Error, preguntas no encontradas."
     return output
 
 def get_next_questions():
@@ -33,11 +38,16 @@ def get_next_questions():
     output = []
     for technology in technologies:
         for question in recommendation.find({"technology": technology}):
-            output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
+            if (question is not None):
+                output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
                            'order': question['order']})
+
     for question in recommendation.find({"technology": ""}):
-        output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
+        if (question is not None):
+            output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
                        'order': question['order']})
+    if (len(output)==0):
+        output = "Error, preguntas no encontradas."
     return output
 
 def post_question():
@@ -55,6 +65,8 @@ def post_question():
     if (question is not None):
         output.append({'question': question['question'], 'answers': question['answers'], 'type': question['type'],
                        'order': question['order']})
+    if (len(output)==0):
+        output = "Error, pregunta no encontradas."
     return output
 
 def delete_questions():

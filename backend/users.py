@@ -15,6 +15,8 @@ def get_users():
             output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                            'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
                            'sendEmail': user['sendEmail']})
+    if (len(output)==0):
+        output = "Error, usuarios no encontrados."
     return output
 
 def get_user_by_email(email):
@@ -25,6 +27,8 @@ def get_user_by_email(email):
         output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                        'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
                        'sendEmail': user['sendEmail'], 'answers': user['answers'], 'result': user['result']})
+    if (len(output)==0):
+        output = "Error, usuario no encontrado."
     return output
 
 def post_user():
@@ -50,6 +54,9 @@ def post_user():
         output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                        'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
                        'sendEmail': user['sendEmail']})
+    if (len(output)==0):
+        output = "Error, usuario no encontrado."
+
     return output
 
 def delete_users():
@@ -61,4 +68,32 @@ def delete_users():
             output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                            'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
                            'sendEmail': user['sendEmail']})
+    return output
+
+def update_user():
+    users = db.users
+    output = []
+    req = json.loads(request.data.decode('utf-8'))
+
+
+    try:
+        email = req['email']
+        description = req['description']
+    except KeyError:
+        pass
+
+
+
+    users.update_one({'email': email}, {'$set': {'description': description}})
+
+
+    user = users.find_one({'email': email})
+
+    if (user is not None):
+        output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
+                       'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
+                       'sendEmail': user['sendEmail']})
+    if (len(output) == 0):
+        output = "Error, usuario no encontrado."
+
     return output

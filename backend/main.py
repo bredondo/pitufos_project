@@ -78,6 +78,7 @@ def get_token():
     req_json = json.loads(request.data.decode('utf-8'))
     email = req_json['email']
     user = users.find_one({'email': email})
+    del user['_id']
     g.user = user
     pre_pass = req_json['pass']
     pre_pass2 = hashlib.sha224(pre_pass.encode()).hexdigest()
@@ -89,8 +90,11 @@ def get_token():
         print('login correcto')
 
         token = jwt.dumps({'username': user['name']})
+        token = str(token)
+        token = token.replace("b'", "")
+        token = token.replace("'","")
         #return jsonify({'token': str(token)})
-        return token
+        return jsonify({'token': token, 'user':user})
 
     else:
         return 'Email or user incorrect, good luck next time you try to enter into my system little bitch :)'
@@ -182,6 +186,11 @@ def save_users():
 @auth.login_required
 def delete_users():
     return jsonify({'result': users.delete_users()})
+
+@app.route('/user', methods=['PUT'])
+@auth.login_required
+def update_user():
+    return jsonify({'result': users.update_user()})
 
 
 
