@@ -7,8 +7,8 @@ RUN git clone --recursive -b sistemas https://github.com/bredondo/pitufos_projec
 
 WORKDIR /pitufos_project/frontend
 
-RUN npm install 
+#RUN npm install 
 
 EXPOSE 3001
 
-CMD npm start -p 3001
+#CMD npm start -p 3001
