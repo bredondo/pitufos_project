@@ -42,6 +42,7 @@ node {
                                            passphraseVariable: '', 
                                            usernameVariable: '')]){ 
                       sh "cp ${private_key} ~/.ssh/id_rsa"
+                      sh "cp ${private_key} home/jenkins/.ssh/id_rsa"
                       sh "ssh ec2-user@10.1.3.75 ls -la"}
     }
 }
