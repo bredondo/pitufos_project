@@ -5,7 +5,7 @@ node {
     stage("upload Back"){
         sh "ls -la"
         dir ("backend"){
-          sh "ls -la"
+          sh "python uploadBack.py"
         }
     }
 }
