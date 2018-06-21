@@ -19,9 +19,10 @@ node {
                  
              
               '''
-              imagen_back= sh(returnStdout: true, script: 'echo $imagen') 
+              imagen_back= sh(returnStdout: true, script: 'echo imagen.txt') 
+              print imagen_back
                sh '''
-                print imagen_back
+                
                 python uploadBack.py
                '''
             }
