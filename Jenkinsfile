@@ -6,8 +6,7 @@ node {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
                           usernameVariable: 'USERNAME', 
                           passwordVariable: 'PASSWORD']]) {           
-            sh 'docker login -u $USERNAME -p $PASSWORD' 
-                            
+                                     sh 'docker login -u $USERNAME -p $PASSWORD'}
     }
     stage("upload Back"){
         sh "ls -la"
