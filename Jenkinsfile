@@ -39,8 +39,8 @@ node {
     stage("acceso al Front"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
-                                           passphraseVariable: ', 
-                                           usernameVariable: ')]){          
+                                           passphraseVariable: '', 
+                                           usernameVariable: '')]){          
                       sh "ssh -i ${private_key} 10.1.3.75 ls -la"}
     }
 }
