@@ -22,7 +22,7 @@ node {
             }
         }
     }
-    stage("build docker Front image"){
+    stage("build docker Front image "){
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("frontend"){
               sh '''
