@@ -59,7 +59,7 @@ node {
                       /*sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"*/
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
             sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
-            sh "ssh ec2-user@10.1.3.128 sudo docker run -p 8000:8000 pitufosgraduates:${imagen_back}"}
+            sh "ssh ec2-user@10.1.3.128 sudo docker run -p 8000:8000 pitufosgraduates:${imagen_back}"}       
     }
     stage("acceso al Front"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
