@@ -4,7 +4,8 @@ node {
     }
     stage("upload Back"){
         sh "ls -la"
-        dir ("backend")
-        sh "ls -la"
+        dir ("backend"){
+          sh "ls -la"
+        }
     }
 }
