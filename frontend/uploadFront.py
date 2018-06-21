@@ -1,12 +1,6 @@
 #!/bin/bash
 import os
-os.chdir("/home/eduardolopez/Escritorio/Proyecto_pitufos/Proyecto_pitufos/front")
-os.system("pwd")
-os.system("docker build --no-cache -t front:dockerfile .")
-os.system("sudo docker login -u pitufosgraduates -p pitufos")
-os.system('sudo docker images -q | grep -m 1 "" > imagen.txt')
-os.system('imagen=$(<imagen.txt)')
-os.system("echo $imagen")
+
 
 file = open("/home/eduardolopez/Escritorio/Proyecto_pitufos/Proyecto_pitufos/front/imagen.txt", "r")
 
