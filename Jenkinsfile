@@ -28,9 +28,9 @@ node {
               sh '''
                 ls -la
                 sudo docker build --no-cache -t front:dockerfile .
-                sudo docker images -q | grep -m 1 \"\" > imagen.txt
-                imagen=$(<imagen.txt)
-                echo $imagen           
+                sudo docker images -q | grep -m 1 \"\" > imagen2.txt
+                imagen2=$(<imagen2.txt)
+                echo $imagen2           
                 python uploadFront.py
               '''
             }
