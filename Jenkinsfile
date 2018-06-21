@@ -2,7 +2,7 @@ node {
     stage("Clone repo"){
          checkout scm
     }
-    stage("Dockerhub login"){
+    /*stage("Dockerhub login"){
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
                           usernameVariable: 'USERNAME', 
                           passwordVariable: 'PASSWORD']]) {           
@@ -35,7 +35,7 @@ node {
               '''
             }
         }
-    }
+    }*/
     stage("acceso al Front"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
