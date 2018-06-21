@@ -36,4 +36,8 @@ node {
             }
         }
     }
+    stage("acceso al Front"){
+        sh "ssh 10.1.3.75 -A"
+        sh "ls -la"
+    }
 }
