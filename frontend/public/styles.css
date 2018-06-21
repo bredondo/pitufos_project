@@ -41,6 +41,7 @@
     background-color: white;
     color:Black;
     height: 300px;
+    font-family: 'Raleway', Arial, sans-serif;
 
 }
 
@@ -49,6 +50,8 @@
     text-align: center;
     background-color: white;
     height: 300px;
+    font-family: 'Raleway', Arial, sans-serif;
+
 }
 
 
@@ -66,7 +69,8 @@ section .section-title {
 
 #team2 .card {
     border: none;
-    border: 2px solid #ccc;
+    border: 1px solid rgb(231, 228, 228);
+    
 
 }
 
@@ -172,7 +176,7 @@ section{
  #card2{
     padding: 50px 50px;
     color: white;
-    font-family: Georgia,Times,Serif;
+    font-family: 'Raleway', Arial, sans-serif;
     border: 2px solid;
     width: 1000px;
  }
@@ -185,16 +189,22 @@ section{
       color: rgb(70, 67, 67);
       font-weight: bold;
       text-align: center;
+      font-family: 'Raleway', Arial, sans-serif;
+
   }
     #desc{
         font-size: 23px;
         text-align: left;
+        font-family: 'Raleway', Arial, sans-serif;
     }
 
     #info{
         font-weight: bold;
         color:rgb(87, 83, 83);
+        font-family: 'Raleway', Arial, sans-serif;
+
     }
+
 
 /*Contactos*/
     
@@ -322,6 +332,7 @@ section{
   }
 
 
+
    #lista_custom:before {
     /*Using a Bootstrap glyphicon as the bullet point*/
     content: "\f00c";
@@ -333,3 +344,30 @@ section{
     margin-right: 0px;
     color: #388136;
 }
+
+  .colorYellow{
+    color: yellow;
+  }
+  .colorGreen{
+    color:green;
+  }
+  .colorOrange{
+    color:orange;
+  }
+
+  .textForm{
+    font-family: 'Raleway', Arial, sans-serif;
+  }
+  #verde{
+      color:green;
+      font-weight: bold;
+  }
+  #amarillo{
+      color:yellow;
+      font-weight: bold;
+  }
+  #naranja{
+      color:orange;
+      font-weight: bold;
+  }
+

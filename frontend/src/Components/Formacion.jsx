@@ -9,7 +9,7 @@ class Formacion extends Component {
             <div className="jumbotron" id="fondoDiv" >
                 <div className="container" style={{color:'white'}}>
                     <div className="col-md-12">
-                        <div className="text-center ">
+                        <div className="textForm text-center ">
                             <h1 className="display-2 mb-2">¿Qué es <span style={{color:'rgb(96, 166, 206)'}}>Blue</span> Graduates?</h1>
                             <h5>
                             <p>Con este programa podrás crecer como profesional, aprender todo lo que

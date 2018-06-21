@@ -24,8 +24,8 @@ class Contactos extends Component {
   render() {
 
     return (
-        <div class="content">
-             <div class="card">
+        <div className="content">
+             <div className="card">
              {this.state.contacto.map(item => (
                  <div className="firstinfo col-xs-12 col-sm-12 col-md-12" key={item.email}>
                         <img className="img-fluid" src={item.img} />
