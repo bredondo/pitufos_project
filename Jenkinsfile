@@ -2,13 +2,12 @@ node {
     stage("Clone repo"){
          checkout scm
     }
-    stage("Dockerhub login"){
+    /*stage("Dockerhub login"){
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
                           usernameVariable: 'USERNAME', 
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
-    }
-    /*
+    }*/
     stage("build docker Back image"){
         dir ("backend"){
           sh '''
@@ -19,5 +18,4 @@ node {
           '''
         }
     }
-    */
 }
