@@ -1,6 +1,7 @@
 #!/bin/bash
 import os
-file = open("/pitufos_project/backend/imagen.txt", "r")
+os.system("ls -la")
+file = open("../imagen.txt", "r")
 image = file.read()
 print (image)
 image2 =image.rstrip()
