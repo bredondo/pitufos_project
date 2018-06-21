@@ -40,7 +40,8 @@ node {
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
                                            passphraseVariable: '', 
-                                           usernameVariable: '')]){          
-                      sh "ssh -i ${private_key} 10.1.3.75 ls -la"}
+                                           usernameVariable: '')]){ 
+                      sh "cp ${private_key} ~/.ssh/id_rsa"
+                      sh "ssh ec2-user@10.1.3.75 ls -la"}
     }
 }
