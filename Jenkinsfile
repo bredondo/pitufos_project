@@ -2,7 +2,7 @@ node {
     stage("Clone repo"){
          checkout scm
     }
-    /*stage("Dockerhub login"){
+    stage("Dockerhub login"){
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
                           usernameVariable: 'USERNAME', 
                           passwordVariable: 'PASSWORD']]) {           
@@ -16,13 +16,14 @@ node {
                 sudo docker build --no-cache -t back:dockerfile .
                 sudo docker images -q | grep -m 1 \"\" > imagen.txt
                 imagen=$(<imagen.txt)
-                echo $imagen           
+                imagen_back= sh(returnStdout: true, script: 'echo $imagen')  
+                print imagen_back
                 python uploadBack.py
               '''
             }
         }
     }
-    stage("build docker Front image"){
+    /*stage("build docker Front image"){
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("frontend"){
               sh '''
@@ -36,7 +37,7 @@ node {
             }
         }
     }*/
-    stage("acceso al Front"){
+    stage("acceso al Back"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
                                            passphraseVariable: '', 
@@ -44,6 +45,6 @@ node {
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
                       /*sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"*/
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-                      sh "ssh ec2-user@10.1.3.75 sudo docker pull pitufosgraduates/2ffa8456b2d9"}
+            sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"}
     }
 }
