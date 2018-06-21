@@ -5,7 +5,7 @@ RUN apt-get -y install npm
 
 RUN git clone --recursive -b sistemas https://github.com/bredondo/pitufos_project.git
 
-#WORKDIR /pitufos_project/frontend
+WORKDIR /pitufos_project/frontend
 
 RUN npm install 
 
