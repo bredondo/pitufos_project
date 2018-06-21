@@ -43,6 +43,7 @@ node {
                                            usernameVariable: '')]){ 
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
                       sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
+                      sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
                       sh "ssh ec2-user@10.1.3.75 ls -la"}
     }
 }
