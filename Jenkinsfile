@@ -19,7 +19,7 @@ node {
                  
              
               '''
-              imagen_back= sh(returnStdout: true, script: 'echo imagen.txt') 
+              imagen_back= sh(returnStdout: true, script: 'cat imagen.txt') 
               print imagen_back
                sh '''
                 
