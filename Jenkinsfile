@@ -12,6 +12,7 @@ node {
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("backend"){
               sh '''
+                ls -la
                 sudo docker build --no-cache -t back:dockerfile .
                 sudo docker images -q | grep -m 1 \"\" > imagen.txt
                 imagen=$(<imagen.txt)
