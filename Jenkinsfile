@@ -22,4 +22,18 @@ node {
             }
         }
     }
+    stage("build docker Front image"){
+        wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
+            dir ("frontend"){
+              sh '''
+                ls -la
+                sudo docker build --no-cache -t front:dockerfile .
+                sudo docker images -q | grep -m 1 \"\" > imagen.txt
+                imagen=$(<imagen.txt)
+                echo $imagen           
+                python uploadFront.py
+              '''
+            }
+        }
+    }
 }
