@@ -3,7 +3,6 @@ node {
          checkout scm
     }
     stage("upload Back"){
-        sh "cd /backend/"
-        sh "python uploadBack.py"
+        sh "ls -la"
     }
 }
