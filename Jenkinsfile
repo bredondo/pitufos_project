@@ -8,6 +8,7 @@ node {
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
     }
+    /*
     stage("build docker Back image"){
         dir ("backend"){
           sh '''
@@ -18,4 +19,5 @@ node {
           '''
         }
     }
+    */
 }
