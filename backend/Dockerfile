@@ -8,9 +8,9 @@ RUN pip install -r pitufos_project/backend/requirements.txt
 
 EXPOSE 8000
 
-#WORKDIR /pitufos_project/backend
+WORKDIR /pitufos_project/backend
 
-#ENTRYPOINT python insert.py
-#ENTRYPOINT python main.py
+ENTRYPOINT python insert.py
+ENTRYPOINT python main.py
 
 
