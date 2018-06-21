@@ -16,15 +16,10 @@ node {
                 sudo docker build --no-cache -t back:dockerfile .
                 sudo docker images -q | grep -m 1 \"\" > imagen.txt
                 imagen=$(<imagen.txt)
-                 
-             
               '''
               imagen_back= sh(returnStdout: true, script: 'cat imagen.txt') 
-              print imagen_back
-               sh '''
-                
-                python uploadBack.py
-               '''
+              /*print imagen_back*/
+               sh "python uploadBack.py"
             }
         }
     }
