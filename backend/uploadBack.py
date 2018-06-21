@@ -1,7 +1,6 @@
 #!/bin/bash
 import os
 os.system("docker build --no-cache -t back:dockerfile .")
-os.system("sudo docker login -u pitufosgraduates -p pitufos")
 os.system('sudo docker images -q | grep -m 1 "" > imagen.txt')
 os.system('imagen=$(<imagen.txt)')
 os.system("echo $imagen")
