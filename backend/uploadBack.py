@@ -1,7 +1,7 @@
 #!/bin/bash
 import os
 os.system("ls -la")
-file = open("../imagen.txt", "r")
+file = open("imagen.txt", "r")
 image = file.read()
 print (image)
 image2 =image.rstrip()
