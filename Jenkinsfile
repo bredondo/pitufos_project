@@ -8,10 +8,14 @@ node {
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
     }
-    stage("upload Back"){
-        sh "ls -la"
+    stage("build docker Back image"){
         dir ("backend"){
-          sh "python uploadBack.py"
+          sh """
+            sudo docker build --no-cache -t back:dockerfile .
+            sudo docker images -q | grep -m 1 \"\" > imagen.txt
+            imagen=$(<imagen.txt)
+            echo $imagen
+          """
         }
     }
 }
