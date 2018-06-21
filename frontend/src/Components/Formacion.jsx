@@ -22,28 +22,49 @@ class Formacion extends Component {
             </div>
 
 
+
+
+
+
+
+
             <div style={{margin:'50px'}} className="d-flex justify-content-center">
                 <div className="row">
-                    <div className="card" id="divHorario" style={{border:' 2px solid #AEB6BF'}}>
-                         <h2 style={{margin:'40px'}}>HORARIO</h2>
-                                <p>
-                                <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.pdf" target="_blank" style={{width:'200px', margin:'auto', border:'none'}}><i class="fas fa-file-pdf"></i> </a>
-                                </p>
-                                <p>
-                                <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/horario.xlsx" download style={{width:'200px', margin:'auto', border:'none'}}><i class="fas fa-file-excel"></i> </a>
-                                </p>
+
+
+                    <div className="col-md-6">
+                        <div class="card" style={{height:'auto'}}>
+                              <div class="card-body">
+                                <h6 class="card-text text-center">Consulta tu</h6>
+                                <h2 class="card-title text-center">HORARIO</h2>
+                                <hr/>
+                                <a href="http://localhost:8000/horario.pdf" className="btn btn-outline-dark btn-sm btn-block">Ver</a>
+                                <a href="http://localhost:8000/horario.xlsx" className="btn btn-outline-dark btn-sm btn-block">Descargar</a>
+                              </div>
+                        </div>
                     </div>
 
-                    <div className="card" id="divTemario" style={{border:' 2px solid #AEB6BF'}}>
-                        <h2 style={{margin:'40px'}}>TEMARIO</h2>
-                                <p>
 
-                                <a className="btn btn-outline-dark btn-lg btn-block" href="http://localhost:8000/temario.pdf" target="_blank" style={{width:'200px', margin:'auto', border:'none'}}><i class="fas fa-file-pdf"></i> </a>
-                                </p>
-                                <p>
-                                <a className="btn btn-outline-light btn-lg btn-block" href="http://localhost:8000/temario.pptx" download style={{width:'200px', margin:'auto'}}><i class="fas fa-file-powerpoint"></i> </a>
-                                </p>
+                    <div className="col-md-6">
+                        <div class="card" style={{height:'auto'}}>
+                              <div class="card-body">
+                                <h6 class="card-text text-center">Entérate de tu</h6>
+
+                                <h2 class="card-title text-center">TEMARIO</h2>
+                                <hr></hr>
+                                <ul>    Ponte al día con las teconolgías del momento
+                                        <li id="lista_custom">Vue, React, Polymer</li>
+                                        <li id="lista_custom">Flask, Pymongo, Spring, NodeJS</li>
+                                </ul>
+                                <a href="#" class="btn btn-outline-dark btn-sm btn-block">Ver</a>
+                                <a href="#" class="btn btn-outline-dark btn-sm btn-block">Descargar</a>
+                              </div>
+
+                        </div>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
