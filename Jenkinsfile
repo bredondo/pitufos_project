@@ -23,7 +23,7 @@ node {
             }
         }
     }
-    /*stage("build docker Front image"){
+    stage("build docker Front image"){
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("frontend"){
               sh '''
@@ -31,12 +31,14 @@ node {
                 sudo docker build --no-cache -t front:dockerfile .
                 sudo docker images -q | grep -m 1 \"\" > imagen2.txt
                 imagen2=$(<imagen2.txt)
-                echo $imagen2           
-                python uploadFront.py
+                echo $imagen2  
               '''
+              imagen_front= sh(returnStdout: true, script: 'cat imagen2.txt') 
+              /*print imagen_front*/
+               sh "python uploadFront.py"  
             }
         }
-    }*/
+    }
     stage("acceso al Back"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
