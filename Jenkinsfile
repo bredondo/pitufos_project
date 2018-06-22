@@ -47,7 +47,7 @@ node {
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
                       /*sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"*/
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            sh "ssh ec2-user@10.1.3.168 sudo docker stop $(sudo docker ps -a -q)"
+            sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
             sh "ssh ec2-user@10.1.3.168 sudo docker rmi $(sudo docker images -q)"
             sh "ssh ec2-user@10.1.3.168 sudo docker rm $(sudo docker ps -a -q)"
             sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
