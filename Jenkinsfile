@@ -8,7 +8,7 @@ node {
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
     }
-    stage("build docker Back image"){
+    /*stage("build docker Back image"){
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("backend"){
               sh '''
@@ -18,7 +18,7 @@ node {
                 imagen=$(<imagen.txt)
               '''
               imagen_back= sh(returnStdout: true, script: 'cat imagen.txt') 
-              /*print imagen_back*/
+              //print imagen_back
                sh "python uploadBack.py"
             }
         }
@@ -34,24 +34,27 @@ node {
                 echo $imagen2  
               '''
               imagen_front= sh(returnStdout: true, script: 'cat imagen2.txt') 
-              /*print imagen_front*/
+              //print imagen_front
                sh "python uploadFront.py"  
             }
         }
-    }
+    }*/
     stage("acceso a la Base de Datos"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
                                            passphraseVariable: '', 
                                            usernameVariable: '')]){ 
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
-                      /*sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"*/
+                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            /*sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
-            sh "ssh ec2-user@10.1.3.168 sudo docker rmi \$(sudo docker images -q)"
-            sh "ssh ec2-user@10.1.3.168 sudo docker rm \$(sudo docker ps -a -q)"*/
-            sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
-            sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"}
+            //sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker rmi \$(sudo docker images -q)"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker rm \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"
+        sh "ssh ec2-user@10.1.3.168 ls -la"
+        }
+            
     }
     stage("acceso al Back"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
@@ -59,17 +62,19 @@ node {
                                            passphraseVariable: '', 
                                            usernameVariable: '')]){ 
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
-                      /*sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"*/
+                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
                           usernameVariable: 'USERNAME', 
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
-            /*sh "ssh ec2-user@10.1.3.128 sudo docker stop \$(sudo docker ps -a -q)"
-            sh "ssh ec2-user@10.1.3.128 sudo docker rmi \$(sudo docker images -q)"
-            sh "ssh ec2-user@10.1.3.128 sudo docker rm \$(sudo docker ps -a -q)"*/
-            sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
-            sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"}       
+            //sh "ssh ec2-user@10.1.3.128 sudo docker stop \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.128 sudo docker rmi \$(sudo docker images -q)"
+            //sh "ssh ec2-user@10.1.3.128 sudo docker rm \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
+            //sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+        sh "ssh ec2-user@10.1.3.128 ls -la"
+        }       
     }
     stage("acceso al Front"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
@@ -77,16 +82,18 @@ node {
                                            passphraseVariable: '', 
                                            usernameVariable: '')]){ 
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
-                      /*sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"*/
+                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
                           usernameVariable: 'USERNAME', 
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
-            /*sh "ssh ec2-user@10.1.3.75 sudo docker stop \$(sudo docker ps -a -q)"
-            sh "ssh ec2-user@10.1.3.75 sudo docker rmi \$(sudo docker images -q)"
-            sh "ssh ec2-user@10.1.3.75 sudo docker rm \$(sudo docker ps -a -q)"*/
-            sh "ssh ec2-user@10.1.3.75 sudo docker pull pitufosgraduates/${imagen_front}"
-            sh "ssh ec2-user@10.1.3.75 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"}
+            //sh "ssh ec2-user@10.1.3.75 sudo docker stop \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.75 sudo docker rmi \$(sudo docker images -q)"
+            //sh "ssh ec2-user@10.1.3.75 sudo docker rm \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.75 sudo docker pull pitufosgraduates/${imagen_front}"
+            //sh "ssh ec2-user@10.1.3.75 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"
+        sh "ssh ec2-user@10.1.3.75 ls -la"
+        }
     }
 }
