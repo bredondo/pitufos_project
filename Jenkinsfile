@@ -40,69 +40,6 @@ node {
         }
     }*/
     
-    stage("Acceso al Back HA"){
-        withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
-                                           keyFileVariable: 'private_key', 
-                                           passphraseVariable: '', 
-                                           usernameVariable: '')]){ 
-                      sh "sudo cp ${private_key} ~/.ssh/id_rsa"
-                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
-                      sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
-                          usernameVariable: 'USERNAME', 
-                          passwordVariable: 'PASSWORD']]) {           
-                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
-            //sh "ssh ec2-user@10.1.3.128 sudo docker stop \$(sudo docker ps -a -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker rmi \$(sudo docker images -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker rm \$(sudo docker ps -a -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
-        sh "ssh ec2-user@10.1.5.186 ls -la"
-        }       
-    }
-    
-    stage("Acceso al Front HA"){
-        withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
-                                           keyFileVariable: 'private_key', 
-                                           passphraseVariable: '', 
-                                           usernameVariable: '')]){ 
-                      sh "sudo cp ${private_key} ~/.ssh/id_rsa"
-                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
-                      sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
-                          usernameVariable: 'USERNAME', 
-                          passwordVariable: 'PASSWORD']]) {           
-                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
-            //sh "ssh ec2-user@10.1.3.128 sudo docker stop \$(sudo docker ps -a -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker rmi \$(sudo docker images -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker rm \$(sudo docker ps -a -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
-        sh "ssh ec2-user@10.1.5.32 ls -la"
-        }       
-    }
-    
-    stage("Acceso a la DB HA"){
-        withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
-                                           keyFileVariable: 'private_key', 
-                                           passphraseVariable: '', 
-                                           usernameVariable: '')]){ 
-                      sh "sudo cp ${private_key} ~/.ssh/id_rsa"
-                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
-                      sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
-                          usernameVariable: 'USERNAME', 
-                          passwordVariable: 'PASSWORD']]) {           
-                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
-            //sh "ssh ec2-user@10.1.3.128 sudo docker stop \$(sudo docker ps -a -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker rmi \$(sudo docker images -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker rm \$(sudo docker ps -a -q)"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
-            //sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
-        sh "ssh ec2-user@10.1.5.103 ls -la"
-        }       
-    }
-    
     stage("acceso a la Base de Datos"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
@@ -117,9 +54,9 @@ node {
             //sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
             //sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"
         sh "ssh ec2-user@10.1.3.168 ls -la"
-        }
-            
+        }    
     }
+    
     stage("acceso al Back"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
@@ -140,6 +77,7 @@ node {
         sh "ssh ec2-user@10.1.3.128 ls -la"
         }       
     }
+    
     stage("acceso al Front"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
@@ -160,4 +98,68 @@ node {
         sh "ssh ec2-user@10.1.3.75 ls -la"
         }
     }
+
+    ///////ZONA DE DISPONIBILIDAD C ///////////
+    stage("Acceso a la DB HA"){
+        withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
+                                           keyFileVariable: 'private_key', 
+                                           passphraseVariable: '', 
+                                           usernameVariable: '')]){ 
+                      sh "sudo cp ${private_key} ~/.ssh/id_rsa"
+                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
+                      sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
+                          usernameVariable: 'USERNAME', 
+                          passwordVariable: 'PASSWORD']]) {           
+                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
+            //sh "ssh ec2-user@10.1.5.103 sudo docker stop \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.5.103 sudo docker rmi \$(sudo docker images -q)"
+            //sh "ssh ec2-user@10.1.5.103 sudo docker rm \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.5.103 sudo docker pull pitufosgraduates/${imagen_back}"
+            //sh "ssh ec2-user@10.1.5.103 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+              sh "ssh ec2-user@10.1.5.103 ls -la"
+     }       
+        
+     stage("Acceso al Back HA"){
+        withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
+                                           keyFileVariable: 'private_key', 
+                                           passphraseVariable: '', 
+                                           usernameVariable: '')]){ 
+                      sh "sudo cp ${private_key} ~/.ssh/id_rsa"
+                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
+                      sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
+                          usernameVariable: 'USERNAME', 
+                          passwordVariable: 'PASSWORD']]) {           
+                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
+            //sh "ssh ec2-user@10.1.5.186 sudo docker stop \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.5.186 sudo docker rmi \$(sudo docker images -q)"
+            //sh "ssh ec2-user@10.1.5.186 sudo docker rm \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.5.186 sudo docker pull pitufosgraduates/${imagen_back}"
+            //sh "ssh ec2-user@10.1.5.186 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+              sh "ssh ec2-user@10.1.5.186 ls -la"
+        }       
+     }
+    
+    stage("Acceso al Front HA"){
+        withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
+                                           keyFileVariable: 'private_key', 
+                                           passphraseVariable: '', 
+                                           usernameVariable: '')]){ 
+                      sh "sudo cp ${private_key} ~/.ssh/id_rsa"
+                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
+                      sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
+                          usernameVariable: 'USERNAME', 
+                          passwordVariable: 'PASSWORD']]) {           
+                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
+            //sh "ssh ec2-user@10.1.5.32 sudo docker stop \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.5.32 sudo docker rmi \$(sudo docker images -q)"
+            //sh "ssh ec2-user@10.1.5.32 sudo docker rm \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.5.32 sudo docker pull pitufosgraduates/${imagen_back}"
+            //sh "ssh ec2-user@10.1.5.32 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+              sh "ssh ec2-user@10.1.5.32 ls -la"
+        }       
+    }   
+        
 }
