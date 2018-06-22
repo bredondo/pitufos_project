@@ -10,17 +10,11 @@ class Explicacion extends Component {
                 
                             <h1 className="explitit display-2 mb-2">¿En qué consiste este <span style={{color:'rgb(96, 166, 206)'}}>Formulario</span>?</h1>
                             <h5> 
-                                <p className="pExpli"> Con este cuestionario podrás conseguir un poco mas de información acerca del proyecto perfecto para tí, que se 
+                                <p className="pExpli"> Con este cuestionario podrás conseguir información acerca del proyecto que se 
                                     adecue a tus necesidades, según tu sabiduría, preferencia de horario, movilidad y teletrabajo.
                                 </p>
-                                <p className="pExpli">   
-                                    Para realizarlo tendrás que contestar una serie de preguntas, y en función de la respuesta a la primera de ellas, 
-                                    deberás calificar del <span id="cero">0 al 10 </span> un conjunto de tecnologías relacionadas con tu respuesta en la pregunta número 1.
-                                    Además, habrá unas preguntas básicas que aparecerán siempre, aunque en la primera pregunta respondas cosas diferentes, 
-                                    como son las preguntas de movilidad, teletrabajo y horario.
-                                </p>
                                 <p className="pExpli">
-                                    Una vez que todas las preguntas estén respondidas, tendrás que pulsar en el  <span id="cero">botón de enviar</span>, y seguidamente, 
+                                    Cuando se hayan contestado todas las preguntas habrá que pulsar en el <span id="cero">botón de enviar</span>, y seguidamente, 
                                     aperecerá un resultado con los tres proyectos más acordes según tus preferencias, ordenados según la coincidencia de tus respuestas
                                     con los proyectos ya existentes.
                                     </p>

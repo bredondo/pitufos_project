@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import lugar from './lugar.png';
+import jornada from './jornada.png';
+import tecno from './tecno.png';
+import calendario from './calen.png';
+import teletrabajo from './tele.png';
 
 class ProjectRecomendacion extends Component {
 
@@ -21,44 +26,46 @@ class ProjectRecomendacion extends Component {
         <main className="recomendacion">
           <div className="card mx-auto">
             <div className="card-body">
-               <h1 id="proy">Proyectos recomendados (% coincidencia)</h1>
-               <div className = "row">
-                  {this.state.projects.map(item => (
-                    <div className="col-xs-12 col-sm-6 col-md-4">
-                      <div className={item.description.length < 1 ? "card2" : "card1"} id={item.description.length < 1 ? "card2" : "card1"}> 
-                        <div  key={item.name} >
-                            <div class="titlee">
-                               <h1 id="proyTit">{item.name} 
-                               <p className=
-                                {(item.porcentaje*100 > 69 && item.porcentaje*100<80) ? "colorYellow": (item.porcentaje*100 > 79 && item.porcentaje*100<90) ? "colorOrange" : "colorGreen"}>
-                                {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </p></h1>
-                            </div>
-                           
-                            <p id="desc">{item.description}</p>
-                            <p id="info">{item.description.length < 1 ? '' : 'Lugar de trabajo: '}</p><p> {item.location}</p>
-                            <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} </p> <p>{item.workday}</p>
-                            <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} </p>
-                            <ul>
-                              {item.technologies.map(technology => (
-                                <li key={technology}>{technology}</li>
-                              ))}
-                            </ul>
-                            <p id="info">{item.description.length < 1 ? '' : 'Horario de la jornada: '}</p> <p>{item.schedule}</p>
-                            <p id="info">{item.description.length < 1 ? '' : 'Días de teletrabajo: '}</p> <p>{item.telecommuting}</p>
-                          </div>
-                        </div>
-                    </div>
-                  ))}
-            </div>
-
-              <div className="d-flex flex-nowrap">
+               <h1 id="proy">Proyectos recomendados (% coincidencia) 
+               <div className="d-flex flex-nowrap">
                 <div className="ml-auto p-2">
                   <button className="btn btn-dark" onClick={this.handleAgain.bind(this)}>
                     Realizar de nuevo 
                   </button>
                 </div>
 
-              </div>
+              </div></h1>
+               <div className = "row">
+                  {this.state.projects.map(item => (
+                    <div className="col-xs-12 col-sm-6 col-md-4"  key={item.name}>
+                           <div className={item.description.length < 1 ? "card2 h-100" : "card1 h-100"} id={item.description.length < 1 ? "card2" : "card1"}> 
+                            <div  key={item.name} >
+                                  <div className="row1">
+                                    <h1 id="proyTit">{item.name} 
+                                        <p className=
+                                          {(item.porcentaje*100 > 69 && item.porcentaje*100<80) ? "colorYellow": (item.porcentaje*100 > 79 && item.porcentaje*100<90) ? "colorOrange" : "colorGreen"}>
+                                          {item.description.length < 1 ? '' : ' ('+  item.porcentaje * 100 + '%)'} </p></h1>
+                                          <p id="desc">{item.description}</p>
+                                  </div>
+                                  <div className="row2">
+                                        <p id="info">{item.description.length < 1 ? '' : 'Lugar de trabajo: '} <img className="img2" src={lugar} /></p><p> {item.location} </p>
+                                        <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} <img className="img2" src={jornada} /></p> <p>{item.workday}</p>
+                                        <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} <img className="img2" src={tecno} /></p>
+                                        <ul>
+                                          {item.technologies.map(technology => (
+                                            <li key={technology}>{technology}</li>
+                                          ))}
+                                        </ul>
+                                  </div>
+                                 <div className="row3">
+                                    <p id="info">{item.description.length < 1 ? '' : 'Horario de la jornada: '} <img className="img2" src={calendario} /></p> <p>{item.schedule}</p>
+                                    <p id="info">{item.description.length < 1 ? '' : 'Días de teletrabajo: '}<img className="img2" src={teletrabajo} /></p> <p>{item.telecommuting}</p>                               
+                                 </div>
+                                   </div>
+                            </div>
+                      </div>
+                  ))}
+            </div>
             </div>
           </div>
         </main>
