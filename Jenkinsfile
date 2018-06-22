@@ -58,7 +58,10 @@ node {
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
                       /*sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"*/
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            sh "sudo docker login -u ${USERNAME} -p ${PASSWORD}"
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
+                          usernameVariable: 'USERNAME', 
+                          passwordVariable: 'PASSWORD']]) {           
+                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
             sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
             sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates:${imagen_back}"}       
     }
@@ -70,7 +73,10 @@ node {
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
                       /*sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"*/
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            sh "sudo docker login -u ${USERNAME} -p ${PASSWORD}"
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
+                          usernameVariable: 'USERNAME', 
+                          passwordVariable: 'PASSWORD']]) {           
+                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
             sh "ssh ec2-user@10.1.3.75 sudo docker pull pitufosgraduates/${imagen_front}"
             sh "ssh ec2-user@10.1.3.75 sudo docker run -d -p 80:3001 pitufosgraduates:${imagen_front}"}
     }
