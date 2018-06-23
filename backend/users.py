@@ -89,7 +89,7 @@ def update_user():
     if (user is not None):
         output.append({'email': user['email'], 'passwd': user['passwd'], 'name': user['name'],
                        'lastname': user['lastname'], 'img': user['img'], 'description': user['description'],
-                       'sendEmail': user['sendEmail']})
+                       'sendEmail': user['sendEmail'], 'answers': user['answers'], 'result': user['result']})
     if (len(output) == 0):
         output = "Error, usuario no encontrado."
 

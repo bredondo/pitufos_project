@@ -6,10 +6,10 @@ class Formacion extends Component {
   render() {
     return (
         <div>
-            <div className="jumbotron" id="fondoDiv" >
+            <div className="jumbotron" id="fondoDiv">
                 <div className="container" style={{color:'white'}}>
                     <div className="col-md-12">
-                        <div className="text-center ">
+                        <div className="textForm text-center ">
                             <h1 className="display-2 mb-2">¿Qué es <span style={{color:'rgb(96, 166, 206)'}}>Blue</span> Graduates?</h1>
                             <h5>
                             <p>Con este programa podrás crecer como profesional, aprender todo lo que
@@ -20,27 +20,44 @@ class Formacion extends Component {
             </div>
 
 
-            <div style={{margin:'50px'}} className="d-flex justify-content-center">
+
+
+
+
+
+
+            <div style={{backgroundColor:'lightgray'}} className="d-flex justify-content-center">
                 <div className="row">
-                    <div className="card" id="divHorario" style={{border:' 2px solid #AEB6BF'}}>
-                         <h2 style={{margin:'40px'}}>HORARIO</h2>
-                                <p>
-                                <a className="btn btn-outline-dark btn-lg btn-block" href={myConfig.url + "/horario.pdf"} target="_blank" style={{width:'200px', margin:'auto', border:'none'}}><i className="fas fa-file-pdf"></i> </a>
-                                </p>
-                                <p>
-                                <a className="btn btn-outline-dark btn-lg btn-block" href={myConfig.url + "/horario.xlsx"} download style={{width:'200px', margin:'auto', border:'none'}}><i className="fas fa-file-excel"></i> </a>
-                                </p>
+
+                    <div className="col-md-6">
+                        <div class="card" style={{height:'auto'}}>
+                              <div class="card-body">
+                                <h6 class="card-text text-center">Consulta tu</h6>
+                                <h2 class="card-title text-center">HORARIO</h2>
+                                <hr/>
+                                <a href={myConfig.url + "/horario.pdf"} className="btn btn-outline-dark btn-sm btn-block"><i class="fas fa-file-pdf"></i> Ver</a>
+                                <a href={myConfig.url + "/horario.xlsx"} className="btn btn-outline-dark btn-sm btn-block"><i class="fas fa-file-excel"></i> Descargar</a>
+                              </div>
+                        </div>
                     </div>
 
-                    <div className="card" id="divTemario" style={{border:' 2px solid #AEB6BF'}}>
-                        <h2 style={{margin:'40px'}}>TEMARIO</h2>
-                                <p>
 
-                                <a className="btn btn-outline-dark btn-lg btn-block" href={myConfig.url + "/temario.pdf"} target="_blank" style={{width:'200px', margin:'auto', border:'none'}}><i className="fas fa-file-pdf"></i> </a>
-                                </p>
-                                <p>
-                                <a className="btn btn-outline-light btn-lg btn-block" href={myConfig.url + "/temario.pptx"} download style={{width:'200px', margin:'auto'}}><i className="fas fa-file-powerpoint"></i> </a>
-                                </p>
+
+                    <div className="col-md-6">
+                        <div class="card" style={{height:'auto'}}>
+                              <div class="card-body">
+                                <h6 class="card-text text-center">Entérate de tu</h6>
+
+                                <h2 class="card-title text-center">TEMARIO</h2>
+                                <hr></hr>
+                                <ul>    Ponte al día con las teconolgías del momento
+                                        <li><i class="fas fa-check"></i>Vue, React, Polymer</li>
+                                        <li><i class="fas fa-check"></i>Flask, Pymongo, Spring, NodeJS</li>
+                                </ul>
+                                     <a href={myConfig.url + "/temario.pdf"} className="btn btn-outline-dark btn-sm btn-block"><i class="fas fa-file-pdf"></i> Ver</a>
+                                     <a href={myConfig.url + "/temario.pptx"} className="btn btn-outline-dark btn-sm btn-block"><i class="fas fa-file-powerpoint"></i> Descargar</a>
+                              </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -24,11 +24,16 @@ class Login extends Component {
 
   handleSubmit = async (event) => {
     try {
+      let config = {
+        'headers':{
+          'Content-Type': 'application/json'
+        }
+      }
       let body = {email: this.state.email, pass: this.state.password}
       const response = await axios.post(
         `${myConfig.url}/login`, 
         JSON.stringify(body), 
-        {headers: {'Content-Type': 'text/plain'}}
+        config
       );
       const data = await response.data;
       localStorage.setItem('user',JSON.stringify(data.user))

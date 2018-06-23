@@ -26,12 +26,13 @@ class Proyectos extends Component {
         try {
             let config = {
                 'headers':{
-                'Content-Type': 'application/json',
-                'authorization': 'Bearer ' + localStorage.getItem('token')
+                  'Content-Type': 'application/json',
+                  'authorization': 'Bearer ' + localStorage.getItem('token')
                 }
-            }
+              }
 
             const pageSearch = +page - 1;
+            
             const res = await axios.get(`${myConfig.url}/projectSearcher/?search=${this.state.search}&page=${pageSearch}`, config);
             const data = await res.data;
             

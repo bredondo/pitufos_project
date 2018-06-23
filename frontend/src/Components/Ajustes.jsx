@@ -21,10 +21,16 @@ class Ajustes extends Component {
     handleSubmit = async (event) => {
         try {
           let body = {email: this.state.email, description: this.state.description}
+          let config = {
+            'headers':{
+              'Content-Type': 'application/json',
+              'authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+          }
           const response = await axios.put(
             `${myConfig.url}/user`, 
             JSON.stringify(body), 
-            {headers: {'Content-Type': 'text/plain'}}
+            config
           );
           const data = await response.data;
           console.log(response)
