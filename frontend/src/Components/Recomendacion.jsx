@@ -16,22 +16,38 @@ class Recomendacion extends Component {
   }
 
   async componentDidMount() {
+    
     try {
-      const response = await axios.get(`${myConfig.url}/recommendationStart`);
-      const recommendation = await response.data;
+
+      let config = {
+        'headers':{
+          'Content-Type': 'application/json',
+          'authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      }
+
+      const response = await axios.get(`${myConfig.url}/recommendationStart`, config); 
+      const recommendation = await response.data; 
+
       this.setState({
         recommendation: recommendation.result,
       })
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.log(e);
     }
   }
 
   recommendationKeepsGoing(body) {
+    let config = {
+      'headers':{
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }
     return axios.post(
       `${myConfig.url}/recommendationKeepsGoing`, 
       JSON.stringify(body), 
-      {headers: {'Content-Type': 'text/plain'}});
+      config);
   }
 
   handleChange(event) {
@@ -129,7 +145,12 @@ class Recomendacion extends Component {
   }
 
   handleSave(event) {
-    
+    let config = {
+      'headers':{
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }
     let body = {"result":
                 {
                   "user": JSON.parse(localStorage.getItem('user')),
@@ -150,7 +171,7 @@ class Recomendacion extends Component {
     axios.post(
       `${myConfig.url}/projectRecommendation`,
       JSON.stringify(body), 
-      {headers: {'Content-Type': 'text/plain'}})
+      config)
         .then((response) =>{
           console.log("Guardado recomendación")
           localStorage.setItem('user', JSON.stringify(response.data.result));

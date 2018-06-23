@@ -1,6 +1,5 @@
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,800);
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 /*Navbar*/
 
 .navbar-dark{
@@ -320,4 +319,16 @@ section{
       height: 19px;
       margin-right: 13px;
   }
+
+  @media all and (min-width: 480px) {
+    .login {
+      padding: 60px 0;
+    }
+  
+    .login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }
+
 

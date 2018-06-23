@@ -6,7 +6,7 @@ class ProjectRecomendacion extends Component {
 
   constructor(){
     super();
-    this.state.projects = JSON.parse(localStorage.getItem('user')).result;
+    this.state.projects = JSON.parse(localStorage.getItem('user')).result[0];
   }
 
   handleAgain(event) {

@@ -1,4 +1,4 @@
-from pymongo import MongoClient
+from pymongo import MongoClient, TEXT
 from flask import Flask, request, jsonify, send_from_directory, make_response, current_app, g
 app = Flask(__name__, static_url_path='')
 app.config.from_pyfile('config.cfg')
@@ -155,56 +155,74 @@ def search_project():
 
     projects = db.projects
     output = []
-
+    seen = set()
     for project in projects.find({'location': {'$regex': pre_query}}):
-        if (project is not None):
+        if (project is not None and project['name'] not in seen
+        and 'No se ha encontrado' not in  project['name']):
             output.append({'name': project['name'], 'technologies': project['technologies'],
                            'telecommuting': project['telecommuting'], 'workday': project['workday'],
                            'schedule': project['schedule'],
                            'location': project['location']})
+            seen.add(project['name'])
 
     for project in projects.find({'name': {'$regex': pre_query}}):
-        if (project is not None):
+        if (project is not None and project['name'] not in seen
+        and 'No se ha encontrado' not in  project['name']):
             output.append({'name': project['name'], 'technologies': project['technologies'],
                            'telecommuting': project['telecommuting'], 'workday': project['workday'],
                            'schedule': project['schedule'],
                            'location': project['location']})
+            seen.add(project['name'])
 
     for project in projects.find({'schedule': {'$regex': pre_query}}):
-        if (project is not None):
+        if (project is not None and project['name'] not in seen
+        and 'No se ha encontrado' not in  project['name']):
             output.append({'name': project['name'], 'technologies': project['technologies'],
                            'telecommuting': project['telecommuting'], 'workday': project['workday'],
                            'schedule': project['schedule'],
                            'location': project['location']})
+            seen.add(project['name'])
 
     for project in projects.find({'telecommuting': {'$regex': pre_query}}):
-        if (project is not None):
+        if (project is not None and project['name'] not in seen
+        and 'No se ha encontrado' not in  project['name']):
             output.append({'name': project['name'], 'technologies': project['technologies'],
                            'telecommuting': project['telecommuting'], 'workday': project['workday'],
                            'schedule': project['schedule'],
                            'location': project['location']})
+            seen.add(project['name'])
 
     for project in projects.find({'workday': {'$regex': pre_query}}):
-        if (project is not None):
+        if (project is not None and project['name'] not in seen
+        and 'No se ha encontrado' not in  project['name']):
             output.append({'name': project['name'], 'technologies': project['technologies'],
                            'telecommuting': project['telecommuting'], 'workday': project['workday'],
                            'schedule': project['schedule'],
                            'location': project['location']})
+            seen.add(project['name'])
 
     for project in projects.find({'technologies': {'$regex': pre_query}}):
-        if (project is not None):
+        if (project is not None and project['name'] not in seen 
+        and 'No se ha encontrado' not in  project['name']):
             output.append({'name': project['name'], 'technologies': project['technologies'],
                            'telecommuting': project['telecommuting'], 'workday': project['workday'],
                            'schedule': project['schedule'],
                            'location': project['location']})
+            seen.add(project['name'])
 
     length = len(output)
-
+    if (length < 1):
+        project = projects.find_one({"name": "No se ha encontrado ningún proyecto coincidente."})
+        del project['_id']
+        output.append(project)
+        length = 1
     output2 = []
-    for i in range(int(page) * 2, (int(page) * 2 + 2)):  # se devuelven 2 elementos por página
+    init = int(page) * 3
+    fin = init + 3 if init + 3 <= length else length
+    for i in range(init, fin):  # se devuelven 2 elementos por página
         output2.append(output[i])
 
-    if ((int(page) * 2 + 2) < length):
-        return jsonify({'result': output2, 'hasMoreResult': True, 'itemsPerPage': 2, 'totalItems': length})
+    if ((int(page) * 3 + 3) < length):
+        return jsonify({'result': output2, 'hasMoreResult': True, 'itemsPerPage': 3, 'totalItems': length})
 
-    return jsonify({'result': output2, 'hasMoreResult': False, 'itemsPerPage': 2, 'totalItems': length})
+    return jsonify({'result': output2, 'hasMoreResult': False, 'itemsPerPage': 3, 'totalItems': length})

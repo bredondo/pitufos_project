@@ -7,6 +7,8 @@ import urllib.request, json
 import jwt
 from itsdangerous import TimedJSONWebSignatureSerializer as JWT
 from flask_httpauth import HTTPTokenAuth
+from flask_cors import CORS, cross_origin
+
 import recommendation
 import users
 import projects
@@ -18,61 +20,14 @@ app.config.from_pyfile('config.cfg')
 jwt = JWT(app.config['SECRET_KEY'], expires_in=3600)
 auth = HTTPTokenAuth('Bearer')
 
-
-
-
 client = MongoClient(app.config['NAME_BD'], app.config['PORT_BD'])
 db = client.pitufos
 
-
-
-
-def crossdomain(origin=None, methods=None, headers=None,
-                max_age=21600, attach_to_all=True,
-                automatic_options=True):
-    if methods is not None:
-        methods = ', '.join(sorted(x.upper() for x in methods))
-    if headers is not None and not isinstance(headers, str):
-        headers = ', '.join(x.upper() for x in headers)
-    if not isinstance(origin, str):
-        origin = ', '.join(origin)
-    if isinstance(max_age, timedelta):
-        max_age = max_age.total_seconds()
-
-    def get_methods():
-        if methods is not None:
-            return methods
-
-        options_resp = current_app.make_default_options_response()
-        return options_resp.headers['allow']
-
-    def decorator(f):
-        def wrapped_function(*args, **kwargs):
-            if automatic_options and request.method == 'OPTIONS':
-                resp = current_app.make_default_options_response()
-            else:
-                resp = make_response(f(*args, **kwargs))
-            if not attach_to_all and request.method != 'OPTIONS':
-                return resp
-
-            h = resp.headers
-
-            h['Access-Control-Allow-Origin'] = origin
-            h['Access-Control-Allow-Methods'] = get_methods()
-            h['Access-Control-Max-Age'] = str(max_age)
-            if headers is not None:
-                h['Access-Control-Allow-Headers'] = headers
-            return resp
-
-        f.provide_automatic_options = False
-        return update_wrapper(wrapped_function, f)
-    return decorator
-
-
-
+cors = CORS(app, origins="*", allow_headers=[
+        "Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
+        supports_credentials=True)
 
 @app.route('/login', methods=['POST', 'OPTIONS'])
-@crossdomain(origin='*')
 def get_token():
     users = db.users
     req_json = json.loads(request.data.decode('utf-8'))
@@ -93,49 +48,36 @@ def get_token():
         token = str(token)
         token = token.replace("b'", "")
         token = token.replace("'","")
-        #return jsonify({'token': str(token)})
         return jsonify({'token': token, 'user':user})
 
     else:
         return 'Email or user incorrect, good luck next time you try to enter into my system little bitch :)'
 
-#@app.route('/verifyLogin', methods=['GET', 'OPTIONS'])
-@crossdomain(origin='*')
+
 @auth.verify_token
 def verify_token(token):
-    #token = request.headers.get('Authorization')
-    #print('token vale: ')
-    #print(token)
     g.user = None
     try:
         data = jwt.loads(token)
     except:  # noqa: E722
-        #return jsonify({'result': 'false'})
         return False
     if 'username' in data:
         g.user = data['username']
         return True
-        #return jsonify({'result': 'true'})
     return False
-    #return jsonify({'result': 'false'})
-
 
 """Recommendation """
 @app.route('/recommendation', methods=['GET', 'OPTIONS'])
-@crossdomain(origin='*')
 @auth.login_required
 def get_questions():
     return jsonify({'result': recommendation.get_questions()})
 
 @app.route('/recommendationStart', methods=['GET', 'OPTIONS'])
-@crossdomain(origin='*')
 @auth.login_required
 def get_first_question():
     return jsonify({'result': [recommendation.first_question()]})
 
-
 @app.route('/recommendationKeepsGoing', methods=['POST'])
-@crossdomain(origin='*')
 @auth.login_required
 def get_next_questions():
     return jsonify({'result': recommendation.get_next_questions()})
@@ -145,42 +87,32 @@ def get_next_questions():
 def save_questions():
     return jsonify({'result': recommendation.post_question()})
 
-
 @app.route('/recommendation', methods=['DELETE'])
 @auth.login_required
 def delete_questions():
     return jsonify({'result': recommendation.delete_questions()})
 
-
 @app.route('/getHash', methods=['GET', 'OPTIONS'])
-@crossdomain(origin='*')
 @auth.login_required
 def get_hash():
     return recommendation.get_hash()
 
-
-
-
 """Users """
 @app.route('/users', methods=['GET', 'OPTIONS'])
-@crossdomain(origin='*')
 @auth.login_required
 def get_users():
     return jsonify({'result': users.get_users()})
 
 @app.route('/user/<email>', methods=['GET', 'OPTIONS'])
-@crossdomain(origin='*')
 @auth.login_required
 def get_user_email(email):
 
     return jsonify({'result': users.get_user_by_email(email)})
 
-
 @app.route('/users', methods=['POST'])
 @auth.login_required
 def save_users():
     return jsonify({'result': users.post_user()})
-
 
 @app.route('/users', methods=['DELETE'])
 @auth.login_required
@@ -192,50 +124,36 @@ def delete_users():
 def update_user():
     return jsonify({'result': users.update_user()})
 
-
-
-
 """Projects"""
 @app.route('/projects', methods=['GET', 'OPTIONS'])
 @auth.login_required
-@crossdomain(origin='*')
 def get_projects():
     return jsonify({'result': projects.get_projects()})
-
 
 @app.route('/projects', methods=['POST'])
 @auth.login_required
 def save_projects():
     return jsonify({'result': projects.post_project()})
 
-
 @app.route('/projects', methods=['DELETE'])
 @auth.login_required
 def delete_projects():
     return jsonify({'result': projects.delete_projects()})
 
-
 @app.route('/projectRecommendation', methods=['POST'])
-@crossdomain(origin='*')
 @auth.login_required
 def recommend_projects():
     return projects.recommend_project()
-
 
 @app.route('/emptyDatabase', methods=['DELETE'])
 @auth.login_required
 def delete_all():
     return action.empty_database()
 
-
 @app.route('/projectSearcher/', methods=['GET'])
 @auth.login_required
 def project_searcher():
     return projects.search_project()
-
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, host=app.config['HOST'], port=app.config['PORT_FLASK'])

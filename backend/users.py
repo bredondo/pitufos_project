@@ -75,14 +75,11 @@ def update_user():
     output = []
     req = json.loads(request.data.decode('utf-8'))
 
-
     try:
         email = req['email']
         description = req['description']
     except KeyError:
         pass
-
-
 
     users.update_one({'email': email}, {'$set': {'description': description}})
 

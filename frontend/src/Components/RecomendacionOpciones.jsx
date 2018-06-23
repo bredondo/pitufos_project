@@ -14,12 +14,12 @@ class RecomendacionOpciones extends Component {
     
     render() {
         return (
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
 
-                            <div class="tabbable-panel">
-                                <div class="tabbable-line">
+                            <div className="tabbable-panel">
+                                <div className="tabbable-line">
                                     <div>
                                         <ul className="nav nav-tabs" id="nav2">
                                             <li>
@@ -33,7 +33,7 @@ class RecomendacionOpciones extends Component {
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="tab-content">
+                                    <div className="tab-content">
                                         <Route exact path="/recomendacion/explicacion" component={Explicacion}/>
                                         <Route  path="/recomendacion/formulario" component={MainRecomendacion}/>
 
