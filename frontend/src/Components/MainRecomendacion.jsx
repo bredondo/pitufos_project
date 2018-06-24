@@ -38,7 +38,7 @@ class MainRecomendacion extends Component {
   render() {
 
     return (
-    <section>
+    <section className="animated fadeIn fast">
         {
           this.recommendationPage()
         }

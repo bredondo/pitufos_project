@@ -48,7 +48,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login">
+      <div className="animated fadeIn fast login">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>

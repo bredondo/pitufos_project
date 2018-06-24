@@ -6,10 +6,9 @@ class Ajustes extends Component {
 
   constructor(){
       super();
-      debugger
       let user = JSON.parse(localStorage.getItem('user'));
        
-      this.state = { ...user, img_fluid: user.img };
+      this.state = { ...user, img_fluid: user.img, message: '' };
       console.log(this.state);
   }
 
@@ -33,8 +32,12 @@ class Ajustes extends Component {
             config
           );
           const data = await response.data;
-          console.log(response)
           localStorage.setItem('user',JSON.stringify(data.result[0]));
+          this.setState({message: 'Se ha guardado correctamente los cambios'})
+          setTimeout(()=>{
+              this.setState({message: ''})
+          }, 2000);
+
         } catch (error) {
           console.error(error);
         }
@@ -48,7 +51,20 @@ class Ajustes extends Component {
   render() {
 
     return (
-        <section>
+        <section className="animated fadeIn fast">
+            { this.state.message !== '' ?
+            <div className="row animated fadeIn fast">
+                <div className="col-sm-3">
+                </div>
+                <div className="col-sm-6">
+                    <div class="alert alert-success" role="alert">
+                        {this.state.message}
+                    </div>
+                </div>
+                <div className="col-sm-3">
+                </div>
+            </div>
+            : <div></div>}
             <div className="row">
                 <div className="col-sm-3"></div>
                 <div className="col-sm-6">

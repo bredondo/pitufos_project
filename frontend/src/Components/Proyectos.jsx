@@ -70,7 +70,7 @@ class Proyectos extends Component {
     render() {
 
         return (
-            <section>
+            <section className="animated fadeIn fast">
                 <div className="container">
                     <h1>Proyectos</h1>
                     <hr/>

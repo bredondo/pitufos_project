@@ -28,6 +28,7 @@ cors = CORS(app, origins="*", allow_headers=[
         supports_credentials=True)
 
 @app.route('/login', methods=['POST', 'OPTIONS'])
+@cross_origin()
 def get_token():
     users = db.users
     req_json = json.loads(request.data.decode('utf-8'))
@@ -74,11 +75,13 @@ def get_questions():
 
 @app.route('/recommendationStart', methods=['GET', 'OPTIONS'])
 @auth.login_required
+@cross_origin()
 def get_first_question():
     return jsonify({'result': [recommendation.first_question()]})
 
 @app.route('/recommendationKeepsGoing', methods=['POST'])
 @auth.login_required
+@cross_origin()
 def get_next_questions():
     return jsonify({'result': recommendation.get_next_questions()})
 
@@ -100,11 +103,13 @@ def get_hash():
 """Users """
 @app.route('/users', methods=['GET', 'OPTIONS'])
 @auth.login_required
+@cross_origin()
 def get_users():
     return jsonify({'result': users.get_users()})
 
 @app.route('/user/<email>', methods=['GET', 'OPTIONS'])
 @auth.login_required
+@cross_origin()
 def get_user_email(email):
 
     return jsonify({'result': users.get_user_by_email(email)})
@@ -121,6 +126,7 @@ def delete_users():
 
 @app.route('/user', methods=['PUT'])
 @auth.login_required
+@cross_origin()
 def update_user():
     return jsonify({'result': users.update_user()})
 
@@ -142,6 +148,7 @@ def delete_projects():
 
 @app.route('/projectRecommendation', methods=['POST'])
 @auth.login_required
+@cross_origin()
 def recommend_projects():
     return projects.recommend_project()
 
@@ -152,6 +159,7 @@ def delete_all():
 
 @app.route('/projectSearcher/', methods=['GET'])
 @auth.login_required
+@cross_origin()
 def project_searcher():
     return projects.search_project()
 

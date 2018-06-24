@@ -5,7 +5,7 @@ class Formacion extends Component {
  
   render() {
     return (
-        <div>
+        <div className="animated fadeIn fast">
             <div className="jumbotron" id="fondoDiv">
                 <div className="container" style={{color:'white'}}>
                     <div className="col-md-12">
@@ -19,13 +19,6 @@ class Formacion extends Component {
                 </div>
             </div>
 
-
-
-
-
-
-
-
             <div style={{backgroundColor:'lightgray'}} className="d-flex justify-content-center">
                 <div className="row">
 
@@ -35,13 +28,11 @@ class Formacion extends Component {
                                 <h6 class="card-text text-center">Consulta tu</h6>
                                 <h2 class="card-title text-center">HORARIO</h2>
                                 <hr/>
-                                <a href={myConfig.url + "/horario.pdf"} className="btn btn-outline-dark btn-sm btn-block"><i class="fas fa-file-pdf"></i> Ver</a>
-                                <a href={myConfig.url + "/horario.xlsx"} className="btn btn-outline-dark btn-sm btn-block"><i class="fas fa-file-excel"></i> Descargar</a>
+                                <a href={myConfig.url + "/horario.pdf"} className="btn btn-outline-dark btn-sm btn-block" target="_blank"><i class="fas fa-file-pdf"></i> Ver</a>
+                                <a href={myConfig.url + "/horario.xlsx"} className="btn btn-outline-dark btn-sm btn-block" download><i class="fas fa-file-excel"></i> Descargar</a>
                               </div>
                         </div>
                     </div>
-
-
 
                     <div className="col-md-6">
                         <div class="card" style={{height:'auto'}}>
@@ -50,12 +41,12 @@ class Formacion extends Component {
 
                                 <h2 class="card-title text-center">TEMARIO</h2>
                                 <hr></hr>
-                                <ul>    Ponte al día con las teconolgías del momento
-                                        <li><i class="fas fa-check"></i>Vue, React, Polymer</li>
-                                        <li><i class="fas fa-check"></i>Flask, Pymongo, Spring, NodeJS</li>
+                                <ul>Ponte al día con las teconolgías del momento
+                                    <li><i class="fas fa-check"></i>Vue, React, Polymer</li>
+                                    <li><i class="fas fa-check"></i>Flask, Pymongo, Spring, NodeJS</li>
                                 </ul>
-                                     <a href={myConfig.url + "/temario.pdf"} className="btn btn-outline-dark btn-sm btn-block"><i class="fas fa-file-pdf"></i> Ver</a>
-                                     <a href={myConfig.url + "/temario.pptx"} className="btn btn-outline-dark btn-sm btn-block"><i class="fas fa-file-powerpoint"></i> Descargar</a>
+                                    <a href={myConfig.url + "/temario.pdf"} className="btn btn-outline-dark btn-sm btn-block" target="_blank"><i class="fas fa-file-pdf"></i> Ver</a>
+                                    <a href={myConfig.url + "/temario.pptx"} className="btn btn-outline-dark btn-sm btn-block" download><i class="fas fa-file-powerpoint"></i> Descargar</a>
                               </div>
                         </div>
                     </div>

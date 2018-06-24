@@ -31,7 +31,7 @@ class Contactos extends Component {
   render() {
 
     return (
-        <div className="content">
+        <div className="content animated fadeIn fast">
              <div className="card">
              {this.state.contacto.map(item => (
                  <div className="firstinfo col-xs-12 col-sm-12 col-md-12" key={item.email}>

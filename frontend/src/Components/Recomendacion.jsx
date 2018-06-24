@@ -185,7 +185,7 @@ class Recomendacion extends Component {
   render() {
 
     return (
-    <section id="team2" className="pb-5">
+    <section id="team2" className="animated fadeIn fast pb-5">
         <main className="recomendacion">
           <div className="card col-7 mx-auto">
             <div className="card-body">

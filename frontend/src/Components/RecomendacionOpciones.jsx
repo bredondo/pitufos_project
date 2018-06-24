@@ -4,7 +4,7 @@ import Contactos from './Contactos';
 import Formacion from './Formacion';
 
 import logo from './logo3.png'
-import { Route, NavLink, HashRouter, Redirect } from "react-router-dom";
+import { Route, NavLink, HashRouter, Redirect, Switch } from "react-router-dom";
 import axios from 'axios';
 import Explicacion from './Explicacion';
 
@@ -35,9 +35,11 @@ class RecomendacionOpciones extends Component {
                                         </ul>
                                     </div>
                                     <div className="tab-content">
-
-                                        <Route exact path="/recomendacion/" component={Explicacion}/>
-                                        <Route  path="/recomendacion/formulario" component={MainRecomendacion}/>
+                                        <Switch>
+                                            <Route exact path="/recomendacion/" component={Explicacion}/>
+                                            <Route  path="/recomendacion/formulario" component={MainRecomendacion}/>
+                                            <Redirect to='/'/>
+                                        </Switch>
                                     </div>
                                 </div>
                             </div>

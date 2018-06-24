@@ -9,7 +9,7 @@ import Ajustes from './Ajustes';
 import Login from "./Login";
 import Proyectos from "./Proyectos";
 
-import { Route, NavLink, HashRouter } from "react-router-dom";
+import { Route, NavLink, HashRouter, Redirect, Switch } from "react-router-dom";
 import { myConfig } from '../config.js';
 import axios from 'axios';
 import logo from './logo3.png'
@@ -74,12 +74,15 @@ class App extends Component {
                         </nav>
                     </header>
                     <div>
-                        <PrivateRoute exact path="/" component={Formacion}/>
-                        <PrivateRoute path="/recomendacion" component={RecomendacionOpciones}/>
-                        <PrivateRoute path="/contactos" component={Contactos}/>
-                        <PrivateRoute path="/ajustes" component={Ajustes}/>
-                        <PrivateRoute path="/proyectos" component={Proyectos}/>
-                        <Route path='/login' render={(props)=>(<Login {...props} updateIsAuth={this.updateIsAuth}/>)}/>
+                        <Switch>
+                            <PrivateRoute exact path="/" component={Formacion}/>
+                            <PrivateRoute path="/recomendacion" component={RecomendacionOpciones}/>
+                            <PrivateRoute path="/contactos" component={Contactos}/>
+                            <PrivateRoute path="/ajustes" component={Ajustes}/>
+                            <PrivateRoute path="/proyectos" component={Proyectos}/>
+                            <Route path='/login' render={(props)=>(<Login {...props} updateIsAuth={this.updateIsAuth}/>)}/>
+                            <Redirect to='/'/>
+                        </Switch>
                     </div>
                 </div>
             </HashRouter>

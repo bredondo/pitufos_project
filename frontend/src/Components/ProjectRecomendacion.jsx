@@ -17,7 +17,7 @@ class ProjectRecomendacion extends Component {
   render() {
 
     return (
-    <section id="team3" className="pb-5">
+    <section id="team3" className="pb-5 animated fadeIn fast">
         <main className="recomendacion">
           <div className="card mx-auto">
             <div className="card-body">
