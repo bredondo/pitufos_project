@@ -71,7 +71,7 @@ class Ajustes extends Component {
                     <div className="card">
                         <div className="card-body">
                             <div className="text-center">
-                                <img className="img-fluid rounded-circle mb-1"  style={{width:'30%'}} src={this.state.img_fluid} />
+                                <img className="img-fluid rounded-circle mb-1"  style={{width:'30%', height:'auto'}} src={this.state.img_fluid} />
                                 <h3 className="card-subtitle mb-2">
                                     {this.state.name + ' ' + this.state.lastname}
                                 </h3>
@@ -84,10 +84,10 @@ class Ajustes extends Component {
                                     <label htmlFor="descripcion">Descripción</label>
                                     <textarea className="form-control" id="description" rows="3" value={this.state.description} onChange={this.handleChange}></textarea>
                                 </div>
-                                <div className="custom-file">
+                                {/* <div className="custom-file">
                                     <input type="file" className="custom-file-input" id="img" accept="image/png, image/jpeg" onChange={this.handleUploadFile}/>
                                     <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.img}</label>
-                                </div>
+                                </div> */}
                                 <div className="text-right">
                                     <br/>
                                     <button type="submit" className="btn btn-block btn-primary">Guardar</button>
