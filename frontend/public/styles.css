@@ -143,6 +143,7 @@ section .section-title {
 /*End Wizard*/
 .card {
     align-content:center;
+    
 }
 
 #team3 .card{
@@ -162,12 +163,32 @@ section .section-title {
 	background-position: center center;
 	background-repeat: no-repeat;
 }
-
+#proyectostitle{
+    text-align: center;
+}
 section{
     float:left;
     width:100%;
     background: #fff;  /* fallback for old browsers */
     padding:10px 0;
+}
+.pepe
+{
+    background-image: url('vela22.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: transparent;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    position: fixed;
+    left:0;
+
+}
+
+.naveoptions{
+    margin-right: 15px;
 }
 
 .profile-card-5{
@@ -179,7 +200,16 @@ section{
     font-size:12px;
     padding:7px 20px;
 }
-
+p.form-title
+{
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(15, 14, 14);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
 
 .profile-card-5 h5{
     color:#4E5E30;
@@ -507,6 +537,24 @@ section{
       max-width: 320px;
     }
   }
+
+  form.login input[type="email"], form.login input[type="password"]
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid rgb(14, 13, 13);
+    outline: 0;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: rgb(22, 19, 19);
+    outline: 0;
+}
 
   /* Animaciones */
 .animated {

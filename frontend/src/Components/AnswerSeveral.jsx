@@ -23,7 +23,7 @@ class AnswerSeveral extends Component {
                   : ''} 
               </h2>
         </div>
-        <div className="form-group col-md-6" id={this.props.item.order}>
+        <div className="form-group" id={this.props.item.order}>
             <label className="preg1">{this.props.order}. {this.props.item.question}</label>
             {this.props.item.answers.map(answer => (
             <div className="form-check" key={answer}>

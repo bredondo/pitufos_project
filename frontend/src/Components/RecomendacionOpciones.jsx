@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import MainRecomendacion from './MainRecomendacion';
-import Contactos from './Contactos';
-import Formacion from './Formacion';
-
-import logo from './logo3.png'
-import { Route, NavLink, HashRouter, Redirect, Switch } from "react-router-dom";
-import axios from 'axios';
+import { Route, NavLink, Redirect, Switch } from "react-router-dom";
 import Explicacion from './Explicacion';
 
-import Historial from './HistorialRespuestas';
 
 class RecomendacionOpciones extends Component {
 
@@ -28,9 +22,6 @@ class RecomendacionOpciones extends Component {
                                             </li>
                                             <li>
                                                 <NavLink className="nav-link" to="/recomendacion/formulario">Formulario</NavLink>
-                                            </li>
-                                            <li>
-                                                <NavLink className="nav-link" to="">Historial de respuestas</NavLink>
                                             </li>
                                         </ul>
                                     </div>

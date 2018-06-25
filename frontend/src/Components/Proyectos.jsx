@@ -72,7 +72,7 @@ class Proyectos extends Component {
         return (
             <section className="animated fadeIn fast">
                 <div className="container">
-                    <h1>Proyectos</h1>
+                    <h1 id="proyectostitle">Proyectos</h1>
                     <hr/>
                     <div className="row">
                         <div className="col">
@@ -107,7 +107,7 @@ class Proyectos extends Component {
                         ))}
                     </div>
                     <br/>
-                    <div className="row offset-sm-0">
+                    <div className="row offset-sm-0" id="pagproy">
                         <Pagination items={this.state.projects} onChangePage={this.onChangePage} totalItems={this.state.totalItems} pageSize={this.state.itemsPerPage} search={this.state.search} page={this.state.page}/>
                     </div>
                 </div>
