@@ -1,3 +1,14 @@
 venv
 .idea
 \.vscode/
+
+backend/tests/__pycache__/tests_recommendation.cpython-35.pyc
+
+
+backend/__pycache__/action\.cpython-35\.pyc
+
+backend/__pycache__/projects\.cpython-35\.pyc
+
+backend/__pycache__/recommendation\.cpython-35\.pyc
+
+backend/__pycache__/users\.cpython-35\.pyc

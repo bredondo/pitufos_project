@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { myConfig } from '../config.js';
+import axios from 'axios';
 
 class Contactos extends Component {
 
@@ -10,8 +11,14 @@ class Contactos extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch(`${myConfig.url}/users`);
-      const users = await res.json();
+      let config = {
+        'headers':{
+          'Content-Type': 'application/json',
+          'authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      }
+      const res = await axios.get(`${myConfig.url}/users`, config);
+      const users = await res.data;
 
       this.setState({
         contacto: users.result,
@@ -24,8 +31,8 @@ class Contactos extends Component {
   render() {
 
     return (
-        <div class="content">
-             <div class="card">
+        <div className="content animated fadeIn fast">
+             <div className="card">
              {this.state.contacto.map(item => (
                  <div className="firstinfo col-xs-12 col-sm-12 col-md-12" key={item.email}>
                         <img className="img-fluid" src={item.img} />

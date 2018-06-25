@@ -4,6 +4,7 @@ import AnswerSeveral from './AnswerSeveral';
 import { myConfig } from '../config.js';
 import axios from 'axios';
 
+
 class Recomendacion extends Component {
  
   state = {
@@ -12,26 +13,46 @@ class Recomendacion extends Component {
     stylesNext: { display: ""},
     stylesSave: { display: "none" },
     index: 0,
-    answers: [[]]
+    answers: [[]],
+    numberQuestion: 0, 
+    preg:[]
   }
 
+
+
   async componentDidMount() {
+    
     try {
-      const response = await axios.get(`${myConfig.url}/recommendationStart`);
-      const recommendation = await response.data;
+
+      let config = {
+        'headers':{
+          'Content-Type': 'application/json',
+          'authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      }
+
+      const response = await axios.get(`${myConfig.url}/recommendationStart`, config); 
+      const recommendation = await response.data; 
+
       this.setState({
         recommendation: recommendation.result,
       })
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.log(e);
     }
   }
 
   recommendationKeepsGoing(body) {
+    let config = {
+      'headers':{
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }
     return axios.post(
       `${myConfig.url}/recommendationKeepsGoing`,
       JSON.stringify(body), 
-      {headers: {'Content-Type': 'text/plain'}});
+      config);
   }
 
   handleChange(event) {
@@ -66,7 +87,6 @@ class Recomendacion extends Component {
     }
     let order = this.state.index + 1;
     if(item.answers.length > 0){
-      
       return <AnswerSeveral key={index} order={order} item={item} answers={this.state.answers[this.state.index]} handleChange={this.handleChange.bind(this)}/>;
     }
     else{
@@ -75,6 +95,7 @@ class Recomendacion extends Component {
   }
 
   handleNext(event) {
+
     if(this.state.answers[this.state.index].length > 0){
       if(this.state.index === 0){
         const body = {"technologies": this.state.answers[this.state.index]};
@@ -84,6 +105,8 @@ class Recomendacion extends Component {
             let recomendacionState = this.state.recommendation;
             recomendacionState.splice(1);
             recomendacionState = recomendacionState.concat(recommendation.result);
+            this.numberQuestion=recomendacionState.length-1;
+            console.log("umer question: " + this.numberQuestion);
             this.setState({recommendation: recomendacionState});
             this.state.answers.splice(1);
             this.setState({answers: this.state.answers});
@@ -115,6 +138,25 @@ class Recomendacion extends Component {
       }
     }
   }
+
+  displayNextQuestion(){
+
+    if(this.state.index < this.state.recommendation.length){
+      this.state.answers;
+      let answers = this.state.answers;
+      answers.push([]);
+      let index = this.state.index;
+      index++;
+      this.setState({answers: answers});
+      this.setState({index: index});
+      this.setState({stylesPrev: {display: ""}});
+      if(index === this.state.recommendation.length -1){
+        this.setState({stylesNext: {display: "none"}});
+        this.setState({stylesSave: {display: ""}});
+      }
+    }
+  }
+
   handlePrevious(event) {
     if(this.state.index > 0){
       let index = this.state.index;
@@ -128,8 +170,18 @@ class Recomendacion extends Component {
     }  
   }
 
+  handleQuestion(event){
+    this.setState({index:event.target.innerHTML-1});
+      console.log('indice pregunta: '+ this.state.index);
+  } 
+
   handleSave(event) {
-    
+    let config = {
+      'headers':{
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }
     let body = {"result":
                 {
                   "user": JSON.parse(localStorage.getItem('user')),
@@ -150,7 +202,7 @@ class Recomendacion extends Component {
     axios.post(
       `${myConfig.url}/projectRecommendation`,
       JSON.stringify(body), 
-      {headers: {'Content-Type': 'text/plain'}})
+      config)
         .then((response) =>{
           console.log("Guardado recomendación")
           localStorage.setItem('user', JSON.stringify(response.data.result));
@@ -160,43 +212,60 @@ class Recomendacion extends Component {
           console.log(error);
         });
   }
-
+ 
   render() {
 
     return (
-    <section id="team2" className="pb-5">
-        <main className="recomendacion">
-          <div className="card col-7 mx-auto">
-            <div className="card-body">
-              {
-                this.answerType(this.state.recommendation[this.state.index], this.state.index)
-              }
-              <div className="d-flex flex-nowrap">
-                
-                <div className="p-2">
-                  <button className="btn" style={this.state.stylesPrev} 
-                        onClick={this.handlePrevious.bind(this)}>
-                    <span>&laquo;</span> Atrás
-                  </button>
-                </div>
-                
-                <div className="ml-auto p-2">
-                  <button className="btn btn-dark" style={this.state.stylesNext} 
-                          onClick={this.handleNext.bind(this)} disabled={this.state.answers[this.state.index].length === 0}>
-                    Siguiente <span>&raquo;</span>
-                  </button>
-                  <button className="btn btn-dark" style={this.state.stylesSave} 
-                          onClick={this.handleSave.bind(this)} disabled={this.state.answers[this.state.index].length === 0}>
-                    <i class="far fa-save"></i> Enviar
-                  </button>
-                </div>
 
-              </div>
-              
+        <div class="container animated fadeIn fast">
+          <div className="row">
+          <div className="stepwizard">
+
+                       { this.state.index !=0 ? 
+                            <h1 className="preguntas"> Pregunta {this.state.index+1}/{this.numberQuestion+1}</h1>
+                           
+                                : ""
+                      }
+
+                       <div className="card col-7 mx-auto"> 
+                          <div class="card-body">
+                              <div className="row">
+                                      <div className="form-group" >
+                                          {
+                                            this.answerType(this.state.recommendation[this.state.index], this.state.index)
+                                          }
+                                          <div className="d-flex flex-nowrap">
+                                                
+                                                <div className="p-2">
+                                                  <button className="btn" style={this.state.stylesPrev} 
+                                                        onClick={this.handlePrevious.bind(this)}>
+                                                    <span>&laquo;</span> Atrás
+                                                  </button>
+                                                </div>
+                                            
+                                                <div className="ml-auto p-2">
+                                                  <button className="btn btn-dark" style={this.state.stylesNext} 
+                                                          onClick={this.handleNext.bind(this)} disabled={this.state.answers[this.state.index].length === 0}>
+                                                    Siguiente <span>&raquo;</span>
+                                                  </button>
+                                                  <button className="btn btn-dark" style={this.state.stylesSave} 
+                                                          onClick={this.handleSave.bind(this)} disabled={this.state.answers[this.state.index].length === 0}>
+                                                    <i class="far fa-save"></i> Enviar
+                                                  </button>
+                                                </div>
+                                                
+                                          </div>
+                                    </div>
+                              </div>
+                            
+                          </div>          
+                         
+                    </div>
             </div>
+    
           </div>
-        </main>
-     </section>
+        </div>
+
     );
   }
 }
