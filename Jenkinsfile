@@ -8,7 +8,7 @@ node {
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
     }
-    /*stage("build docker Back image"){
+    stage("build docker Back image"){
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("backend"){
               sh '''
@@ -38,7 +38,7 @@ node {
                sh "python uploadFront.py"  
             }
         }
-    }*/
+    }
     
     stage("acceso a la Base de Datos"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
