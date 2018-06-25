@@ -63,6 +63,17 @@ body{
     color:rgb(96, 166, 206);
 }
 
+.card {
+    min-height: 96%;
+    max-height: 96%;
+}
+
+hr {
+  display:block;
+  width: 98%;
+  background-color:black;
+}
+
 section {
     padding: 10px 0;
 }
@@ -152,6 +163,10 @@ section .section-title {
 
 
 /*Formacion*/
+.formacion{
+    background-color:#f2f2f2;
+}
+
 #fondoDiv{
     background-image: url(libro.jpg);
     background-color: lightgray;
