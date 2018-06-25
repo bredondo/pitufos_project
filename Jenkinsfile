@@ -23,7 +23,7 @@ node {
             }
         }
     }
-    stage("build docker Front image"){
+    /*stage("build docker Front image"){
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("frontend"){
               sh '''
@@ -38,7 +38,7 @@ node {
                sh "python uploadFront.py"  
             }
         }
-    }
+    }*/
     
     stage("acceso a la Base de Datos"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
