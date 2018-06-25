@@ -74,10 +74,6 @@ class App extends Component {
                         </nav>
                     </header>
                     <div>
-<<<<<<< HEAD
-                        <Route exact path="/" component={Formacion}/>
-                        <Route path="/contactos" component={Contactos}/>
-=======
                         <Switch>
                             <PrivateRoute exact path="/" component={Formacion}/>
                             <PrivateRoute path="/recomendacion" component={RecomendacionOpciones}/>
@@ -87,7 +83,6 @@ class App extends Component {
                             <Route path='/login' render={(props)=>(<Login {...props} updateIsAuth={this.updateIsAuth}/>)}/>
                             <Redirect to='/'/>
                         </Switch>
->>>>>>> dev
                     </div>
                 </div>
             </HashRouter>
