@@ -35,10 +35,10 @@ class ProjectRecomendacion extends Component {
                 </div>
 
               </div></h1>
-               <div className = "row">
+               <div className="row">
                   {this.state.projects.map(item => (
                     <div className="col-xs-12 col-sm-6 col-md-4"  key={item.name}>
-                           <div className={item.description.length < 1 ? "card2 h-100" : "card1 h-100"} id={item.description.length < 1 ? "card2" : "card1"}> 
+                           <div className={item.description.length < 1 ? "card2 h-100" : (item.porcentaje*100 > 69 && item.porcentaje*100<80) ? "cardYellow": (item.porcentaje*100 > 79 && item.porcentaje*100<90) ? "cardOrange" : "cardGreen"} id={item.description.length < 1 ? "card2" : (item.porcentaje*100 > 69 && item.porcentaje*100<80) ? "cardYellow": (item.porcentaje*100 > 79 && item.porcentaje*100<90) ? "cardOrange" : "cardGreen"}>
                             <div  key={item.name} >
                                   <div className="row1">
                                     <h1 id="proyTit">{item.name} 

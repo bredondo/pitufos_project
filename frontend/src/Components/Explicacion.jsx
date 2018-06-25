@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import telf from './telf.jpg';
-
+import resultado from './resultado.png'
 
 class Explicacion extends Component {
   render() {
@@ -14,27 +14,31 @@ class Explicacion extends Component {
                                     adecue a tus necesidades, según tu sabiduría, preferencia de horario, movilidad y teletrabajo.
                                 </p>
                                 <p className="pExpli">
-                                    Cuando se hayan contestado todas las preguntas habrá que pulsar en el <span id="cero">botón de enviar</span>, y seguidamente, 
-                                    aperecerá un resultado con los tres proyectos más acordes según tus preferencias, ordenados según la coincidencia de tus respuestas
-                                    con los proyectos ya existentes.
+                                    Cuando se hayan contestado todas las preguntas aparecerá un resultado con los tres proyectos más acordes según tus preferencias,
+                                    ordenados según la coincidencia de tus respuestas con los proyectos ya existentes. Aparecerá:
                                     </p>
                                     <p className="pExpli">
 
-                                    De los tres proyectos resultantes, saldrá:
-                                    </p>
-                                    <p className="pExpli">-En color <span id="verde">verde</span> si el porcentaje coincidente es del 90-100%.</p>
-                                    <p className="pExpli">-En color <span id="naranja">naranja</span> si el porcentaje coincidente es del 80-90%.</p>
-                                    <p className="pExpli">-En color <span id="amarillo">amarillo</span> si el porcentaje coincidente es del 70-80%.</p>
-                                    <p className="pExpli">
-                                    Podrás consultar todas tus preguntas contestadas en la pestaña de 'Historial de respuestas'.
+
+                                    <div className="clearfix">
+                                        <img id="imgResultado" src={resultado}/>
+                                        <div id="pExpli2">
+                                        <p>-En color <span id="verde">verde</span> si el porcentaje coincidente es del 90-100%.</p>
+                                        <p>-En color <span id="naranja">naranja</span> si el porcentaje coincidente es del 80-90%.</p>
+                                        <p>-En color <span id="amarillo">amarillo</span> si el porcentaje coincidente es del 70-80%.</p>
+                                        </div>
+                                    </div>
+
+
+                                    <p>- Podrás consultar todas tus preguntas contestadas en la pestaña de 'Historial de respuestas'. </p>
 
                                     
                                     </p>
                                   
-                                    
-                               
+
                                 <p id="resp"className="pExpli">
-                                <img className="img2" src={telf} />
+                                 <a title="telefono" href="https://www.bbvanexttechnologies.com/">
+                                <img className="img2" src={telf}  alt="telefono"/></a>
                                     Para mas información contactar con un responsable.
                                     
                                 </p>

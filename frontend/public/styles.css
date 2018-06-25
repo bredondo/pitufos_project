@@ -69,9 +69,7 @@ section .section-title {
 /* Optional theme */
 
 /*@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css');*/
-body {
-    margin-top:30px;
-}
+
 
 /*Step fromulario*//*Start Wizard*/
 
@@ -132,10 +130,9 @@ body {
 }
 
 /*End Wizard*/
-#team2 .card {
+.card {
     border: none;
-    border-bottom: 1px solid rgba(10, 10, 10, 0.2);
-
+    align-content:center;
 }
 
 #team3 .card{
@@ -192,15 +189,33 @@ section{
 
 }
 
-#card1 {
+#cardOrange {
    
 	text-align: left;
 	padding: 50px 50px;
     color:rgb(128, 125, 125);
     font-family: 'Raleway', Arial, sans-serif;
-    border: 2px solid;
+    border: 2px solid orange;
     display: grid;
-    }
+}
+#cardYellow {
+
+	text-align: left;
+	padding: 50px 50px;
+    color:rgb(128, 125, 125);
+    font-family: 'Raleway', Arial, sans-serif;
+    border: 2px solid yellow;
+    display: grid;
+}
+#cardGreen {
+
+	text-align: left;
+	padding: 50px 50px;
+    color:rgb(128, 125, 125);
+    font-family: 'Raleway', Arial, sans-serif;
+    border: 2px solid green;
+    display: grid;
+}
 
 .pregunta1{
     font-size: 18px;
@@ -255,15 +270,14 @@ section{
     #desc{
         font-size: 23px;
         text-align: left;
+        height: 150px;
         font-family: 'Raleway', Arial, sans-serif;
-        border-bottom: 3px solid rgba(10, 10, 10, 0.2);
     }
 
     #info{
         font-weight: bold;
         color:rgb(87, 83, 83);
         font-family: 'Raleway', Arial, sans-serif;
-
     }
     
     .card1 #descProy{
@@ -318,8 +332,9 @@ section{
   }
 
   .firstinfo .img-fluid {
-    width: 200px;
-    height: 200px;
+    max-width: 30%;
+    height: 40%;
+    display:block;
     margin-right: 50px;
     margin-top: 15px;
     border-radius: 50%;
@@ -338,17 +353,17 @@ section{
   .tabbable-line > .nav-tabs > li {
     margin-right: 2px;
   }
- 
+
   .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
     border-bottom: 4px solid #fbcdcf;
   }
- 
- 
+
+
   .tabbable-line > .nav-tabs > li.active {
     border-bottom: 4px solid rgb(96, 166, 206);
     position: relative;
   }
-  
+
   .tabbable-line > .tab-content {
     margin-top: -3px;
     background-color: #fff;
@@ -389,27 +404,34 @@ section{
       padding-bottom: 30px;
       padding-top: 10px;
   }
+  #imgResultado{
+      float:left;
+      margin-left: 40px;
+      margin-bottom: 10px;
+      margin-right: auto;
 
+    }
   .img2{
       width: 19px;
       height: 19px;
       margin-right: 13px;
   }
 
+  .preguntas{
+    text-align: center;
+  }
+
 
   .colorYellow{
     color: yellow;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
   }
   .colorGreen{
     color:green;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
   }
   .colorOrange{
     color:orange;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
   }
 

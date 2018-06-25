@@ -71,7 +71,6 @@ class Recomendacion extends Component {
     }
     let order = this.state.index + 1;
     if(item.answers.length > 0){
-      
       return <AnswerSeveral key={index} order={order} item={item} answers={this.state.answers[this.state.index]} handleChange={this.handleChange.bind(this)}/>;
     }
     else{
@@ -202,23 +201,13 @@ class Recomendacion extends Component {
           <div className="stepwizard">
 
                        { this.state.index !=0 ? 
-                            <div className="stepwizard-row">
-                                    {this.state.recommendation.map(( item, index )=>(
-                                        index+2===2 ?
-                                              <div className="stepwizard-step">
-                                                <a class="btn btn-default btn-circle active-step" href={"#step-"+index+2} data-toggle="tab" onClick={this.handleNext.bind(this)}>{index+2}</a>
-                                              </div> : 
-                                              <div className="stepwizard-step">
-                                                <a class="btn btn-default btn-circle" disabled="disabled" href={"#step-"+index+2} data-toggle="tab">{index+2}</a>
-                                              </div>
-                                      ))}
-                            </div> 
+                            <h1 className="preguntas"> Pregunta {this.state.index+1}/{this.numberQuestion+1}</h1>
                            
                                 : ""
-                      }  
+                      }
 
                        <div className="card col-7 mx-auto"> 
-                          <div class="card-body" id={'step-' + this.state.index}>
+                          <div class="card-body">
                               <div className="row">
                                       <div className="form-group" >
                                           {
@@ -250,7 +239,7 @@ class Recomendacion extends Component {
                             
                           </div>          
                          
-                    </div>     
+                    </div>
             </div>
     
           </div>
