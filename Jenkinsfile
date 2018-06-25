@@ -161,5 +161,5 @@ node {
               sh "ssh ec2-user@10.1.5.32 ls -la"
         }       
     }   
-        
+    }   
 }
