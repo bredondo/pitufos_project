@@ -8,7 +8,11 @@ node {
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
     }
+<<<<<<< HEAD
     stage("build docker Back image"){
+=======
+    /*stage("build docker Back image"){
+>>>>>>> sistemas
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("backend"){
               sh '''
@@ -38,8 +42,26 @@ node {
                sh "python uploadFront.py"  
             }
         }
+    }*/
+    
+    stage("acceso a la Base de Datos"){
+        withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
+                                           keyFileVariable: 'private_key', 
+                                           passphraseVariable: '', 
+                                           usernameVariable: '')]){ 
+                      sh "sudo cp ${private_key} ~/.ssh/id_rsa"
+                      //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
+                      sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
+            //sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker rmi \$(sudo docker images -q)"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker rm \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"
+              sh "ssh ec2-user@10.1.3.168 ls -la"
+        }    
     }
     
+<<<<<<< HEAD
     stage("acceso a la Base de Datos"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
@@ -57,6 +79,8 @@ node {
         }    
     }
     
+=======
+>>>>>>> sistemas
     stage("acceso al Back"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
@@ -72,8 +96,13 @@ node {
             //sh "ssh ec2-user@10.1.3.128 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.3.128 sudo docker rmi \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.3.128 sudo docker rm \$(sudo docker ps -a -q)"
+<<<<<<< HEAD
             sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
             sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+=======
+            //sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
+            //sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+>>>>>>> sistemas
               sh "ssh ec2-user@10.1.3.128 ls -la"
         }       
     }
@@ -93,8 +122,13 @@ node {
             //sh "ssh ec2-user@10.1.3.75 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.3.75 sudo docker rmi \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.3.75 sudo docker rm \$(sudo docker ps -a -q)"
+<<<<<<< HEAD
             sh "ssh ec2-user@10.1.3.75 sudo docker pull pitufosgraduates/${imagen_front}"
             sh "ssh ec2-user@10.1.3.75 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"
+=======
+            //sh "ssh ec2-user@10.1.3.75 sudo docker pull pitufosgraduates/${imagen_front}"
+            //sh "ssh ec2-user@10.1.3.75 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"
+>>>>>>> sistemas
               sh "ssh ec2-user@10.1.3.75 ls -la"
         }
     }
@@ -115,8 +149,13 @@ node {
             //sh "ssh ec2-user@10.1.5.103 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.103 sudo docker rmi \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.103 sudo docker rm \$(sudo docker ps -a -q)"
+<<<<<<< HEAD
             sh "ssh ec2-user@10.1.5.103 sudo docker pull pitufosgraduates/${imagen_back}"
             sh "ssh ec2-user@10.1.5.103 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+=======
+            //sh "ssh ec2-user@10.1.5.103 sudo docker pull pitufosgraduates/${imagen_back}"
+            //sh "ssh ec2-user@10.1.5.103 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+>>>>>>> sistemas
               sh "ssh ec2-user@10.1.5.103 ls -la"
      }       
         
@@ -135,8 +174,13 @@ node {
             //sh "ssh ec2-user@10.1.5.186 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.186 sudo docker rmi \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.186 sudo docker rm \$(sudo docker ps -a -q)"
+<<<<<<< HEAD
             sh "ssh ec2-user@10.1.5.186 sudo docker pull pitufosgraduates/${imagen_back}"
             sh "ssh ec2-user@10.1.5.186 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+=======
+            //sh "ssh ec2-user@10.1.5.186 sudo docker pull pitufosgraduates/${imagen_back}"
+            //sh "ssh ec2-user@10.1.5.186 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+>>>>>>> sistemas
               sh "ssh ec2-user@10.1.5.186 ls -la"
         }       
      }
@@ -156,10 +200,19 @@ node {
             //sh "ssh ec2-user@10.1.5.32 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.32 sudo docker rmi \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.32 sudo docker rm \$(sudo docker ps -a -q)"
+<<<<<<< HEAD
             sh "ssh ec2-user@10.1.5.32 sudo docker pull pitufosgraduates/${imagen_back}"
             sh "ssh ec2-user@10.1.5.32 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
               sh "ssh ec2-user@10.1.5.32 ls -la"
         }       
     }   
     }   
+=======
+            //sh "ssh ec2-user@10.1.5.32 sudo docker pull pitufosgraduates/${imagen_back}"
+            //sh "ssh ec2-user@10.1.5.32 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+              sh "ssh ec2-user@10.1.5.32 ls -la"
+        }       
+    }   
+        
+>>>>>>> sistemas
 }

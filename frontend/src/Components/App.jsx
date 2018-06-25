@@ -76,7 +76,6 @@ class App extends Component {
                     <div>
 <<<<<<< HEAD
                         <Route exact path="/" component={Formacion}/>
-                        <Route path="/recomendacion" component={Recomendacion}/>
                         <Route path="/contactos" component={Contactos}/>
 =======
                         <Switch>
