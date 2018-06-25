@@ -6,7 +6,7 @@ class Explicacion extends Component {
   render() {
     return (
          
-                <div className="container6" style={{color:'black'}}>
+                <div className="container6 animated fadeIn fast" style={{color:'black'}}>
                 
                             <h1 className="explitit display-2 mb-2">¿En qué consiste este <span style={{color:'rgb(96, 166, 206)'}}>Formulario</span>?</h1>
                             <h5> 

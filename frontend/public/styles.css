@@ -1,6 +1,13 @@
+
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,800);
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 /*Navbar*/
+body{
+    font-family: 'Raleway', Arial, sans-serif;
+}
+.fa-circle {
+    width:10px;
+    font-size: 0.4em;
+ }
 .navbar-dark{
     background-color: #000 !important;
     font-family: 'Raleway', Arial, sans-serif;
@@ -52,6 +59,9 @@
 
 }
 
+.fa-check {
+    color:rgb(96, 166, 206);
+}
 
 section {
     padding: 10px 0;
@@ -103,6 +113,7 @@ section .section-title {
     background-color: #ccc;
     z-order: 0;
     
+
 }
 
 .stepwizard-step {    
@@ -131,7 +142,6 @@ section .section-title {
 
 /*End Wizard*/
 .card {
-    border: none;
     align-content:center;
 }
 
@@ -144,6 +154,8 @@ section .section-title {
 /*Formacion*/
 #fondoDiv{
     background-image: url(libro.jpg);
+    background-color: lightgray;
+    border-color: lightgray;
 }
 
 .view {
@@ -187,6 +199,7 @@ section{
     text-align: center;
     font-family: 'Raleway', Arial, sans-serif;
 
+
 }
 
 #cardOrange {
@@ -197,6 +210,14 @@ section{
     font-family: 'Raleway', Arial, sans-serif;
     border: 2px solid orange;
     display: grid;
+    }
+
+#card1 .content {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 15px 25px 15px;
 }
 #cardYellow {
 
@@ -216,9 +237,26 @@ section{
     border: 2px solid green;
     display: grid;
 }
+#cardBlack {
 
+	text-align: left;
+	padding: 50px 50px;
+    color:rgb(128, 125, 125);
+    font-family: 'Raleway', Arial, sans-serif;
+    border: 2px solid black;
+    display: grid;
+}
 .pregunta1{
     font-size: 18px;
+}
+.card1 {
+    position: relative;
+    box-shadow: 0 1px 3px 0 #d4d4d5,0 0 0 1px #d4d4d5;
+    transition: box-shadow 0.1s ease, transform 0.1s ease;
+    margin-bottom: 30px;
+  }
+  .card1 {
+    height: auto;
     width: auto;
     font-weight: bold;
 }
@@ -341,7 +379,6 @@ section{
     
   }
 
-
   /*Menu recomendacion*/
 
 /* Tabs panel */
@@ -457,4 +494,45 @@ section{
 
   .descProy2{
       margin-top: 20px;
+  }
+  
+/*Login*/
+  @media all and (min-width: 480px) {
+    .login {
+      padding: 60px 0;
+    }
+  
+    .login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }
+
+  /* Animaciones */
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .fast {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fadeIn {
+    animation-name: fadeIn;
   }

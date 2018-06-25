@@ -1,26 +1,35 @@
 import React, { Component } from "react";
+/* Components */
 import MainRecomendacion from './MainRecomendacion';
 import Contactos from './Contactos';
 import Formacion from './Formacion';
 import RecomendacionOpciones from './RecomendacionOpciones';
+import { PrivateRoute } from './PrivateRoute';
+import Ajustes from './Ajustes';
+import Login from "./Login";
+import Proyectos from "./Proyectos";
 
-import logo from './logo3.png'
-import { Route, NavLink, HashRouter } from "react-router-dom";
+import { Route, NavLink, HashRouter, Redirect, Switch } from "react-router-dom";
 import { myConfig } from '../config.js';
 import axios from 'axios';
+import logo from './logo3.png'
+
 
 class App extends Component {
-
-    async componentDidMount(){
-        axios.get(`${myConfig.url}/user/carlos.alonso@beeva.com`)
-            .then(function (response) {
-                localStorage.setItem('user', JSON.stringify(response.data.result[0]));
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+    constructor(props) {
+        super(props);
+        this.updateIsAuth = this.updateIsAuth.bind(this);
+        this.state = {
+          isAuth: false
+        };
+      }
+    updateIsAuth(value){
+        this.setState({isAuth: value});
     }
-    
+    logout = () => {
+        this.setState({isAuth: false});
+        localStorage.clear();
+    }
     render() {
         return (
             <HashRouter>
@@ -32,26 +41,48 @@ class App extends Component {
                             </a>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-                                <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
+                                {localStorage.getItem('user') || this.state.isAuth ?  
                                     <ul className="nav navbar-nav"> 
                                         <li className="nav-item">
-                                            <NavLink className="nav-link" exact to="/">Formación</NavLink>
+                                        <NavLink className="nav-link" exact to="/">Formación</NavLink>
                                         </li>
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/recomendacion">Recomendacion de proyecto</NavLink>
                                         </li>
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/contactos">Tus Compañeros</NavLink>
-                                        </li> 
-                                    
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/proyectos">Proyectos</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/login" onClick={this.logout}>Salir</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/ajustes"><i className="fas fa-cog"></i></NavLink>
+                                        </li>
                                     </ul>
-                                </div>
+                                    :
+                                    <ul className="nav navbar-nav"> 
+                                        <li className="nav-item">
+                                        <NavLink className="nav-link" to="/login">Login</NavLink>
+                                        </li> 
+                                    </ul> 
+                                }
+                            </div>
                         </nav>
                     </header>
                     <div>
-                        <Route exact path="/" component={Formacion}/>
-                        <Route path="/recomendacion" component={RecomendacionOpciones}/>
-                        <Route path="/contactos" component={Contactos}/>
+                        <Switch>
+                            <PrivateRoute exact path="/" component={Formacion}/>
+                            <PrivateRoute path="/recomendacion" component={RecomendacionOpciones}/>
+                            <PrivateRoute path="/contactos" component={Contactos}/>
+                            <PrivateRoute path="/ajustes" component={Ajustes}/>
+                            <PrivateRoute path="/proyectos" component={Proyectos}/>
+                            <Route path='/login' render={(props)=>(<Login {...props} updateIsAuth={this.updateIsAuth}/>)}/>
+                            <Redirect to='/'/>
+                        </Switch>
                     </div>
                 </div>
             </HashRouter>
