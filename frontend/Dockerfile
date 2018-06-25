@@ -3,7 +3,7 @@ FROM node:8.11
 RUN apt-get update
 RUN apt-get -y install npm
 
-RUN git clone --recursive -b sistemas https://github.com/bredondo/pitufos_project.git
+RUN git clone --recursive -b sys_def https://github.com/bredondo/pitufos_project.git
 
 WORKDIR /pitufos_project/frontend
 
