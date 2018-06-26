@@ -112,8 +112,8 @@ node {
             //sh "ssh ec2-user@10.1.5.103 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.103 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.103 sudo docker rm -f \$(sudo docker ps -a -q)"
-            sh "ssh ec2-user@10.1.5.103 sudo docker pull pitufosgraduates/${imagen_back}"
-            sh "ssh ec2-user@10.1.5.103 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+              sh "ssh ec2-user@10.1.5.103 sudo docker pull mongo:3.6.4"
+              sh "ssh ec2-user@10.1.5.103 sudo docker run -d -p 27017:27017 mongo:3.6.4"
      }       
         
      stage("Acceso al Back HA"){
@@ -131,8 +131,8 @@ node {
             //sh "ssh ec2-user@10.1.5.186 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.186 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.186 sudo docker rm -f \$(sudo docker ps -a -q)"
-            sh "ssh ec2-user@10.1.5.186 sudo docker pull pitufosgraduates/${imagen_back}"
-            sh "ssh ec2-user@10.1.5.186 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+              sh "ssh ec2-user@10.1.5.186 sudo docker pull pitufosgraduates/${imagen_back}"
+              sh "ssh ec2-user@10.1.5.186 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
         }       
      }
     
@@ -151,9 +151,9 @@ node {
             //sh "ssh ec2-user@10.1.5.32 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.32 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.32 sudo docker rm -f \$(sudo docker ps -a -q)"
-            sh "ssh ec2-user@10.1.5.32 sudo docker pull pitufosgraduates/${imagen_back}"
-            sh "ssh ec2-user@10.1.5.32 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+              sh "ssh ec2-user@10.1.5.32 sudo docker pull pitufosgraduates/${imagen_front}"
+              sh "ssh ec2-user@10.1.5.32 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"
         }       
-    }   
+      }   
     }
 }
