@@ -230,7 +230,7 @@ class Recomendacion extends Component {
                        <div className="card col-7 mx-auto"> 
                           <div class="card-body">
                               <div className="row">
-                                      <div className="form-group" >
+                                      <div className="form-group ancho" >
                                           {
                                             this.answerType(this.state.recommendation[this.state.index], this.state.index)
                                           }

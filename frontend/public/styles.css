@@ -613,3 +613,6 @@ p.form-title
       font-weight: bold;
   }
 
+  .ancho {
+      width: 100%;
+  }
