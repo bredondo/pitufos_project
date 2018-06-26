@@ -18,12 +18,8 @@ class Formacion extends Component {
                     </div>
                 </div>
             </div>
-
-<<<<<<< HEAD
-            <div style={{margin:'50px'}} className="d-flex justify-content-center">
-=======
+      
             <div className="d-flex justify-content-center">
->>>>>>> dev
                 <div className="row">
 
                     <div className="col-md-6">
@@ -37,17 +33,6 @@ class Formacion extends Component {
                               </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-                    <div className="card" id="divTemario" style={{border:' 2px solid #AEB6BF'}}>
-                        <h2 style={{margin:'40px'}}>TEMARIO</h2>
-                                <p>
-                                <a className="btn btn-outline-dark btn-lg btn-block" href={myConfig.url + "/temario.pdf"} target="_blank" style={{width:'200px', margin:'auto'}}> Ver</a>
-                                </p>
-                                <p>
-                                <a className="btn btn-outline-dark btn-lg btn-block" href={myConfig.url + "/temario.pptx"} download style={{width:'200px', margin:'auto'}}> Descargar</a>
-                                </p>
-
-=======
 
                     <div className="col-md-6">
                         <div className="card" style={{height:'auto'}}>
@@ -64,7 +49,6 @@ class Formacion extends Component {
                                     <a href={myConfig.url + "/temario.pptx"} className="btn btn-outline-dark btn-sm btn-block" download><i className="fas fa-file-powerpoint"></i> Descargar</a>
                               </div>
                         </div>
->>>>>>> dev
                     </div>
                 </div>
             </div>
