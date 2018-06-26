@@ -78,8 +78,8 @@ class Proyectos extends Component {
                         <div className="col">
                             <div className="input-group mb-3">
                                 <input type="text" className="form-control" placeholder="Buscador..."  id="search" value={this.state.search} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
-                                <div className="input-group-prepend">
-                                    <button className="btn btn-outline-primary" type="button" disabled={this.state.search.length === 0} onClick={this.handleKeyPress}>Buscar</button>
+                                <div className="input-group-prepend ">
+                                    <button className="btn btn-outline-dark" type="button" disabled={this.state.search.length === 0} onClick={this.handleKeyPress}><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                         </div>

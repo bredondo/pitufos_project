@@ -15,25 +15,16 @@ class Explicacion extends Component {
                                 </p>
                                 <p className="pExpli">
                                     Cuando se hayan contestado todas las preguntas aparecerá un resultado con los tres proyectos más acordes según tus preferencias,
-                                    ordenados según la coincidencia de tus respuestas con los proyectos ya existentes. Aparecerá:
-                                    </p>
-                                    <p className="pExpli">
-
-
-                                    <div className="clearfix">
-                                        <img id="imgResultado" src={resultado}/>
-                                        <div id="pExpli2">
-                                        <p>-En color <span id="verde">verde</span> si el porcentaje coincidente es del 90-100%.</p>
-                                        <p>-En color <span id="naranja">naranja</span> si el porcentaje coincidente es del 80-90%.</p>
-                                        <p>-En color <span id="amarillo">amarillo</span> si el porcentaje coincidente es del 70-80%.</p>
+                                    ordenados según la coincidencia de tus respuestas con los proyectos ya existentes.
+                                    <br></br> Las posibles opciones son las siguientes:
+                                </p>
+                                    <div className="pExpli center-block">
+                                        <div className="clearfix" id="explicacionResultado">
+                                            <img id="imgResultado" src={resultado} />
+                                            <img id="imgResultado" src={resultado} />
+                                            <img id="imgResultado" src={resultado} />
                                         </div>
                                     </div>
-
-
-                                    <p>- Podrás consultar todas tus preguntas contestadas en la pestaña de 'Historial de respuestas'. </p>
-
-                                    
-                                    </p>
                                   
 
                                 <p id="resp"className="pExpli">
