@@ -34,7 +34,6 @@ body{
     background-color: rgb(96, 166, 206);
     height: 100%;
     width: 100%;
-
 }
 
 /* Contactos */
@@ -170,6 +169,8 @@ section .section-title {
 
 #fondoDiv{
     background-image: url(libro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: lightgray;
     border-color: lightgray;
 }
@@ -200,6 +201,13 @@ section{
     position: fixed;
     left:0;
 
+}
+.formacion{
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    position: absolute;
+    left:0;
 }
 
 .naveoptions{
@@ -598,4 +606,9 @@ p.form-title
   
   .fadeIn {
     animation-name: fadeIn;
+  }
+
+  #textheader{
+      text-align: center;
+      font-weight: bold;
   }

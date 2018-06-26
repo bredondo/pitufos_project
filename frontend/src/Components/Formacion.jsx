@@ -12,13 +12,16 @@ class Formacion extends Component {
                         <div className="textForm text-center ">
                             <h1 className="display-2 mb-2">¿Qué es <span style={{color:'rgb(96, 166, 206)'}}>Blue</span> Graduates?</h1>
                             <h5>
-                            <p>Con este programa podrás crecer como profesional, aprender todo lo que
-                                quieras y más, y rodearte de gente que haga de tu día a día.</p></h5>
+                           </h5>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <p id="textheader">Con este programa podrás crecer como profesional, aprender todo lo que
+                                quieras, superarte día a día y rodearte de gente maravillosa.
+             <p id="textheader">Lo único que te hace falta son ganas de aprender!</p>
+            </p>
+            
             <div className="d-flex justify-content-center">
                 <div className="row">
 
