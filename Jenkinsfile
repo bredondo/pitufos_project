@@ -1,13 +1,16 @@
 node {
+    
     stage("Clone repo"){
          checkout scm
     }
+    
     stage("Dockerhub login"){
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
                           usernameVariable: 'USERNAME', 
                           passwordVariable: 'PASSWORD']]) {           
                                     sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
     }
+    
     stage("build docker Back image"){
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("backend"){
@@ -23,6 +26,7 @@ node {
             }
         }
     }
+    
     stage("build docker Front image"){
         wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
             dir ("frontend"){
@@ -51,8 +55,8 @@ node {
             //sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.3.168 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.3.168 sudo docker rm -f \$(sudo docker ps -a -q)"
-            sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
-            sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"
+              sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
+              sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"
         }    
     }
     
@@ -97,7 +101,7 @@ node {
     }
 
     ///////ZONA DE DISPONIBILIDAD C ///////////
-    stage("Acceso a la DB HA"){
+    stage("acceso a la DB HA"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
                                            passphraseVariable: '', 
@@ -105,18 +109,15 @@ node {
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
                       //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
-                          usernameVariable: 'USERNAME', 
-                          passwordVariable: 'PASSWORD']]) {           
-                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
             //sh "ssh ec2-user@10.1.5.103 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.103 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.103 sudo docker rm -f \$(sudo docker ps -a -q)"
               sh "ssh ec2-user@10.1.5.103 sudo docker pull mongo:3.6.4"
               sh "ssh ec2-user@10.1.5.103 sudo docker run -d -p 27017:27017 mongo:3.6.4"
-     }       
-        
-     stage("Acceso al Back HA"){
+        }    
+    }
+ 
+    stage("Acceso al Back HA"){
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh_privada', 
                                            keyFileVariable: 'private_key', 
                                            passphraseVariable: '', 
@@ -147,13 +148,13 @@ node {
             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-login', 
                           usernameVariable: 'USERNAME', 
                           passwordVariable: 'PASSWORD']]) {           
-                                    sh 'sudo docker login -u $USERNAME -p $PASSWORD'}
+                sh 'sudo docker login -u $USERNAME -p $PASSWORD'
+            }
             //sh "ssh ec2-user@10.1.5.32 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.32 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.32 sudo docker rm -f \$(sudo docker ps -a -q)"
               sh "ssh ec2-user@10.1.5.32 sudo docker pull pitufosgraduates/${imagen_front}"
               sh "ssh ec2-user@10.1.5.32 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"
-        }       
-      }   
+        }
     }
 }
