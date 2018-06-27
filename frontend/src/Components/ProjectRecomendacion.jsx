@@ -18,7 +18,21 @@ class ProjectRecomendacion extends Component {
     this.props.handleAgain(event);
     event.preventDefault();
   }
-
+  getComponent(show){
+    return show ? <i className="fas fa-map-marker"></i> : '';
+  }
+  getComponent2(show){
+    return show ? <i className="far fa-clock"></i>  : '';
+  }
+  getComponent3(show){
+    return show ? <i className="fas fa-code"></i>: '';
+  }
+  getComponent4(show){
+    return show ? <i className="far fa-calendar-alt"></i>  : '';
+  }
+  getComponent5(show){
+    return show ? <i className="fas fa-home"></i> : '';
+  }
   render() {
 
     return (
@@ -29,7 +43,7 @@ class ProjectRecomendacion extends Component {
                <h1 id="proy">Proyectos recomendados (% coincidencia) 
                <div className="d-flex flex-nowrap">
                 <div className="col-md-12 center-block">
-                  <button className="btn btn-dark " onClick={this.handleAgain.bind(this)}>
+                  <button className="btn btn-dark" onClick={this.handleAgain.bind(this)}>
                     Realizar de nuevo 
                   </button>
                 </div>
@@ -48,10 +62,10 @@ class ProjectRecomendacion extends Component {
                                           <p id="desc">{item.description}</p>
                                   </div>
                                   <div className="row2">
-                                        <p id="info" > 
-{item.description.length < 1 ? '' : 'Lugar de trabajo: '} <i className="fas fa-map-marker"></i> </p><p> {item.location} </p>
-                                        <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} <i class="far fa-clock"></i></p> <p>{item.workday}</p>
-                                        <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} <i class="fas fa-code"></i></p>
+                                        <p id="info">{item.description.length < 1 ? '' : `Lugar de trabajo:  `}{this.getComponent(item.description.length > 1)} </p>
+                                        <p> {item.location} </p>
+                                        <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} {this.getComponent2(item.description.length > 1)}  </p> <p>{item.workday}</p>
+                                        <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} {this.getComponent3(item.description.length > 1)} </p>
                                         <ul>
                                           {item.technologies.map(technology => (
                                             <li key={technology}>{technology}</li>
@@ -59,8 +73,8 @@ class ProjectRecomendacion extends Component {
                                         </ul>
                                   </div>
                                  <div className="row3">
-                                    <p id="info">{item.description.length < 1 ? '' : 'Horario de la jornada: '} <i class="far fa-calendar-alt"></i></p> <p>{item.schedule}</p>
-                                    <p id="info">{item.description.length < 1 ? '' : 'Días de teletrabajo: '}<i class="fas fa-home"></i></p> <p>{item.telecommuting}</p>
+                                    <p id="info">{item.description.length < 1 ? '' : 'Horario de la jornada: '}{this.getComponent4(item.description.length > 1)} </p> <p>{item.schedule}</p>
+                                    <p id="info">{item.description.length < 1 ? '' : 'Días de teletrabajo: '} {this.getComponent5(item.description.length > 1)} </p> <p>{item.telecommuting}</p>                               
                                  </div>
                                    </div>
                             </div>

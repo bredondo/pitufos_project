@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import telf from './telf.jpg';
 import resultado from './resultado.png'
 import resultadoVerde from './expliverde.png'
+import resultadoAmarillo from './resultadoAmarillo.png'
 
 class Explicacion extends Component {
   render() {
@@ -25,7 +26,7 @@ class Explicacion extends Component {
                                     </p>
                                     <div className="pExpli center-block">
                                         <div className="clearfix" id="explicacionResultado">
-                                            <img id="imgResultado" src={resultado} />
+                                            <img id="imgResultado" src={resultadoAmarillo} />
                                             <img id="imgResultado" src={resultado} />
                                             <img id="imgResultado" src={resultadoVerde} />
                                         </div>
