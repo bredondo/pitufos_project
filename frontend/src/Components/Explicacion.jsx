@@ -3,7 +3,6 @@ import telf from './telf.jpg';
 import resultado from './resultado.png'
 import resultadoVerde from './explicacionVerde.png'
 import resultadoAmarillo from './resultadoAmarillo.png'
-import Recomendacion from './Recomendacion'
 class Explicacion extends Component {
 
 
