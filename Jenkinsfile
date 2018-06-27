@@ -60,7 +60,6 @@ node {
             //NO BORRA LAS IMAGENES//sh "ssh ec2-user@10.1.3.168 sudo docker image prune -f
               sh "ssh ec2-user@10.1.3.168 sudo service docker restart
               sh "ssh ec2-user@10.1.3.168 sudo docker container prune -f
-            
               sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
               sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"
         }    
