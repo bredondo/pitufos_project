@@ -43,8 +43,10 @@ class Login extends Component {
       this.props.history.push('/');//`${myConfig.url}/`
       this.setState({message: ''});
     } catch (error) {
-
-      this.setState({message: 'Login incorrect, please try again'});
+      this.setState({message: 'Error al iniciar sesión, prueba otra vez.'});
+      setTimeout(()=>{
+        this.setState({message: ''})
+      }, 2000);
     }
   }
 
@@ -54,7 +56,7 @@ class Login extends Component {
         { this.state.message !== '' ?
 
             <div class="alert alert-danger">
-              <strong>Danger!</strong> Login incorrect, please try again!.
+              <strong>¡Peligro!</strong> ¡Error al iniciar sesión, prueba otra vez!
             </div>
 
          : this.state.message === ''}
