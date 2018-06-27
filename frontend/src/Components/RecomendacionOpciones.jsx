@@ -21,7 +21,7 @@ class RecomendacionOpciones extends Component {
                                                 <NavLink className="nav-link" exact to="/recomendacion/">Instrucciones</NavLink>
                                             </li>
                                             <li>
-                                                <NavLink className="nav-link" to="/recomendacion/formulario">Formulario</NavLink>
+                                                <NavLink className="nav-link" to="/recomendacion/formulario"><b>Formulario</b></NavLink>
                                             </li>
                                         </ul>
                                     </div>

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import telf from './telf.jpg';
 import resultado from './resultado.png'
-import resultadoVerde from './expliverde.png'
+import resultadoVerde from './explicacionVerde.png'
 import resultadoAmarillo from './resultadoAmarillo.png'
-
+import Recomendacion from './Recomendacion'
 class Explicacion extends Component {
+
+
   render() {
     return (
          
@@ -32,7 +34,7 @@ class Explicacion extends Component {
                                         </div>
                                     </div>
                                   
-
+                            
                                 <p id="resp"className="pExpli">
                                  <a title="telefono" href="https://www.bbvanexttechnologies.com/">
                                 <img className="img2" src={telf}  alt="telefono"/></a>
