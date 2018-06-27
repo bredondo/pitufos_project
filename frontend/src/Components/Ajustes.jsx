@@ -90,7 +90,7 @@ class Ajustes extends Component {
                                 </div> */}
                                 <div className="text-right">
                                     <br/>
-                                    <button type="submit" className="btn btn-block btn-primary">Guardar</button>
+                                    <button type="submit" className="btn btn-block btn-dark">Guardar</button>
                                 </div>
                             </form>
                         </div>

@@ -60,7 +60,7 @@ class App extends Component {
                                             <NavLink className="nav-link" to="/login" onClick={this.logout}>Salir</NavLink>
                                         </li>
                                         <li className="naveoptions nav-item">
-                                            <NavLink className="nav-link" to="/ajustes"><i className="fas fa-cog"></i></NavLink>
+                                            <NavLink className="nav-link" to="/ajustes"><i className="fas fa-user"></i></NavLink>
                                         </li>
                                     </ul>
                                     :
