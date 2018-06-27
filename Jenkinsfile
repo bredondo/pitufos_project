@@ -52,14 +52,16 @@ node {
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
                       //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            //NO HACE FALTA///sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
-            //sh "ssh ec2-user@10.1.3.168 sudo docker rmi -f \$(sudo docker images -q)"
-            //NO HACE FALTA////sh "ssh ec2-user@10.1.3.168 sudo docker rm -f \$(sudo docker ps -a -q)"
-            //sh "ssh ec2-user@10.1.3.168 sudo docker volume prune -f
             
-            //NO BORRA LAS IMAGENES//sh "ssh ec2-user@10.1.3.168 sudo docker image prune -f
+            //NO HACE FALTA///sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
+            //NO HACE FALTA///sh "ssh ec2-user@10.1.3.168 sudo docker rmi -f \$(sudo docker images -q)"
+            //NO HACE FALTA////sh "ssh ec2-user@10.1.3.168 sudo docker rm -f \$(sudo docker ps -a -q)"
+ 
               sh "ssh ec2-user@10.1.3.168 sudo service docker restart"
               sh "ssh ec2-user@10.1.3.168 sudo docker container prune -f"
+              sh "ssh ec2-user@10.1.3.168 sudo docker system prune -a -f"
+              sh "ssh ec2-user@10.1.3.168 sudo docker volume prune -f"
+
               sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
               sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"
         }    
@@ -80,6 +82,12 @@ node {
             //sh "ssh ec2-user@10.1.3.128 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.3.128 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.3.128 sudo docker rm -f \$(sudo docker ps -a -q)"
+            
+            sh "ssh ec2-user@10.1.3.128 sudo service docker restart"
+            sh "ssh ec2-user@10.1.3.128 sudo docker container prune -f"
+            sh "ssh ec2-user@10.1.3.128 sudo docker system prune -a -f"
+            sh "ssh ec2-user@10.1.3.128 sudo docker volume prune -f"
+            
             sh "ssh ec2-user@10.1.3.128 sudo docker pull pitufosgraduates/${imagen_back}"
             sh "ssh ec2-user@10.1.3.128 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
         }       
@@ -100,6 +108,12 @@ node {
             //sh "ssh ec2-user@10.1.3.75 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.3.75 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.3.75 sudo docker rm -f \$(sudo docker ps -a -q)"
+            
+            sh "ssh ec2-user@10.1.3.75 sudo service docker restart"
+            sh "ssh ec2-user@10.1.3.75 sudo docker container prune -f"
+            sh "ssh ec2-user@10.1.3.75 sudo docker system prune -a -f"
+            sh "ssh ec2-user@10.1.3.75 sudo docker volume prune -f"
+            
             sh "ssh ec2-user@10.1.3.75 sudo docker pull pitufosgraduates/${imagen_front}"
             sh "ssh ec2-user@10.1.3.75 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"
         }
@@ -117,8 +131,14 @@ node {
             //sh "ssh ec2-user@10.1.5.103 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.103 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.103 sudo docker rm -f \$(sudo docker ps -a -q)"
-              sh "ssh ec2-user@10.1.5.103 sudo docker pull mongo:3.6.4"
-              sh "ssh ec2-user@10.1.5.103 sudo docker run -d -p 27017:27017 mongo:3.6.4"
+            
+            sh "ssh ec2-user@10.1.5.103 sudo service docker restart"
+            sh "ssh ec2-user@10.1.5.103 sudo docker container prune -f"
+            sh "ssh ec2-user@10.1.5.103 sudo docker system prune -a -f"
+            sh "ssh ec2-user@10.1.5.103 sudo docker volume prune -f"
+            
+            sh "ssh ec2-user@10.1.5.103 sudo docker pull mongo:3.6.4"
+            sh "ssh ec2-user@10.1.5.103 sudo docker run -d -p 27017:27017 mongo:3.6.4"
         }    
     }
  
@@ -137,8 +157,14 @@ node {
             //sh "ssh ec2-user@10.1.5.186 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.186 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.186 sudo docker rm -f \$(sudo docker ps -a -q)"
-              sh "ssh ec2-user@10.1.5.186 sudo docker pull pitufosgraduates/${imagen_back}"
-              sh "ssh ec2-user@10.1.5.186 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
+            
+            sh "ssh ec2-user@10.1.5.186 sudo service docker restart"
+            sh "ssh ec2-user@10.1.5.186 sudo docker container prune -f"
+            sh "ssh ec2-user@10.1.5.186 sudo docker system prune -a -f"
+            sh "ssh ec2-user@10.1.5.186 sudo docker volume prune -f"
+           
+            sh "ssh ec2-user@10.1.5.186 sudo docker pull pitufosgraduates/${imagen_back}"
+            sh "ssh ec2-user@10.1.5.186 sudo docker run -d -p 8000:8000 pitufosgraduates/${imagen_back}"
         }       
      }
     
@@ -158,8 +184,14 @@ node {
             //sh "ssh ec2-user@10.1.5.32 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.5.32 sudo docker rmi -f \$(sudo docker images -q)"
             //sh "ssh ec2-user@10.1.5.32 sudo docker rm -f \$(sudo docker ps -a -q)"
-              sh "ssh ec2-user@10.1.5.32 sudo docker pull pitufosgraduates/${imagen_front}"
-              sh "ssh ec2-user@10.1.5.32 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"
+            
+            sh "ssh ec2-user@10.1.5.32 sudo service docker restart"
+            sh "ssh ec2-user@10.1.5.32 sudo docker container prune -f"
+            sh "ssh ec2-user@10.1.5.32 sudo docker system prune -a -f"
+            sh "ssh ec2-user@10.1.5.32 sudo docker volume prune -f"
+            
+            sh "ssh ec2-user@10.1.5.32 sudo docker pull pitufosgraduates/${imagen_front}"
+            sh "ssh ec2-user@10.1.5.32 sudo docker run -d -p 80:3001 pitufosgraduates/${imagen_front}"
         }
     }
 }
