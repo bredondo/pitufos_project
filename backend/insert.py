@@ -274,7 +274,7 @@ usersData = [
     },
     {
         'email': 'beatriz.redondo@beeva.com', 
-        'passwd': 'Beatriz7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Redondo',
+        'passwd': 'Beatriza7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Redondo',
         'name': 'Beatriz',
         'lastname': 'Redondo', 
         'img': 'img/contacto3.png', 
@@ -284,8 +284,8 @@ usersData = [
         'result': []
     },
     {
-        'email': 'sergio.mario@beeva.com', 
-        'passwd': 'Sergio7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Marino',
+        'email': 'sergio.marino@beeva.com', 
+        'passwd': 'Sergioa7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Marino',
         'name': 'Sergio',
         'lastname': 'Marino', 
         'img': 'img/contacto4.png', 
@@ -296,7 +296,7 @@ usersData = [
     },
     {
         'email': 'eduardo.lopez@beeva.com', 
-        'passwd': 'Eduardo7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Lopez',
+        'passwd': 'Eduardoa7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Lopez',
         'name': 'Eduardo',
         'lastname': 'Lopez',
         'img': 'img/contacto5.png', 
