@@ -161,12 +161,46 @@ section .section-title {
     background-color: #fff;
 }
 
-
+#colFormacion{
+    max-width: 100%;
+    min-width: 20%;
+}
 /*Formacion*/
 .formacion{
     background-color:#f2f2f2;
+    max-width: 100%;
+    min-width: 20%;
+    min-height: 100%;
+    position: relative;
 }
 
+.firstinfo {
+    font-family: 'Raleway', Arial, sans-serif;
+    position: relative;
+    margin: 15px 6%;
+    max-height: 240px;
+    align-items: center;
+    min-width: 55%;
+    max-width: 100%;
+    display: flex;
+    height: 100%;
+    background: #ffffff;
+  }
+
+.square-img {
+    position: relative;
+    width: 15%;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+    background-size: cover;
+}
+
+.square-img::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
 #fondoDiv{
     background-image: url(libro.jpg);
     background-repeat: no-repeat;
@@ -201,13 +235,6 @@ section{
     position: fixed;
     left:0;
 
-}
-.formacion{
-    width: 100%;
-    min-height: 100%;
-    height: auto !important;
-    position: absolute;
-    left:0;
 }
 
 .naveoptions{
@@ -377,19 +404,7 @@ p.form-title
 
 /*Contactos*/
     
-    .firstinfo {
-    font-family: 'Raleway', Arial, sans-serif;
-    position: relative;
-    float: left;
-    margin: 15px 6%;
-    min-width:auto;
-    max-width: auto;
-    max-height: 240px;
-    width: 90%;
-    display: flex;
-    height: 100%;
-    background: #ffffff;
-  }
+  
   .firstinfo .jj {
     left: 0;
     top: 0;
@@ -477,15 +492,22 @@ p.form-title
       font-weight: bold;
   }
   #resp{
-      margin-top: 60px;
-      text-align: left;
+      margin-top: 30px;
+      margin-left: 35px;
+      
   }
-
   .pExpli{
       font-size: 16px;
-      text-align: center;
+      text-align: left;
       padding-left: 60px;
       padding-right: 60px;
+
+  }
+  #pExpli2{
+      padding-top: 0px;
+      min-width: 20%;
+      max-width: 100%;
+      
   }
   .explitit{
       font-size: 31px;
@@ -496,9 +518,12 @@ p.form-title
   }
   #imgResultado{
       float:left;
+
+      min-width: 20%;
+      max-width: 60%;
       margin-left: 40px;
       margin-bottom: 10px;
-      margin-right: auto;
+      margin-right: 20px;
 
     }
   .img2{

@@ -234,7 +234,7 @@ class Recomendacion extends Component {
                                           {
                                             this.answerType(this.state.recommendation[this.state.index], this.state.index)
                                           }
-                                          <div className="d-flex flex-nowrap">
+                                          <div className="d-flex">
                                                 
                                                 <div className="p-2">
                                                   <button className="btn" style={this.state.stylesPrev} 

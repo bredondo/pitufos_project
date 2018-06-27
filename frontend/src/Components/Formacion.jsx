@@ -23,9 +23,9 @@ class Formacion extends Component {
             </p>
             
             <div className="d-flex justify-content-center">
-                <div className="row">
+                <div className="row"  >
 
-                    <div className="col-md-6" >
+                    <div className="col-md-6">
                         <div className="card" >
                               <div className="card-body card-body d-flex flex-column">
                                 <h6 className="card-text text-center">Consulta tu</h6>
