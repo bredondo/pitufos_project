@@ -52,9 +52,15 @@ node {
                       sh "sudo cp ${private_key} ~/.ssh/id_rsa"
                       //sh "sudo cp ${private_key} /home/ec2-user/.ssh/id_rsa"
                       sh 'echo "Host * \n' + 'StrictHostKeyChecking no" >> ~/.ssh/config'
-            //sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
+            //NO HACE FALTA///sh "ssh ec2-user@10.1.3.168 sudo docker stop \$(sudo docker ps -a -q)"
             //sh "ssh ec2-user@10.1.3.168 sudo docker rmi -f \$(sudo docker images -q)"
-            //sh "ssh ec2-user@10.1.3.168 sudo docker rm -f \$(sudo docker ps -a -q)"
+            //NO HACE FALTA////sh "ssh ec2-user@10.1.3.168 sudo docker rm -f \$(sudo docker ps -a -q)"
+            //sh "ssh ec2-user@10.1.3.168 sudo docker volume prune -f
+            
+            //NO BORRA LAS IMAGENES//sh "ssh ec2-user@10.1.3.168 sudo docker image prune -f
+              sh "ssh ec2-user@10.1.3.168 sudo service docker restart
+              sh "ssh ec2-user@10.1.3.168 sudo docker container prune -f
+            
               sh "ssh ec2-user@10.1.3.168 sudo docker pull mongo:3.6.4"
               sh "ssh ec2-user@10.1.3.168 sudo docker run -d -p 27017:27017 mongo:3.6.4"
         }    
