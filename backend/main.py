@@ -154,7 +154,6 @@ def recommend_projects():
     return projects.recommend_project()
 
 @app.route('/emptyDatabase', methods=['DELETE'])
-@auth.login_required
 def delete_all():
     return action.empty_database()
 

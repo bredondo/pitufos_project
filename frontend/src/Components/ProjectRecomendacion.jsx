@@ -48,7 +48,8 @@ class ProjectRecomendacion extends Component {
                                           <p id="desc">{item.description}</p>
                                   </div>
                                   <div className="row2">
-                                        <p id="info">{item.description.length < 1 ? '' : 'Lugar de trabajo: '} <img className="img2" src={lugar} /></p><p> {item.location} </p>
+                                        <p id="info" > 
+{item.description.length < 1 ? '' : 'Lugar de trabajo: ' + <i className="fas fa-map-marker"></i>} </p><p> {item.location} </p>
                                         <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} <img className="img2" src={jornada} /></p> <p>{item.workday}</p>
                                         <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} <img className="img2" src={tecno} /></p>
                                         <ul>

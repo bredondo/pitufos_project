@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import telf from './telf.jpg';
 import resultado from './resultado.png'
+import resultadoVerde from './expliverde.png'
 
 class Explicacion extends Component {
   render() {
@@ -18,12 +19,15 @@ class Explicacion extends Component {
                                     Cuando se hayan contestado todas las preguntas aparecerá un resultado con los tres proyectos más acordes según tus preferencias,
                                     ordenados según la coincidencia de tus respuestas con los proyectos ya existentes.
                                     <br></br> Las posibles opciones son las siguientes:
-                                </p>
+                                    <br></br> -En color <span id="verde">verde</span> si el porcentaje coincidente es del 90-100%.
+                                    <br></br> -En color <span id="naranja">naranja</span> si el porcentaje coincidente es del 80-90%.
+                                    <br></br> -En color <span id="amarillo">amarillo</span> si el porcentaje coincidente es del 70-80%.
+                                    </p>
                                     <div className="pExpli center-block">
                                         <div className="clearfix" id="explicacionResultado">
                                             <img id="imgResultado" src={resultado} />
                                             <img id="imgResultado" src={resultado} />
-                                            <img id="imgResultado" src={resultado} />
+                                            <img id="imgResultado" src={resultadoVerde} />
                                         </div>
                                     </div>
                                   
