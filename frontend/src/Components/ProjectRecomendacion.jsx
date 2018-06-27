@@ -49,9 +49,9 @@ class ProjectRecomendacion extends Component {
                                   </div>
                                   <div className="row2">
                                         <p id="info" > 
-{item.description.length < 1 ? '' : 'Lugar de trabajo: ' + <i className="fas fa-map-marker"></i>} </p><p> {item.location} </p>
-                                        <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} <img className="img2" src={jornada} /></p> <p>{item.workday}</p>
-                                        <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} <img className="img2" src={tecno} /></p>
+{item.description.length < 1 ? '' : 'Lugar de trabajo: '} <i className="fas fa-map-marker"></i> </p><p> {item.location} </p>
+                                        <p id="info">{item.description.length < 1 ? '' : 'Tipo de jornada: '} <i class="far fa-clock"></i></p> <p>{item.workday}</p>
+                                        <p id="info"> {item.description.length < 1 ? '' : 'Se trabajará con las siguientes tecnologías: '} <i class="fas fa-code"></i></p>
                                         <ul>
                                           {item.technologies.map(technology => (
                                             <li key={technology}>{technology}</li>
@@ -59,8 +59,8 @@ class ProjectRecomendacion extends Component {
                                         </ul>
                                   </div>
                                  <div className="row3">
-                                    <p id="info">{item.description.length < 1 ? '' : 'Horario de la jornada: '} <img className="img2" src={calendario} /></p> <p>{item.schedule}</p>
-                                    <p id="info">{item.description.length < 1 ? '' : 'Días de teletrabajo: '}<img className="img2" src={teletrabajo} /></p> <p>{item.telecommuting}</p>                               
+                                    <p id="info">{item.description.length < 1 ? '' : 'Horario de la jornada: '} <i class="far fa-calendar-alt"></i></p> <p>{item.schedule}</p>
+                                    <p id="info">{item.description.length < 1 ? '' : 'Días de teletrabajo: '}<i class="fas fa-home"></i></p> <p>{item.telecommuting}</p>
                                  </div>
                                    </div>
                             </div>
