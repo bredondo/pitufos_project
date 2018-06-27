@@ -19,7 +19,7 @@ projectsData = [
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la mañana',
-        'telecommuting': '0 días'
+        'telecommuting': '0 dias'
     },
     {
         'name': 'Día',
@@ -28,7 +28,7 @@ projectsData = [
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la tarde',
-        'telecommuting': '0 días'
+        'telecommuting': '0 dias'
     },
     {
         'name': 'PCI',
@@ -37,7 +37,7 @@ projectsData = [
         'workday': 'Jornada Parcial',
         'technologies': ['Flask', 'NodeJS', 'ReactJS'],
         'schedule': 'Por la tarde',
-        'telecommuting': '2 días'
+        'telecommuting': '2 dias'
     },
     {
         'name': 'GDPR',
@@ -46,7 +46,7 @@ projectsData = [
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate'],
         'schedule': 'Por la mañana',
-        'telecommuting': '0 días'
+        'telecommuting': '0 dias'
     },
 {
         'name': 'Repsol',
@@ -55,7 +55,7 @@ projectsData = [
         'workday': 'Jornada completa',
         'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
         'schedule': 'Por la mañana',
-        'telecommuting': '1 días'
+        'telecommuting': '1 dias'
     },
     {
         'name': 'newSiem',
@@ -64,7 +64,7 @@ projectsData = [
         'workday': 'Jornada Parcial',
         'technologies': ['Cassandra', 'MongoDB', 'Docker', 'Polymer'],
         'schedule': 'Indiferente',
-        'telecommuting': '1 días'
+        'telecommuting': '1 dias'
     },
     {
         'name': 'No se ha encontrado ningún proyecto coincidente.',
@@ -244,7 +244,7 @@ recommendationsData = [
         'order': 24,
         'question': '¿Cuántos días de teletrabajo prefieres',
         'technology': '',
-        'answers': ['0 días', '1 días', '2 días'],
+        'answers': ['0 dias', '1 dias', '2 dias'],
         'type': 'unica'
     },
 ]
@@ -274,7 +274,7 @@ usersData = [
     },
     {
         'email': 'beatriz.redondo@beeva.com', 
-        'passwd': '12345', 
+        'passwd': 'Beatriz7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Redondo',
         'name': 'Beatriz',
         'lastname': 'Redondo', 
         'img': 'img/contacto3.png', 
@@ -285,7 +285,7 @@ usersData = [
     },
     {
         'email': 'sergio.mario@beeva.com', 
-        'passwd': '12345', 
+        'passwd': 'Sergio7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Marino',
         'name': 'Sergio',
         'lastname': 'Marino', 
         'img': 'img/contacto4.png', 
@@ -296,9 +296,9 @@ usersData = [
     },
     {
         'email': 'eduardo.lopez@beeva.com', 
-        'passwd': '12345', 
+        'passwd': 'Eduardo7470858e79c282bc2f6adfd831b132672dfd1224c1e78cbf5bcd057Lopez',
         'name': 'Eduardo',
-        'lastname': 'López', 
+        'lastname': 'Lopez',
         'img': 'img/contacto5.png', 
         'description': 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
         'sendEmail': False,

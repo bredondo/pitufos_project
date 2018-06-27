@@ -210,6 +210,15 @@ def search_project():
                            'location': project['location']})
             seen.add(project['name'])
 
+    for project in projects.find({'description': {'$regex': pre_query}}):
+        if (project is not None and project['name'] not in seen 
+        and 'No se ha encontrado' not in  project['name']):
+            output.append({'name': project['name'], 'technologies': project['technologies'],
+                           'telecommuting': project['telecommuting'], 'workday': project['workday'],
+                           'schedule': project['schedule'],'description': project['description'],
+                           'location': project['location']})
+            seen.add(project['name'])
+
     length = len(output)
     if (length < 1):
         project = projects.find_one({"name": "No se ha encontrado ningún proyecto coincidente."})

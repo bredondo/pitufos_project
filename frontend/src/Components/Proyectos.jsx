@@ -72,14 +72,14 @@ class Proyectos extends Component {
         return (
             <section className="animated fadeIn fast">
                 <div className="container">
-                    <h1>Proyectos</h1>
+                    <h1 id="proyectostitle">Proyectos</h1>
                     <hr/>
                     <div className="row">
                         <div className="col">
                             <div className="input-group mb-3">
                                 <input type="text" className="form-control" placeholder="Buscador..."  id="search" value={this.state.search} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
-                                <div className="input-group-prepend">
-                                    <button className="btn btn-outline-primary" type="button" disabled={this.state.search.length === 0} onClick={this.handleKeyPress}>Buscar</button>
+                                <div className="input-group-prepend ">
+                                    <button className="btn btn-outline-dark" type="button" disabled={this.state.search.length === 0} onClick={this.handleKeyPress}><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@ class Proyectos extends Component {
                         ))}
                     </div>
                     <br/>
-                    <div className="row offset-sm-0">
+                    <div className="row offset-sm-0" id="pagproy">
                         <Pagination items={this.state.projects} onChangePage={this.onChangePage} totalItems={this.state.totalItems} pageSize={this.state.itemsPerPage} search={this.state.search} page={this.state.page}/>
                     </div>
                 </div>

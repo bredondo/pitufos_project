@@ -44,23 +44,23 @@ class App extends Component {
                             <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
                                 {localStorage.getItem('user') || this.state.isAuth ?  
                                     <ul className="nav navbar-nav"> 
-                                        <li className="nav-item">
+                                        <li className="naveoptions nav-item">
                                         <NavLink className="nav-link" exact to="/">Formación</NavLink>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="naveoptions nav-item">
                                             <NavLink className="nav-link" to="/recomendacion">Recomendacion de proyecto</NavLink>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="naveoptions nav-item">
                                             <NavLink className="nav-link" to="/contactos">Tus Compañeros</NavLink>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="naveoptions nav-item">
                                             <NavLink className="nav-link" to="/proyectos">Proyectos</NavLink>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="naveoptions nav-item">
                                             <NavLink className="nav-link" to="/login" onClick={this.logout}>Salir</NavLink>
                                         </li>
-                                        <li className="nav-item">
-                                            <NavLink className="nav-link" to="/ajustes"><i className="fas fa-cog"></i></NavLink>
+                                        <li className="naveoptions nav-item">
+                                            <NavLink className="nav-link" to="/ajustes"><i className="fas fa-user"></i></NavLink>
                                         </li>
                                     </ul>
                                     :

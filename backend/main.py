@@ -8,6 +8,7 @@ import jwt
 from itsdangerous import TimedJSONWebSignatureSerializer as JWT
 from flask_httpauth import HTTPTokenAuth
 from flask_cors import CORS, cross_origin
+from flask import Response
 
 import recommendation
 import users
@@ -52,7 +53,7 @@ def get_token():
         return jsonify({'token': token, 'user':user})
 
     else:
-        return 'Email or user incorrect, good luck next time you try to enter into my system little bitch :)'
+        return Response("Email or user incorrect", status=401, mimetype='application/json')
 
 
 @auth.verify_token
@@ -153,7 +154,6 @@ def recommend_projects():
     return projects.recommend_project()
 
 @app.route('/emptyDatabase', methods=['DELETE'])
-@auth.login_required
 def delete_all():
     return action.empty_database()
 

@@ -8,7 +8,8 @@ class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      message:""
     };
   }
 
@@ -40,29 +41,41 @@ class Login extends Component {
       localStorage.setItem('token', data.token);
       this.props.updateIsAuth(true)
       this.props.history.push('/');//`${myConfig.url}/`
-      
+      this.setState({message: ''});
     } catch (error) {
-      console.error(error);
+
+      this.setState({message: 'Login incorrect, please try again'});
     }
   }
 
   render() {
     return (
-      <div className="animated fadeIn fast login">
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input type="email" className="form-control" id="email" aria-describedby="emailHelp" 
-                  placeholder="Introduce email..." value={this.state.email} onChange={this.handleChange}/>
-          </div>
-          <div className="form-group">
-              <label htmlFor="password">Contraseña</label>
-              <input type="password" className="form-control" id="password" 
-                    placeholder="Contraseña" value={this.state.password} onChange={this.handleChange}/>
-          </div>
-          <button type="submit" className="btn btn-primary btn-block" disabled={!this.validateForm()}>Entrar</button>
-        </form>
-      </div>
+        <section className="animated fadeIn fast pepe">
+        { this.state.message !== '' ?
+
+            <div class="alert alert-danger">
+              <strong>Danger!</strong> Login incorrect, please try again!.
+            </div>
+
+         : this.state.message === ''}
+                  <div className="animated fadeIn fast login">
+                   <p class="form-title">
+                                Inicio de sesión</p>
+                    <form onSubmit={this.handleSubmit} className="login">
+                      <div className="form-group">
+                          <input type="email" className="form-control" id="email" aria-describedby="emailHelp"
+                              placeholder="Email" value={this.state.email} onChange={this.handleChange}/>
+                      </div>
+                      <div className="form-group">
+                          <input type="password" className="form-control" id="password"
+                              placeholder="Contraseña" value={this.state.password} onChange={this.handleChange}/>
+                      </div>
+                      <button type="submit" className="btn btn-dark btn-block" disabled={!this.validateForm()}>Entrar</button>
+                    </form>
+                  </div>
+
+          </section>
+
     );
   }
 }

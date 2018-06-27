@@ -18,12 +18,12 @@ class AnswerSeveral extends Component {
 
         <div>
           <h2 className="pregunta1">
-                {this.props.item.order==1 ? <p>Tendrás que responder esta pregunta general para poder analizarte según tus respuestas. <p>
-                  Luego se harán una serie de preguntas que se puntuarán del 0 al 10 según tus conocimientos, además de unas preguntas básicas acerca del horario, movilidad y teletrabajo.</p></p> 
-                  : ''} 
-              </h2>
+            {this.props.item.order==1 ? <p>Tendrás que responder esta pregunta general para poder analizarte según tus respuestas. <p>
+              Luego se harán una serie de preguntas que se puntuarán del 0 al 10 según tus conocimientos, además de unas preguntas básicas acerca del horario, movilidad y teletrabajo.</p></p> 
+              : ''} 
+          </h2>
         </div>
-        <div className="form-group col-md-6" id={this.props.item.order}>
+        <div className="form-group" id={this.props.item.order}>
             <label className="preg1">{this.props.order}. {this.props.item.question}</label>
             {this.props.item.answers.map(answer => (
             <div className="form-check" key={answer}>

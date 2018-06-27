@@ -35,19 +35,18 @@ class Contactos extends Component {
              <div className="card">
              {this.state.contacto.map(item => (
                  <div className="firstinfo col-xs-12 col-sm-12 col-md-12" key={item.email}>
-                        <img className="img-fluid" src={item.img} />
-                         <div  className="jj card-body text-center">
-                             <h2 id="h2n">
-                                 {item.name} <span>{item.lastname}</span>
-                             </h2>
-                             <p>
-                                 {item.description}
-                             </p>
-                             <p>
-                                 {item.email}
-                             </p>
-                         </div>
-
+                    <div className="square-img" style={{'backgroundImage': 'url('+item.img+')'}}></div>
+                    <div  className="jj card-body text-center">
+                      <h2 id="h2n">
+                        {item.name} <span>{item.lastname}</span>
+                      </h2>
+                      <p>
+                        {item.description}
+                      </p>
+                      <p>
+                        {item.email}
+                      </p>
+                    </div>
                  </div>
                  ))}
              </div>

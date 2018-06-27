@@ -25,10 +25,7 @@ class Pagination extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         // reset page if items array has changed
-        console.log("this.props", this.props);
-        console.log("prevProps", prevProps);
-        console.log("this.state", this.state);
-        console.log("prevState", prevState);
+
         if (this.props.items !== prevProps.items) {
             this.setPage(this.props.page, false);
         }
@@ -118,10 +115,10 @@ class Pagination extends React.Component {
         return (
             <ul className="pagination">
                 <li className={pager.currentPage === 1 ? 'page-item disabled' : 'page-item'}>
-                    <a className="page-link" onClick={() => this.setPage(1,true)}>First</a>
+                    <a className="page-link" onClick={() => this.setPage(1,true)}>Primera</a>
                 </li>
                 <li className={pager.currentPage === 1 ? 'page-item disabled' : 'page-item'}>
-                    <a className="page-link" onClick={() => this.setPage(pager.currentPage - 1,true)}>Previous</a>
+                    <a className="page-link" onClick={() => this.setPage(pager.currentPage - 1,true)}>Anterior</a>
                 </li>
                 {pager.pages.map((page, index) =>
                     <li key={index} className={pager.currentPage === page ? 'page-item active' : 'page-item'}>
@@ -129,10 +126,10 @@ class Pagination extends React.Component {
                     </li>
                 )}
                 <li className={pager.currentPage === pager.totalPages ? 'page-item disabled' : 'page-item'}>
-                    <a className="page-link" onClick={() => this.setPage(pager.currentPage + 1,true)}>Next</a>
+                    <a className="page-link" onClick={() => this.setPage(pager.currentPage + 1,true)}>Siguiente</a>
                 </li>
                 <li className={pager.currentPage === pager.totalPages ? 'page-item disabled' : 'page-item'}>
-                    <a className="page-link" onClick={() => this.setPage(pager.totalPages,true)}>Last</a>
+                    <a className="page-link" onClick={() => this.setPage(pager.totalPages,true)}>Última</a>
                 </li>
             </ul>
         );

@@ -34,7 +34,6 @@ body{
     background-color: rgb(96, 166, 206);
     height: 100%;
     width: 100%;
-
 }
 
 /* Contactos */
@@ -61,6 +60,17 @@ body{
 
 .fa-check {
     color:rgb(96, 166, 206);
+}
+
+.card {
+    min-height: 96%;
+    max-height: 96%;
+}
+
+hr {
+  display:block;
+  width: 98%;
+  background-color:black;
 }
 
 section {
@@ -143,6 +153,7 @@ section .section-title {
 /*End Wizard*/
 .card {
     align-content:center;
+    
 }
 
 #team3 .card{
@@ -150,10 +161,51 @@ section .section-title {
     background-color: #fff;
 }
 
-
+#colFormacion{
+    max-width: 100%;
+    min-width: 20%;
+}
 /*Formacion*/
+.formacion{
+    background-color:#f2f2f2;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    position: absolute;
+}
+
+.firstinfo {
+    font-family: 'Raleway', Arial, sans-serif;
+    position: relative;
+    margin: 15px 6%;
+    max-height: 240px;
+    align-items: center;
+    min-width: 55%;
+    max-width: 80%;
+    display: flex;
+    height: 100%;
+    background: #ffffff;
+  }
+
+.square-img {
+    position: relative;
+    min-width: 10%;
+    max-width: 50%;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+    background-size: cover;
+}
+
+.square-img::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
 #fondoDiv{
     background-image: url(libro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: lightgray;
     border-color: lightgray;
 }
@@ -162,12 +214,32 @@ section .section-title {
 	background-position: center center;
 	background-repeat: no-repeat;
 }
-
+#proyectostitle{
+    text-align: center;
+}
 section{
     float:left;
     width:100%;
     background: #fff;  /* fallback for old browsers */
     padding:10px 0;
+}
+.pepe
+{
+    background-image: url('vela22.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: transparent;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    position: fixed;
+    left:0;
+
+}
+
+.naveoptions{
+    margin-right: 15px;
 }
 
 .profile-card-5{
@@ -179,7 +251,16 @@ section{
     font-size:12px;
     padding:7px 20px;
 }
-
+p.form-title
+{
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(15, 14, 14);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
 
 .profile-card-5 h5{
     color:#4E5E30;
@@ -324,19 +405,7 @@ section{
 
 /*Contactos*/
     
-    .firstinfo {
-    font-family: 'Raleway', Arial, sans-serif;
-    position: relative;
-    float: left;
-    margin: 15px 6%;
-    min-width:auto;
-    max-width: auto;
-    max-height: 240px;
-    width: 90%;
-    display: flex;
-    height: 100%;
-    background: #ffffff;
-  }
+  
   .firstinfo .jj {
     left: 0;
     top: 0;
@@ -424,15 +493,22 @@ section{
       font-weight: bold;
   }
   #resp{
-      margin-top: 60px;
-      text-align: left;
+      margin-top: 30px;
+      margin-left: 35px;
+      
   }
-
   .pExpli{
       font-size: 16px;
-      text-align: center;
+      text-align: left;
       padding-left: 60px;
       padding-right: 60px;
+
+  }
+  #pExpli2{
+      padding-top: 0px;
+      min-width: 20%;
+      max-width: 100%;
+      
   }
   .explitit{
       font-size: 31px;
@@ -443,9 +519,12 @@ section{
   }
   #imgResultado{
       float:left;
+
+      min-width: 20%;
+      max-width: 60%;
       margin-left: 40px;
       margin-bottom: 10px;
-      margin-right: auto;
+      margin-right: 20px;
 
     }
   .img2{
@@ -508,6 +587,27 @@ section{
     }
   }
 
+  #explicacionResultado{
+       display: table;
+  margin: 0 auto;
+  }
+
+  form.login input[type="email"], form.login input[type="password"]
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    outline: 0;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: rgb(22, 19, 19);
+    outline: 0;
+    background-color: white;
+}
+
   /* Animaciones */
 .animated {
     -webkit-animation-duration: 1s;
@@ -532,7 +632,17 @@ section{
       opacity: 1;
     }
   }
-  
+  #textHorario{
+    text-align:center;
+  }
   .fadeIn {
     animation-name: fadeIn;
+  }
+
+  #textheader{
+      text-align: center;
+  }
+
+  .ancho {
+      width: 100%;
   }
