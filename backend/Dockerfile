@@ -10,7 +10,7 @@ EXPOSE 8000
 
 WORKDIR /pitufos_project/backend
 
-ENTRYPOINT python insert.py
+#ENTRYPOINT python insert.py
 ENTRYPOINT python main.py
 
 
