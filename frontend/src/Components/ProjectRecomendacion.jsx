@@ -28,8 +28,8 @@ class ProjectRecomendacion extends Component {
             <div className="card-body">
                <h1 id="proy">Proyectos recomendados (% coincidencia) 
                <div className="d-flex flex-nowrap">
-                <div className="ml-auto p-2">
-                  <button className="btn btn-dark" onClick={this.handleAgain.bind(this)}>
+                <div className="col-md-12 center-block">
+                  <button className="btn btn-dark " onClick={this.handleAgain.bind(this)}>
                     Realizar de nuevo 
                   </button>
                 </div>
