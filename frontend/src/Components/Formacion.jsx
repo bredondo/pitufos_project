@@ -17,9 +17,6 @@ class Formacion extends Component {
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-      
-=======
             <p id="textheader">Con este programa podrás crecer como profesional y aprender nuevas tecnologías.
               <br></br>Además tendrás el mejor ambiente y podrás rodearte de gente maravillosa.
               <br></br>¡Lo único que te hace falta es esfuerzo, perseverancia, compañerismo y muchas muchísimas ganas de aprender!
@@ -27,7 +24,6 @@ class Formacion extends Component {
             </p>
 
             
->>>>>>> dev
             <div className="d-flex justify-content-center">
                 <div className="row"  >
 
