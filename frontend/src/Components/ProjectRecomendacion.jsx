@@ -40,15 +40,7 @@ class ProjectRecomendacion extends Component {
         <main className="recomendacion">
           <div className="card mx-auto">
             <div className="card-body">
-               <h1 id="proy">Proyectos recomendados (% coincidencia) 
-               <div className="d-flex flex-nowrap">
-                <div className="col-md-12 center-block">
-                  <button className="btn btn-dark" onClick={this.handleAgain.bind(this)}>
-                    Realizar de nuevo 
-                  </button>
-                </div>
-
-              </div></h1>
+               <h1 id="proy">Proyectos recomendados (% coincidencia) </h1>
                <div className="row">
                   {this.state.projects.map(item => (
                     <div className="col-xs-12 col-sm-6 col-md-4"  key={item.name}>
@@ -81,6 +73,13 @@ class ProjectRecomendacion extends Component {
                       </div>
                   ))}
             </div>
+            <div className="holi d-flex flex-nowrap">
+                <div className="col-md-12 center-block">
+                  <button className="btn btn-dark"  onClick={this.handleAgain.bind(this)}>
+                    Realizar de nuevo 
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </main>
