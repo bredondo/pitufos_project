@@ -23,10 +23,19 @@ projectsData = [
     },
     {
         'name': 'Día',
+        'description': 'Web online de empleados.',
+        'location': 'Vaguada',
+        'workday': 'Jornada completa',
+        'technologies': ['React', 'VueJS', 'AngularJS', 'JUnit'],
+        'schedule': 'Por la tarde',
+        'telecommuting': '0 dias'
+    },
+    {
+        'name': 'Día',
         'description': 'Web online de productos.',
         'location': 'Vaguada',
         'workday': 'Jornada completa',
-        'technologies': ['Maven', 'Spring', 'Hibernate', 'JUnit'],
+        'technologies': ['DJango', 'Flask', 'AngularJS'],
         'schedule': 'Por la tarde',
         'telecommuting': '0 dias'
     },
@@ -44,7 +53,7 @@ projectsData = [
         'description': 'Adaptarse a las nuevas políticas',
         'location': 'Vaguada',
         'workday': 'Jornada completa',
-        'technologies': ['Maven', 'Spring', 'Hibernate'],
+        'technologies': ['Java', 'JUnit'],
         'schedule': 'Por la mañana',
         'telecommuting': '0 dias'
     },
@@ -58,11 +67,29 @@ projectsData = [
         'telecommuting': '1 dias'
     },
     {
+        'name': 'Repsol',
+        'description': 'Automatización despliegue app móvil',
+        'location': 'Vaguada',
+        'workday': 'Jornada completa',
+        'technologies': ['Jenkins', 'Docker'],
+        'schedule': 'Por la mañana',
+        'telecommuting': '1 dias'
+    },
+    {
         'name': 'newSiem',
         'description': 'Desarrollo de QRadar',
         'location': 'Av. de Burgos',
         'workday': 'Jornada Parcial',
         'technologies': ['Cassandra', 'MongoDB', 'Docker', 'Polymer'],
+        'schedule': 'Indiferente',
+        'telecommuting': '1 dias'
+    },
+    {
+        'name': 'newSiem',
+        'description': 'Automatización de QRadar',
+        'location': 'Av. de Burgos',
+        'workday': 'Jornada Parcial',
+        'technologies': ['Jenkins', 'MongoDB', 'Docker'],
         'schedule': 'Indiferente',
         'telecommuting': '1 dias'
     },
