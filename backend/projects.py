@@ -90,8 +90,7 @@ def recommend_project():
         projectWorkday = project['workday']
         projectSchedule = project['schedule']
         projectTelecommuting = project['telecommuting']
-        projectPercentageTechnology = 1 / (len(
-            projectsTechnologies) + 4)  # se calcula el porcentaje de cada tecnología y cada tipo de jornada, horario, teletrabajo y localización.
+        projectPercentageTechnology = 1 / (len(projectsTechnologies) + 4)  # se calcula el porcentaje de cada tecnología y cada tipo de jornada, horario, teletrabajo y localización.
         # print(projectsTechnologies)
         for question in questions:  # se busca cada tecnología en cada pregunta
             for pT in projectsTechnologies:
@@ -123,26 +122,10 @@ def recommend_project():
         del project['_id']
         output.append(project)
 
-    user_aux = users.find_one({'_id': user['_id']})
+    users.update_one({'_id': user['_id']}, {'$set': {'answers': req['result']['answers'], 'result': output}})
 
-
-
-    respuestas = (user_aux['answers'])
-
-    respuestas.append(req['result']['answers'])
-
-    proyectos = (user_aux['result'])
-    proyectos.append(output)
-
-    if (len(respuestas)==6): #solo se guardan 5 proyectos en el historial, el resto se borra.
-        respuestas.remove(respuestas[0])
-        proyectos.remove(proyectos[0])
-
-
-    users.update_one({'_id': user['_id']}, {'$set': {'answers': respuestas, 'result': proyectos}})
-
-    user['answers'] = respuestas
-    user['result'] = proyectos
+    user['answers'] = req['result']['answers']
+    user['result'] = output
 
     del user['_id']
 
